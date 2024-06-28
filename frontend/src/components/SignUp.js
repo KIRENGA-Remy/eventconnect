@@ -74,25 +74,33 @@ const SignUp = () => {
 
     setLoading(true);
 
-    try {
-      const response = await fetch('https://eventconnect2.onrender.com/v1/api/signup', {
-        method: 'POST',
-        body: formData,
-      });
-  
-      if (!response.ok) {
-        const errorData = await response.json();
-        toast.error(errorData.message || "Something went wrong");
-        return;
-      }
-  
-      const dataRes = await response.json();
-      toast.success(dataRes.message);
-      navigate("/authentication");
-    } catch (error) {
-      console.error("Error during form submission:", error);
-      toast.error("Network error, please check your internet connection");
-    }
+        try {
+          const response = await fetch('https://eventconnect2.onrender.com/v1/api/signup', {
+            method: 'POST',
+            cache: 'no-cache',
+            credentials: 'same-origin',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData),
+          });
+    
+          if (!response.ok) {
+            const errorData = await response.json();
+            toast.error(errorData.message || "Something went wrong");
+            setLoading(false);
+            return;
+          }
+    
+          const dataRes = await response.json();
+          toast.success(dataRes.message);
+          navigate("/authentication");
+        } catch (error) {
+          console.error("Error during form submission:", error);
+          toast.error("Network error, please check your internet connection");
+        } finally {
+          setLoading(false);
+        }
   };
 
   const googleSignup = () => {
@@ -190,7 +198,7 @@ const FileInputField = ({ onChange }) => (
       id="userprofile"
       name="userprofile"
       accept="image/*"
-      className="p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700"
+      className="hidden p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700"
       onChange={onChange}
     />
   </div>
