@@ -14,6 +14,7 @@ const storeRoute = require("./controllers/storeApi");
 const cookieSession = require("cookie-session");
 const UserModel = require("./Models/user.js");
 const jwt = require("jsonwebtoken");
+const path = require('path');
 require("./passport/passport.js");
 const authRoute = require("./controllers/auth.js");
 const nodemailer = require("nodemailer");
@@ -137,7 +138,12 @@ app.post("/reset-password/:id/:token", async (req, res) => {
   }
 });
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, 'eventsbrief.html'));
+  const filePath = path.join(__dirname, 'eventsbrief.html');
+  res.sendFile(filePath, (err) => {
+    if (err) {
+      next(err);
+    }
+  });
 });
 
 // Starting the server
