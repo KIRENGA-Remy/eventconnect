@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Connect - Connecting You to Events</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            overflow-x: hidden;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 1s ease-out;
+        }
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        section {
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-in;
+        }
+        h1, h2, p {
+            margin: 0 0 20px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .image-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #e0e0e0;
+            padding: 20px;
+        }
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .highlight {
+            background-color: #ffeb3b;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        blockquote {
+            background-color: #fff;
+            padding: 20px;
+            border-left: 10px solid #007BFF;
+            margin: 20px 0;
+            font-style: italic;
+        }
+        cite {
+            display: block;
+            text-align: right;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        /* Footer Styles */
+        .footer {
+            width: 100%;
+            background-color: white;
+            padding: 24px 0;
+        }
+        .footer-container {
+            max-width: 1480px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+            padding: 0 4rem;
+        }
+        .footer img {
+            width: 10rem;
+        }
+        .footer h3 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+        .footer p, .footer a {
+            color: #6D737A;
+            font-size: 1rem;
+        }
+        .footer a {
+            text-decoration: underline;
+        }
+        .footer a:hover {
+            color: #007BFF;
+        }
+        .footer .contact-info p {
+            margin: 0.5rem 0;
+        }
+        .footer .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+        .footer .social-icons a {
+            padding: 1rem;
+            border: 1px solid #007BFF;
+            border-radius: 50%;
+            color: #007BFF;
+            font-size: 2rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .footer .social-icons a:hover {
+            background-color: #007BFF;
+            color: white;
+        }
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer ul li {
+            margin: 0.5rem 0;
+        }
+        .footer form {
+            display: flex;
+            flex-direction: column;
+        }
+        .footer form input {
+            background-color: #F2F3F4;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 0.5rem;
+        }
+        .footer form button {
+            padding: 1rem;
+            background-color: #20B486;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .footer form button:hover {
+            background-color: #6dcfb0;
+        }
+        footer p {
+            text-align: center;
+            color: #6D737A;
+            margin-top: 2rem;
+        }
+        @media (max-width: 780px) {
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+                padding: 0 2rem;
+            }
+            .footer form button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Event Connect</h1>
+    </header>
+    <main>
+        <section>
+            <h2>About Event Connect</h2>
+            <p>Event Connect is a comprehensive platform designed to help you create, manage, and participate in various events. Whether you're organizing a festival, park visit, worship service with gospel singers, competition (such as boxing or tournaments), movie premier, concert, hackathon, conference, debate, or any other entertainment activity, Event Connect is here to assist you.</p>
+        </section>
+        <section>
+            <h2>Features</h2>
+            <p>Our platform offers a wide range of features to ensure a seamless experience for both event organizers and attendees:</p>
+            <ul>
+                <li>Create and manage events with ease</li>
+                <li>Book tickets and pay online</li>
+                <li>Promote your events to a wider audience</li>
+                <li>Connect with other event enthusiasts</li>
+                <li>Access detailed event analytics and reports</li>
+            </ul>
+        </section>
+        <section>
+            <h2>How Event Connect Works</h2>
+            <p>Event Connect simplifies the process of event management and participation:</p>
+            <ol>
+                <li>Organizers create an account and list their events on our platform.</li>
+                <li>Users browse through various events and select the ones they are interested in.</li>
+                <li>Users book tickets and make payments securely through our platform.</li>
+                <li>Attendees receive their tickets via email and can access event details through their accounts.</li>
+                <li>Organizers can track ticket sales, manage attendees, and promote their events.</li>
+            </ol>
+        </section>
+        <section>
+            <h2>Reach Us Worldwide</h2>
+            <p>Event Connect is dedicated to making event management accessible to everyone, everywhere. While we are particularly focused on serving the vibrant community in Rwanda, our platform is designed to cater to users worldwide. Join us in creating memorable events and connecting with people across the globe.</p>
+            <div class="image-section">
+                <img src="./images/debate.png" alt="Worldwide Reach">
+            </div>
+        </section>
+        <section>
+            <h2>Types of Events We Support</h2>
+            <p>Event Connect is versatile and supports a wide array of events:</p>
+            <ul>
+                <li><span class="highlight">Festivals:</span> Bringing people together for cultural, music, and food festivals.</li>
+                <li><span class="highlight">Park Visits:</span> Organize group visits to parks and outdoor activities.</li>
+                <li><span class="highlight">Worship Services:</span> Host gospel singers and religious gatherings.</li>
+                <li><span class="highlight">Competitions:</span> Arrange sports tournaments, boxing matches, and other competitions.</li>
+                <li><span class="highlight">Movie Premiers:</span> Organize film screenings in cinema halls.</li>
+                <li><span class="highlight">Concerts:</span> Book venues for musical concerts and performances.</li>
+                <li><span class="highlight">Hackathons:</span> Plan coding and tech events.</li>
+                <li><span class="highlight">Conferences:</span> Manage professional and academic conferences.</li>
+                <li><span class="highlight">Debates:</span> Set up public debates and discussion forums.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Why Choose Event Connect?</h2>
+            <p>Event Connect stands out for its ease of use, security, and extensive features. Here’s why you should choose us:</p>
+            <ul>
+                <li>User-friendly interface that makes event management simple and accessible.</li>
+                <li>Secure payment processing to ensure your transactions are safe.</li>
+                <li>Comprehensive event promotion tools to maximize your reach.</li>
+                <li>Detailed analytics to help you understand your audience and improve future events.</li>
+                <li>Dedicated support team available to assist you at every step.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Testimonials</h2>
+            <p>Don’t just take our word for it. Here’s what our users have to say:</p>
+            <blockquote>
+                <p>"Event Connect made organizing our annual festival a breeze. We reached more people and sold more tickets than ever before!"</p>
+                <cite>- Jane Doe, Festival Organizer</cite>
+            </blockquote>
+            <blockquote>
+                <p>"The analytics feature is a game-changer. We were able to understand our audience better and improve our events accordingly."</p>
+                <cite>- John Smith, Conference Planner</cite>
+            </blockquote>
+            <blockquote>
+                <p>"Thanks to Event Connect, our concert was a huge success. The ticketing process was seamless and we had a full house!"</p>
+                <cite>- Emily Johnson, Concert Promoter</cite>
+            </blockquote>
+            <blockquote>
+                <p>"Event Connect's support team is fantastic. They helped us every step of the way, making our hackathon event a resounding success."</p>
+                <cite>- Michael Brown, Hackathon Organizer</cite>
+            </blockquote>
+            <blockquote>
+                <p>"The ease of setting up events and the powerful promotion tools helped us grow our community events exponentially."</p>
+                <cite>- Sarah Williams, Community Event Coordinator</cite>
+            </blockquote>
+        </section>
+        <section>
+            <h2>Get Started with Event Connect</h2>
+            <p>Ready to take your events to the next level? Join Event Connect today and start creating unforgettable experiences.</p>
+            <p>Sign up now and get access to all the tools you need to manage and promote your events effectively.</p>
+            <div class="image-section">
+                <img src="./images//concert.png" alt="Get Started">
+            </div>
+        </section>
+    </main>
+    <div class="footer">
+        <div class="footer-container">
+            <div class="col-span-2">
+                <img src="./images/logo.svg" alt="logo">
+                <h3>Contact Us</h3>
+                <p>Call : +250 784191775</p>
+                <p>We value your opinion. Tell us how we can enhance your app experience.</p>
+                <p>Email: <a href="mailto:eventconnect123@gmail.com">eventconnect123@gmail.com</a></p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/kirengaremyclaudien/" target="_blank" rel="noopener noreferrer">
+                        <i class="ri-facebook-fill"></i>
+                    </a>
+                    <a href="https://dribbble.com/byumvuhoreaimable" target="_blank" rel="noopener noreferrer">
+                        <i class="fa fa-dribbble"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/jeremy-nk-413a612a6/" target="_blank" rel="noopener noreferrer">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                    <a href="https://www.instagram.com/firstttyyy.____/" target="_blank" rel="noopener noreferrer">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@BAI-SHOWS" target="_blank" rel="noopener noreferrer">
+                        <i class="fa fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h3>Explore</h3>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/support">Support</a></li>
+                    <li><a href="/contact">Contacts</a></li>
+                    <li><a href="/termsandconditions">Terms & Conditions</a></li>
+                    <li><a href="/privacyandpolicy">Privacy & Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Category</h3>
+                <ul>
+                    <li><a href="/design">Design</a></li>
+                    <li><a href="/development">Development</a></li>
+                    <li><a href="/marketing">Marketing</a></li>
+                    <li><a href="/business">Business</a></li>
+                    <li><a href="/lifestyle">Lifestyle</a></li>
+                    <li><a href="/photography">Photography</a></li>
+                    <li><a href="/music">Music</a></li>
+                </ul>
+            </div>
+            <div class="col-span-2">
+                <h3>Subscribe</h3>
+                <p>Enter your email to subscribe so that you can stay connected to upcoming events worldwide.</p>
+                <form>
+                    <input type="email" placeholder="Email here">
+                    <button type="submit">Subscribe Now</button>
+                </form>
+            </div>
+        </div>
+        <footer>
+            <p>&copy; Copyright Event Connect 2024. All rights reserved</p>
+        </footer>
+    </div>
+</body>
+</html>
