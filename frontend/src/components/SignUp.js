@@ -24,17 +24,17 @@ const SignUp = () => {
   };
 
   const handleImageChange = async (e) => {
-    try {
-      const data = await ImagetoBase64(e.target.files[0]);
-      setFormData((prev) => ({
-        ...prev,
-        userprofile: data
-      }));
-    } catch (error) {
-      toast.error("Image conversion failed. Please try again.");
+    const file = e.target.files[0];
+    if (file.size > 2 * 1024 * 1024) { // 2MB limit
+      toast.error("Image size should be less than 2MB");
+      return;
     }
+    const data = await ImagetoBase64(file);
+    setFormData((prev) => ({
+      ...prev,
+      userprofile: data
+    }));
   };
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -52,9 +52,24 @@ const SignUp = () => {
       return;
     }
 
+    if (!phoneNumber.match(/^\+?\d{10,15}$/)) {
+      toast.error("Invalid phone number format");
+      return;
+    }
+
     if (password.length < 6) {
       toast.error("Password must be at least 6 characters long");
       return;
+    }
+
+    const formData = new FormData();
+    formData.append("fullName", formData.fullName);
+    formData.append("email", formData.email);
+    formData.append("password", formData.password);
+    formData.append("username", formData.username);
+    formData.append("phoneNumber", formData.phoneNumber);
+    if (formData.userprofile) {
+      formData.append("userprofile", formData.userprofile);
     }
 
     setLoading(true);
@@ -62,29 +77,21 @@ const SignUp = () => {
     try {
       const response = await fetch('https://eventconnect2.onrender.com/v1/api/signup', {
         method: 'POST',
-        cache: 'no-cache',
-        credentials: 'same-origin',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ fullName, email, password, username, phoneNumber, userprofile }),
+        body: formData,
       });
-
+  
       if (!response.ok) {
         const errorData = await response.json();
         toast.error(errorData.message || "Something went wrong");
-        setLoading(false);
         return;
       }
-
+  
       const dataRes = await response.json();
       toast.success(dataRes.message);
       navigate("/authentication");
     } catch (error) {
       console.error("Error during form submission:", error);
       toast.error("Network error, please check your internet connection");
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -134,7 +141,7 @@ const SignUp = () => {
             <Link className="text-[#20B486] hover:text-[#43edb7] font-semibold" to="./">Privacy Policy</Link>
           </label>
         </div>
-        <button type="submit" className={`w-full my-1 py-1 shadow-lg text-white shadow-slate-500/50 font-semibold rounded-lg mt-1 ${terms ? "bg-[#20B486] hover:bg-[#608d7f]" : "bg-gray-400 cursor-not-allowed"}`} disabled={!terms}>
+        <button type="submit" className={`w-full my-1 py-1 shadow-lg text-white shadow-slate-500/50 font-semibold rounded-lg mt-1 ${terms ? "bg-[#20B486] hover:bg-[#608d7f]" : "bg-gray-400 cursor-not-allowed"}`} disabled={!terms || loading}>
           Create account
         </button>
       </form>
@@ -177,7 +184,7 @@ const PasswordField = ({ visible, setVisible, value, onChange }) => (
 
 const FileInputField = ({ onChange }) => (
   <div className="flex flex-col text-gray-400 py-1">
-<label htmlFor="userprofile" className="text-sm">Profile Picture (Optional)</label>
+    <label htmlFor="userprofile" className="text-sm">Profile Picture (Optional)</label>
     <input
       type="file"
       id="userprofile"

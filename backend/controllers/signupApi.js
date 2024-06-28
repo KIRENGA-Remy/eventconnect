@@ -1,11 +1,11 @@
-const router = require('express').Router();
+const express = require('express');
+const router = express.Router();
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const User = require('../Models/user');
 const validateUser = require('../Models/valid');
-require('dotenv').config();
+const upload = require('../middleware/multerConfig'); // Import multer configuration
 
-router.post('/', async (req, res) => {
+router.post('/', upload.single('userprofile'), async (req, res) => {
   try {
     // Validate user input
     const { error } = validateUser(req.body);
@@ -23,24 +23,28 @@ router.post('/', async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(req.body.password, salt);
 
-    // Create a new user
+    // Create a new user object
     const user = new User({
       username: req.body.username,
       email: req.body.email,
       password: hash,
       fullName: req.body.fullName,
-      userprofile: req.body.userprofile,
       phoneNumber: req.body.phoneNumber
     });
+
+    // Handle userprofile (optional)
+    if (req.file) {
+      user.userprofile = req.file.buffer.toString('base64'); // Convert buffer to base64 string
+    }
 
     // Save the user to the database
     await user.save();
 
-    // Send the token and success message
-    res.status(201).send({ message: 'Account created', data:user });
+    // Send the success message
+    res.status(201).send({ message: 'Account created', data: user });
   } catch (error) {
     console.error(error.message);
-    res.status(500).send({ message: 'Internal Server Error' });
+    res.status(500).send({ message: 'Internal server error' });
   }
 });
 
