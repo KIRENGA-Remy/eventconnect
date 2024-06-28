@@ -24,12 +24,17 @@ const SignUp = () => {
   };
 
   const handleImageChange = async (e) => {
-    const data = await ImagetoBase64(e.target.files[0]);
-    setFormData((prev) => ({
-      ...prev,
-      userprofile: data
-    }));
+    try {
+      const data = await ImagetoBase64(e.target.files[0]);
+      setFormData((prev) => ({
+        ...prev,
+        userprofile: data
+      }));
+    } catch (error) {
+      toast.error("Image conversion failed. Please try again.");
+    }
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();

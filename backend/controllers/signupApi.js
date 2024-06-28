@@ -36,13 +36,6 @@ router.post('/', async (req, res) => {
     // Save the user to the database
     await user.save();
 
-    // Generate a JWT token
-    // const token = jwt.sign(
-    //   { _id: user._id, email: user.email, phone: user.phoneNumber },
-    //   process.env.JWT_SECRET,
-    //   { expiresIn: '1h' } // Optional: add an expiration time for the token
-    // );
-
     // Send the token and success message
     res.status(201).send({ message: 'Account created', data:user });
   } catch (error) {
