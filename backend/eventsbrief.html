@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Connect - Connecting You to Events</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -69,16 +70,14 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-.highlight {
-    font-size: large;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
-.highlight:hover {
-    text-decoration: underline;
-}
-
+        .highlight {
+            font-size: large;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .highlight:hover {
+            text-decoration: underline;
+        }
         blockquote {
             background-color: #fff;
             padding: 20px;
@@ -92,9 +91,8 @@
             margin-top: 10px;
             font-weight: bold;
         }
-        /* Footer Styles */
         .footer {
-            width: 100%;
+            width: 150%;
             background-color: white;
             padding: 24px 0;
         }
@@ -103,7 +101,7 @@
             margin: auto;
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 2rem;
+            gap: 8rem;
             padding: 0 4rem;
         }
         .footer img {
@@ -119,9 +117,11 @@
             font-size: 1rem;
         }
         .footer a {
-            text-decoration: underline;
+            font-size: large;
+            text-decoration: none;
         }
         .footer a:hover {
+            text-decoration: underline;
             color: #007BFF;
         }
         .footer .contact-info p {
@@ -132,15 +132,19 @@
             gap: 1rem;
         }
         .footer .social-icons a {
-            padding: 1rem;
-            border: 1px solid #007BFF;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border: 1px solid blue;
             border-radius: 50%;
-            color: #007BFF;
-            font-size: 2rem;
+            color: green;
+            font-size: 1.5rem;
             transition: background-color 0.3s, color 0.3s;
         }
         .footer .social-icons a:hover {
-            background-color: #007BFF;
+            background-color: green;
             color: white;
         }
         .footer ul {
@@ -187,6 +191,24 @@
                 width: 100%;
             }
         }
+        .return-home-link {
+    color: #6a0dad; /* Equivalent to text-violet-900 in Tailwind */
+    padding-top: 1.5rem; /* Equivalent to py-6 in Tailwind */
+    padding-bottom: 1.5rem; /* Equivalent to py-6 in Tailwind */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s, text-decoration 0.3s; /* Smooth transition for hover effects */
+}
+
+.return-home-link:hover {
+    color: #5b0ba6; /* Equivalent to hover:text-violet-800 in Tailwind */
+    text-decoration: underline; /* Equivalent to hover:underline in Tailwind */
+}
+.copyright{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
     </style>
 </head>
 <body>
@@ -297,44 +319,21 @@
                 <p>Email: <a href="mailto:eventconnect123@gmail.com">eventconnect123@gmail.com</a></p>
                 <div class="social-icons">
                     <a href="https://www.facebook.com/kirengaremyclaudien/" target="_blank" rel="noopener noreferrer">
-                        <i class="ri-facebook-fill"></i>
+                        <i class="fab fa-facebook-f"></i>
                     </a>
                     <a href="https://dribbble.com/byumvuhoreaimable" target="_blank" rel="noopener noreferrer">
-                        <i class="fa fa-dribbble"></i>
+                        <i class="fab fa-dribbble"></i>
                     </a>
                     <a href="https://www.linkedin.com/in/jeremy-nk-413a612a6/" target="_blank" rel="noopener noreferrer">
-                        <i class="fa fa-linkedin"></i>
+                        <i class="fab fa-linkedin-in"></i>
                     </a>
                     <a href="https://www.instagram.com/firstttyyy.____/" target="_blank" rel="noopener noreferrer">
-                        <i class="fa fa-instagram"></i>
+                        <i class="fab fa-instagram"></i>
                     </a>
                     <a href="https://www.youtube.com/@BAI-SHOWS" target="_blank" rel="noopener noreferrer">
-                        <i class="fa fa-youtube"></i>
+                        <i class="fab fa-youtube"></i>
                     </a>
                 </div>
-            </div>
-            <div>
-                <h3>Explore</h3>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/support">Support</a></li>
-                    <li><a href="/contact">Contacts</a></li>
-                    <li><a href="/termsandconditions">Terms & Conditions</a></li>
-                    <li><a href="/privacyandpolicy">Privacy & Policy</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>Category</h3>
-                <ul>
-                    <li><a href="/design">Design</a></li>
-                    <li><a href="/development">Development</a></li>
-                    <li><a href="/marketing">Marketing</a></li>
-                    <li><a href="/business">Business</a></li>
-                    <li><a href="/lifestyle">Lifestyle</a></li>
-                    <li><a href="/photography">Photography</a></li>
-                    <li><a href="/music">Music</a></li>
-                </ul>
             </div>
             <div class="col-span-2">
                 <h3>Subscribe</h3>
@@ -344,10 +343,23 @@
                     <button type="submit">Subscribe Now</button>
                 </form>
             </div>
+            <div class="col-span-2">
+                <h3>Let's get started</h3>
+                <p>After taking brief about services and mission of event connect, you can now decide to start with us!</p>
+                <a href="../frontend/src/layout/Landing.js"  class="return-home-link">
+                    Return home?
+                </a>
+            </div>
         </div>
-        <footer>
-            <p>&copy; Copyright Event Connect 2024. All rights reserved</p>
-        </footer>
     </div>
+    <div class="copyright">
+        <p>&copy; Copyright Event Connect <span id="current-year"></span> All rights reserved</p>
+    </div>
+    <script>
+        // Get the current year
+        const currentYear = new Date().getFullYear();
+        // Set the content of the span element with id "current-year"
+        document.getElementById('current-year').textContent = currentYear;
+    </script>
 </body>
 </html>

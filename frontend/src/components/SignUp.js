@@ -11,7 +11,7 @@ const SignUp = () => {
     username: "",
     phoneNumber: "",
     password: "",
-    userprofile: null,
+    userprofile: ""
   });
   const [visible, setVisible] = useState(false);
   const [terms, setTerms] = useState(false);
@@ -35,14 +35,12 @@ const SignUp = () => {
       userprofile: data
     }));
   };
-
+  const { fullName, email, password, username, phoneNumber, userprofile } = formData;
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { fullName, email, password, username, phoneNumber, userprofile } = formData;
-
     // Validate required fields and email/password format
-    if (!fullName || !email || !password || !username || !phoneNumber) {
+    if (!fullName || !email || !password || !username || !phoneNumber ) {
       toast.error("Please enter all required fields.");
       return;
     }
@@ -68,6 +66,7 @@ const SignUp = () => {
     formData.append("password", formData.password);
     formData.append("username", formData.username);
     formData.append("phoneNumber", formData.phoneNumber);
+    formData.append("userprofile", formData.userprofile);
     if (formData.userprofile) {
       formData.append("userprofile", formData.userprofile);
     }
@@ -198,7 +197,7 @@ const FileInputField = ({ onChange }) => (
       id="userprofile"
       name="userprofile"
       accept="image/*"
-      className="hidden p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700"
+      className="p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700"
       onChange={onChange}
     />
   </div>

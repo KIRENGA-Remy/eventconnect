@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
   authProvider: { type: String, enum: ['local', 'google'], default: 'local' }, // Default is 'local'
   googleId: { type: String, unique: true, sparse: true },
   fullName: { type: String },
-  userprofile: { type: String, required: false}
+  userprofile: { type: String, required: false, default: '../assets/user.png' },
   // phoneNumber: { type: String },
   // Additional properties can be added as per your requirements
 });
