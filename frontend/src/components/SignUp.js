@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlineGoogle } from "react-icons/ai";
 import { useNavigate, Link } from "react-router-dom";
@@ -11,7 +12,7 @@ const SignUp = () => {
     username: "",
     phoneNumber: "",
     password: "",
-    userprofile: null,
+    userprofile: "",
   });
   const [visible, setVisible] = useState(false);
   const [terms, setTerms] = useState(false);
@@ -39,6 +40,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // eslint-disable-next-line no-use-before-define
     const { fullName, email, password, username, phoneNumber, userprofile } = formData;
 
     // Validate required fields and email/password format
