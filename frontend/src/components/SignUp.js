@@ -36,71 +36,69 @@ const SignUp = () => {
       userprofile: data
     }));
   };
-  // const { fullName, email, password, username, phoneNumber, userprofile } = formData;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Validate required fields and email/password format
-    if (!fullName || !email || !password || !username || !phoneNumber ) {
+    if (!formData.fullName || !formData.email || !formData.password || !formData.username || !formData.phoneNumber ) {
       toast.error("Please enter all required fields.");
       return;
     }
 
-    if (!email.match(/^\S+@\S+\.\S+$/)) {
+    if (!formData.email.match(/^\S+@\S+\.\S+$/)) {
       toast.error("Invalid email format");
       return;
     }
 
-    if (!phoneNumber.match(/^\+?\d{10,15}$/)) {
+    if (!formData.phoneNumber.match(/^\+?\d{10,15}$/)) {
       toast.error("Invalid phone number format");
       return;
     }
 
-    if (password.length < 6) {
+    if (formData.password.length < 6) {
       toast.error("Password must be at least 6 characters long");
       return;
     }
 
-    const formData = new FormData();
-    formData.append("fullName", formData.fullName);
-    formData.append("email", formData.email);
-    formData.append("password", formData.password);
-    formData.append("username", formData.username);
-    formData.append("phoneNumber", formData.phoneNumber);
-    formData.append("userprofile", formData.userprofile);
-    if (formData.userprofile) {
-      formData.append("userprofile", formData.userprofile);
-    }
+    const formDataPayload = {
+      fullName: formData.fullName,
+      email: formData.email,
+      password: formData.password,
+      username: formData.username,
+      phoneNumber: formData.phoneNumber,
+      userprofile: formData.userprofile
+    };
 
     setLoading(true);
 
-        try {
-          const response = await fetch('https://eventconnect2.onrender.com/v1/api/signup', {
-            method: 'POST',
-            cache: 'no-cache',
-            credentials: 'same-origin',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ fullName, email, password, username, phoneNumber, userprofile }),
-          });
-    
-          if (!response.ok) {
-            const errorData = await response.json();
-            toast.error(errorData.message || "Something went wrong");
-            setLoading(false);
-            return;
-          }
-    
-          const dataRes = await response.json();
-          toast.success(dataRes.message);
-          navigate("/authentication");
-        } catch (error) {
-          console.error("Error during form submission:", error);
-          toast.error("Network error, please check your internet connection");
-        } finally {
-          setLoading(false);
-        }
+    try {
+      const response = await fetch('https://eventconnect2.onrender.com/v1/api/signup', {
+        method: 'POST',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formDataPayload),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        toast.error(errorData.message || "Something went wrong");
+        setLoading(false);
+        return;
+      }
+
+      const dataRes = await response.json();
+      toast.success(dataRes.message);
+      navigate("/authentication");
+    } catch (error) {
+      console.error("Error during form submission:", error);
+      toast.error("Network error, please check your internet connection");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const googleSignup = () => {
@@ -144,9 +142,9 @@ const SignUp = () => {
           <input type="checkbox" id="terms" className="w-5" onChange={() => setTerms(!terms)} />
           <label>
             Agree To Our{" "}
-            <Link className="text-[#20B486] hover:text-[#43edb7] font-semibold" to="./">Terms of Services</Link>{" "}
+            <Link className="text-[#20B486] hover:text-[#43edb7] font-semibold" to="./terms">Terms of Services</Link>{" "}
             and{" "}
-            <Link className="text-[#20B486] hover:text-[#43edb7] font-semibold" to="./">Privacy Policy</Link>
+            <Link className="text-[#20B486] hover:text-[#43edb7] font-semibold" to="./privacy">Privacy Policy</Link>
           </label>
         </div>
         <button type="submit" className={`w-full my-1 py-1 shadow-lg text-white shadow-slate-500/50 font-semibold rounded-lg mt-1 ${terms ? "bg-[#20B486] hover:bg-[#608d7f]" : "bg-gray-400 cursor-not-allowed"}`} disabled={!terms || loading}>
