@@ -3,20 +3,13 @@ const path = require('path');
 
 // Set storage engine
 const storage = multer.diskStorage({
-  destination: './uploads/', // You can change this to a specific path
+  destination: '../uploads/', // Ensure this directory exists or handle its creation
   filename: (req, file, cb) => {
-    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    const extension = path.extname(file.originalname).toLowerCase();
+    cb(null, `${file.fieldname}-${uniqueSuffix}${extension}`);
   }
 });
-
-// Init upload
-const upload = multer({
-  storage: storage,
-  limits: { fileSize: 1000000 }, // Set file size limit (optional)
-  fileFilter: (req, file, cb) => {
-    checkFileType(file, cb);
-  }
-}).single('userprofile');
 
 // Check file type
 function checkFileType(file, cb) {
@@ -27,8 +20,17 @@ function checkFileType(file, cb) {
   if (mimetype && extname) {
     return cb(null, true);
   } else {
-    cb('Error: Images Only!');
+    cb(new Error('Error: Images Only!'));
   }
 }
+
+// Init upload
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 1000000 }, // Set file size limit to 1MB
+  fileFilter: (req, file, cb) => {
+    checkFileType(file, cb);
+  }
+}).single('userprofile');
 
 module.exports = upload;

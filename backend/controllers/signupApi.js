@@ -35,7 +35,7 @@ router.post('/', (req, res) => {
         password: hash,
         fullName: req.body.fullName,
         phoneNumber: req.body.phoneNumber,
-        userprofile: req.file ? `/uploads/${req.file.filename}` : 'path/to/default/image.png' // Path to the uploaded file or a default image
+        userprofile: req.file ? `/uploads/${req.file.filename}` : '../assets/user.png' // Path to the uploaded file or a default image
       });
 
       // Save the user to the database
