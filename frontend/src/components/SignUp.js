@@ -1,111 +1,8 @@
-/* eslint-disable no-unused-vars */
-import React, { useState } from "react";
-import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlineGoogle } from "react-icons/ai";
-import { useNavigate, Link } from "react-router-dom";
-import { toast } from "react-hot-toast";
-import { ImagetoBase64 } from './utility/ImagetoBase64';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { AiOutlineGoogle, AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
-const SignUp = () => {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    username: "",
-    phoneNumber: "",
-    password: "",
-    userprofile: ""
-  });
-  const [visible, setVisible] = useState(false);
-  const [terms, setTerms] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleImageChange = async (e) => {
-    const file = e.target.files[0];
-    if (file.size > 2 * 1024 * 1024) { // 2MB limit
-      toast.error("Image size should be less than 2MB");
-      return;
-    }
-    const data = await ImagetoBase64(file);
-    setFormData((prev) => ({
-      ...prev,
-      userprofile: data
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // Validate required fields and email/password format
-    if (!formData.fullName || !formData.email || !formData.password || !formData.username || !formData.phoneNumber ) {
-      toast.error("Please enter all required fields.");
-      return;
-    }
-
-    if (!formData.email.match(/^\S+@\S+\.\S+$/)) {
-      toast.error("Invalid email format");
-      return;
-    }
-
-    if (!formData.phoneNumber.match(/^\+?\d{10,15}$/)) {
-      toast.error("Invalid phone number format");
-      return;
-    }
-
-    if (formData.password.length < 6) {
-      toast.error("Password must be at least 6 characters long");
-      return;
-    }
-
-    const formDataPayload = {
-      fullName: formData.fullName,
-      email: formData.email,
-      password: formData.password,
-      username: formData.username,
-      phoneNumber: formData.phoneNumber,
-      userprofile: formData.userprofile
-    };
-
-    setLoading(true);
-
-    try {
-      const response = await fetch('https://eventconnect2.onrender.com/v1/api/signup', {
-        method: 'POST',
-        cache: 'no-cache',
-        credentials: 'same-origin',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formDataPayload),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        toast.error(errorData.message || "Something went wrong");
-        setLoading(false);
-        return;
-      }
-
-      const dataRes = await response.json();
-      toast.success(dataRes.message);
-      navigate("/authentication");
-    } catch (error) {
-      console.error("Error during form submission:", error);
-      toast.error("Network error, please check your internet connection");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const googleSignup = () => {
-    setLoading(true);
-    window.location.href = `${process.env.REACT_APP_API_URL}/auth/google`;
-  };
-
+const SignupForm = ({ handleSubmit, handleChange, handleImageChange, formData, loading, googleSignup, visible, setVisible, terms, setTerms }) => {
   return (
     <div className="w-full flex flex-col shadow-xl justify-center items-center mt-20">
       {loading && (
@@ -135,7 +32,7 @@ const SignUp = () => {
         <InputField type="text" placeholder="Your Full Names" name="fullName" value={formData.fullName} onChange={handleChange} />
         <InputField type="email" placeholder="Email..." name="email" value={formData.email} onChange={handleChange} />
         <PasswordField visible={visible} name="password" setVisible={setVisible} value={formData.password} onChange={handleChange} />
-        <InputField type="tel" placeholder="Tel: +250 789903099" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
+        <PhoneNumberField value={formData.phoneNumber} onChange={handleChange} />
         <InputField type="text" placeholder="Username..." name="username" value={formData.username} onChange={handleChange} />
         <FileInputField onChange={handleImageChange} />
         <div className="text-sm text-center">
@@ -202,4 +99,41 @@ const FileInputField = ({ onChange }) => (
   </div>
 );
 
-export default SignUp;
+const PhoneNumberField = ({ value, onChange }) => {
+  const [countryCode, setCountryCode] = useState("+250");
+  const handlePhoneNumberChange = (e) => {
+    onChange({
+      target: {
+        name: "phoneNumber",
+        value: countryCode + e.target.value,
+      },
+    });
+  };
+
+  return (
+    <div className="flex flex-col text-gray-800 py-1">
+      <div className="flex">
+        <select
+          className="p-1 rounded-l-sm focus:border-blue-500 border border-[#20B486] bg-white text-gray-700"
+          value={countryCode}
+          onChange={(e) => setCountryCode(e.target.value)}
+        >
+          <option value="+250">Rwanda (+250)</option>
+          <option value="+1">USA (+1)</option>
+          <option value="+44">UK (+44)</option>
+          <option value="+91">India (+91)</option>
+          {/* Add more country codes as needed */}
+        </select>
+        <input
+          className="p-1 rounded-r-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700 flex-grow"
+          type="tel"
+          placeholder="786146983"
+          value={value.replace(countryCode, "")}
+          onChange={handlePhoneNumberChange}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default SignupForm;
