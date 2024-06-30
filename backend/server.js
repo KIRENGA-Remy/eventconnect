@@ -24,7 +24,7 @@ const paymentRoute=require("./controllers/paymentRoute.js")
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true, limit: "3mb" }));
+app.use(bodyParser.urlencoded({ extended: true, limit: "10mb" }));
 app.use(
   cookieSession({
     name: "session",
@@ -36,7 +36,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(
   cors({
-    origin: 'https://alleventconnect.vercel.app',
+    origin: 'alleventconnect.vercel.app',
     methods: ['POST', 'GET', 'PUT', 'DELETE'],
     credentials: true,
   })

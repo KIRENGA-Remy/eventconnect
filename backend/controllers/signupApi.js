@@ -41,8 +41,15 @@ router.post('/', (req, res) => {
       // Save the user to the database
       await user.save();
 
+      const userData = {
+        id: user._id,
+        username: user.username,
+        fullName: user.fullName,
+        phoneNumber: user.phoneNumber,
+        userprofile: user.userprofile
+      }
       // Send the success message
-      res.status(201).send({ message: 'Account created', data: user });
+      res.status(201).send({ message: 'Account created', data: userData });
     } catch (error) {
       console.error(error.message);
       res.status(500).send({ message: 'Internal server error' });
