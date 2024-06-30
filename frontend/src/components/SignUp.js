@@ -36,7 +36,7 @@ const SignUp = () => {
       userprofile: data
     }));
   };
-  const { fullName, email, password, username, phoneNumber, userprofile } = formData;
+  // const { fullName, email, password, username, phoneNumber, userprofile } = formData;
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -82,7 +82,7 @@ const SignUp = () => {
             headers: {
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify(formData),
+            body: JSON.stringify({ fullName, email, password, username, phoneNumber, userprofile }),
           });
     
           if (!response.ok) {
