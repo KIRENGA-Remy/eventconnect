@@ -17,11 +17,15 @@ import { ColorModeContext, useMode } from "../theme";
 import Calendar from "../scenes/calendar/calendar";
 import Services from "./Services";
 import UserProfile from "./UserProfile";
+import { useSelector } from "react-redux";
 
 
 function HomeDashboard() {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
+
+  const userData = useSelector(state => state);
+  console.log(userData);
 
   return (
     <div>

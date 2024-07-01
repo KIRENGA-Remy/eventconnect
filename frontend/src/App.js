@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import "./index.css";
@@ -48,9 +48,22 @@ import UserProfile from "./components/UserProfile";
 import ThankYou from "./scenes/Thankyou/Thankyou";
 import Calendar from "./scenes/calendar/calendar";
 
+import { useDispatch, useSelector } from "react-redux";
+import { setDataevent } from "./redux/eventSlide";
+
 import NewDashboard from "./components/NewDashboard";
 
 function App() {
+  const dispatch = useDispatch()
+  const eventData = useSelector((state)=>state.event)
+  useEffect(()=>{
+    (async()=>{
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/event`)
+      const resData = await res.json()
+      dispatch(setDataevent(resData))
+    })()
+  },[])
+
   return (
     <div>
       <Toaster />
