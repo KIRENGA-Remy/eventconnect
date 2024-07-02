@@ -53,9 +53,9 @@ router.post('/', async (req, res) => {
     if ( !startTime ) {
       return res.status(400).send({ message: 'Missing required fields starttime' });
     }
-    if (!location ) {
-      return res.status(400).send({ message: 'Missing required fields location' });
-    }
+    // if (!location ) {
+    //   return res.status(400).send({ message: 'Missing required fields location' });
+    // }
     if (  !ticketInfo ) {
       return res.status(400).send({ message: 'Missing required fields ticket' });
     }
