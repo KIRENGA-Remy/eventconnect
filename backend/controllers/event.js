@@ -53,20 +53,8 @@ router.post('/', async (req, res) => {
     if ( !startTime ) {
       return res.status(400).send({ message: 'Missing required fields starttime' });
     }
-    if (!location.address ) {
-      return res.status(400).send({ message: 'Missing required fields location address' });
-    }
-    if (!location.city ) {
-      return res.status(400).send({ message: 'Missing required fields location city' });
-    }
-    if (!location.state ) {
-      return res.status(400).send({ message: 'Missing required fields location state' });
-    }
-    if (!location.country ) {
-      return res.status(400).send({ message: 'Missing required fields location country' });
-    }
-    if (!location.postalCode ) {
-      return res.status(400).send({ message: 'Missing required fields location postcode' });
+    if (!location ) {
+      return res.status(400).send({ message: 'Missing required fields location' });
     }
     if (  !ticketInfo ) {
       return res.status(400).send({ message: 'Missing required fields ticket' });
@@ -80,6 +68,21 @@ router.post('/', async (req, res) => {
     const { address, city, state, country, postalCode } = location;
     if (!address || !city || !state || !country || !postalCode) {
       return res.status(400).send({ message: 'Missing required location fields' });
+    }
+    if(!address){
+      return res.status(400).send({ message: 'Missing required location fields address' });
+    }
+    if(!country){
+      return res.status(400).send({ message: 'Missing required location fields country' });
+    }
+    if(!state){
+      return res.status(400).send({ message: 'Missing required location fields state' });
+    }
+    if(!city){
+      return res.status(400).send({ message: 'Missing required location fields city' });
+    }
+    if(!postalCode){
+      return res.status(400).send({ message: 'Missing required location fields postalcode' });
     }
     
 
