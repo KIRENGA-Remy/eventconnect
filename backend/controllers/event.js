@@ -53,8 +53,20 @@ router.post('/', async (req, res) => {
     if ( !startTime ) {
       return res.status(400).send({ message: 'Missing required fields starttime' });
     }
-    if (!location ) {
-      return res.status(400).send({ message: 'Missing required fields location' });
+    if (!location.address ) {
+      return res.status(400).send({ message: 'Missing required fields location address' });
+    }
+    if (!location.city ) {
+      return res.status(400).send({ message: 'Missing required fields location city' });
+    }
+    if (!location.state ) {
+      return res.status(400).send({ message: 'Missing required fields location state' });
+    }
+    if (!location.country ) {
+      return res.status(400).send({ message: 'Missing required fields location country' });
+    }
+    if (!location.postalCode ) {
+      return res.status(400).send({ message: 'Missing required fields location postcode' });
     }
     if (  !ticketInfo ) {
       return res.status(400).send({ message: 'Missing required fields ticket' });
@@ -69,6 +81,7 @@ router.post('/', async (req, res) => {
     if (!address || !city || !state || !country || !postalCode) {
       return res.status(400).send({ message: 'Missing required location fields' });
     }
+    
 
     // Validate ticketInfo fields
     const { price, currency, availability } = ticketInfo;
