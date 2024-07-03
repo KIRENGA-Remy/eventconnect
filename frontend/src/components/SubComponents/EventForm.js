@@ -433,7 +433,7 @@ const EventForm = () => {
               <option value="Concert">Concert</option>
               <option value="Meeting">Metting</option>
               <option value="Conference">Conference</option>
-              <option value="Other">Other</option>
+              <option value="Other">Other...</option>
             </select>
           </div>
           <div>
