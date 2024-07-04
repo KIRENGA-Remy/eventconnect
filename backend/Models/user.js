@@ -9,8 +9,7 @@ const userSchema = new mongoose.Schema({
   googleId: { type: String, unique: true, sparse: true },
   fullName: { type: String },
   userprofile: { type: String, required: false },
-  // phoneNumber: { type: String },
-  // Additional properties can be added as per your requirements
+  phoneNumber: { type: String },
 });
 
 const User = mongoose.model('User', userSchema);
