@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlineGoogle } from "react-icons/ai";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { loginRedux } from "../redux/userSlice";
 
 export default function Login() {
 
    const userData = useSelector(state => state)
-   console.log(userData);
+   console.log(userData.user);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,6 +16,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,14 +34,21 @@ export default function Login() {
         body: JSON.stringify(formData),
       });
       const dataRes = await response.json();
-  
-      if (response.status === 302) {
-        // Extract redirect location and navigate
       toast(dataRes.message);
-      navigate("/dashboard")
-      } else {
-        // Handle other status codes (e.g., errors)
-        toast.error(dataRes.message);
+  
+      // if (response.status === 302) {
+      //   dispatch(loginRedux(dataRes))
+      // navigate("/dashboard")
+      // } else {
+      //   // Handle other status codes (e.g., errors)
+      //   toast.error(dataRes.message);
+      // }
+
+      if(response.status === 302){
+        dispatch(loginRedux(dataRes))
+        setTimeout(()=>{
+          navigate("/dashboard")
+        }, 1000)
       }
     } catch (error) {
       console.error(error);
