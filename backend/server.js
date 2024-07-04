@@ -34,19 +34,19 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-// app.use(
-//   cors({
-//     origin: 'https://alleventconnect.vercel.app',
-//     methods: ['POST', 'GET', 'PUT', 'DELETE'],
-//     credentials: true,
-//   })
-// );
-app.use(cors());
+app.use(
+  cors({
+    origin: 'https://alleventconnect.vercel.app',
+    methods: ['POST', 'GET', 'PUT', 'DELETE'],
+    credentials: true,
+  })
+);
+// app.use(cors());
 
-// app.use((req, res, next) => {
-//   res.setHeader("Access-Control-Allow-Origin", "*");
-//   next();
-// });
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  next();
+});
 // Routes
 app.use("/auth", authRoute);
 app.use("/v1/api/signup", signUpRoute);
