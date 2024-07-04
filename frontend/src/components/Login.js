@@ -7,8 +7,8 @@ import { loginRedux } from "../redux/userSlice";
 
 export default function Login() {
 
-   const userData = useSelector(state => state)
-   console.log(userData.user);
+  const userData = useSelector(state => state.user);
+  console.log(userData);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,35 +20,23 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = {
-      email,
-      password,
-    };
+    const formData = { email, password };
+    
     try {
       setLoading(true);
       const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/login`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
       const dataRes = await response.json();
       toast(dataRes.message);
   
-      // if (response.status === 302) {
-      //   dispatch(loginRedux(dataRes))
-      // navigate("/dashboard")
-      // } else {
-      //   // Handle other status codes (e.g., errors)
-      //   toast.error(dataRes.message);
-      // }
-
-      if(response.status === 302){
-        dispatch(loginRedux(dataRes))
-        setTimeout(()=>{
-          navigate("/dashboard")
-        }, 1000)
+      if (response.status === 302) {
+        dispatch(loginRedux(dataRes));
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 1000);
       }
     } catch (error) {
       console.error(error);
