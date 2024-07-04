@@ -19,10 +19,18 @@ const SignUp = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData({ ...formData, [name]: value });
+  // };
+
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+    const {name, value} = e.target;
+    setFormData((preve) => ({ 
+        ...preve,
+      [name] : value
+    }))
+  }
 
   const handleImageChange = async (e) => {
     const file = e.target.files[0];
@@ -61,14 +69,16 @@ const SignUp = () => {
       return;
     }
 
-    const formDataPayload = {
-      fullName: formData.fullName,
-      email: formData.email,
-      password: formData.password,
-      username: formData.username,
-      phoneNumber: formData.phoneNumber,
-      userprofile: formData.userprofile
-    };
+    // const formDataPayload = {
+    //   fullName: formData.fullName,
+    //   email: formData.email,
+    //   password: formData.password,
+    //   username: formData.username,
+    //   phoneNumber: formData.phoneNumber,
+    //   userprofile: formData.userprofile
+    // };
+
+    const {fullName, email, password, username, phoneNumber, userprofile} = formData;
 
     setLoading(true);
 
@@ -80,7 +90,7 @@ const SignUp = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formDataPayload),
+        body: JSON.stringify(formData)
       });
 
       if (!response.ok) {
@@ -105,6 +115,16 @@ const SignUp = () => {
     setLoading(true);
     window.location.href = `${process.env.REACT_APP_API_URL}/auth/google`;
   };
+
+  const handleUploadProfileImage =  async(e) => {
+    const data = await ImagetoBase64(e.target.files[0])
+    setFormData((preve) => {
+      return {
+        ...preve,
+        userprofile : data
+      }
+    })
+  }
 
   return (
     <div className="w-full flex flex-col shadow-xl justify-center items-center mt-20">
@@ -132,12 +152,37 @@ const SignUp = () => {
         <span className="border border-black w-full min-w-full"></span>
       </div>
       <form className="grid grid-flow-row gap-3 md:w-3/5 w-1/2 self-center mx-auto pt-3 rounded-lg px-8 py-5 relative" onSubmit={handleSubmit} id="loginForm">
-        <InputField type="text" placeholder="Your Full Names" name="fullName" value={formData.fullName} onChange={handleChange} />
-        <InputField type="email" placeholder="Email..." name="email" value={formData.email} onChange={handleChange} />
-        <PasswordField visible={visible} name="password" setVisible={setVisible} value={formData.password} onChange={handleChange} />
-        <InputField type="tel" placeholder="Tel: +250 789903099" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
-        <InputField type="text" placeholder="Username..." name="username" value={formData.username} onChange={handleChange} />
-        <FileInputField onChange={handleImageChange} />
+        {/* <InputField type="text" placeholder="Your Full Names" name="fullName" value={formData.fullName} onChange={handleChange} /> */}
+        <input type={"text"} name='fullName' placeholder="Enter your fullnames" className='p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700' value={formData.fullName} 
+        onChange={handleChange} />
+        <input type={"email"} name='email' placeholder="Enter your email" className='p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700' value={formData.email} 
+        onChange={handleChange} />
+        <div className="flex flex-col relative text-gray-400 py-1">
+        <input type={visible ? "text" : "password"} name="password" placeholder="Enter your password" setVisible={setVisible} className='p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700' value={formData.password}   
+        onChange={handleChange} />
+            {visible ? (
+      <AiOutlineEye className="absolute top-3 right-1 cursor-pointer" onClick={() => setVisible(false)} />
+    ) : (
+      <AiOutlineEyeInvisible className="absolute top-3 right-1 cursor-pointer" onClick={() => setVisible(true)} />
+    )}
+    </div>
+    <input type={"text"} name='username' placeholder="Enter your username" className='p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700' value={formData.username} 
+    onChange={handleChange} />
+    <input type={"tel"} name='phoneNumber' placeholder="Tel +250 786574832" className='p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700' value={formData.phoneNumber} 
+    onChange={handleChange} />
+    <label htmlFor="userprofile">
+     <div className='flex flex-col'>
+      <p className='text-gray-400 py-1'>User_Profile(Optional)</p>
+      <input type={"file"} name='userprofile' accept='image/*' id='userprofile'
+        onChange={handleUploadProfileImage} className='p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700'/>
+      </div>
+    </label>
+        {/* <InputField type="email" placeholder="Email..." name="email" value={formData.email} onChange={handleChange} /> */}
+        {/* <PasswordField visible={visible} name="password" setVisible={setVisible} value={formData.password} onChange={handleChange} /> */}
+        {/* <InputField type="tel" placeholder="Tel: +250 789903099" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} /> */}
+        {/* <InputField type="text" placeholder="Username..." name="username" value={formData.username} onChange={handleChange} /> */}
+        {/* <InputField type={"file"} placeholder="User Profile" accept='image/*' id='userprofile' name="userprofile" value={formData.userprofile} onChange={handleUploadProfileImage} /> */}
+        {/* <FileInputField onChange={handleImageChange} /> */}
         <div className="text-sm text-center">
           <input type="checkbox" id="terms" className="w-5" onChange={() => setTerms(!terms)} />
           <label>
@@ -188,18 +233,18 @@ const PasswordField = ({ visible, setVisible, value, onChange }) => (
   </div>
 );
 
-const FileInputField = ({ onChange }) => (
-  <div className="flex flex-col text-gray-400 py-1">
-    <label htmlFor="userprofile" className="text-sm">Profile Picture (Optional)</label>
-    <input
-      type="file"
-      id="userprofile"
-      name="userprofile"
-      accept="image/*"
-      className="p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700"
-      onChange={onChange}
-    />
-  </div>
-);
+// const FileInputField = ({ onChange }) => (
+//   <div className="flex flex-col text-gray-400 py-1">
+//     <label htmlFor="userprofile" className="text-sm">Profile Picture (Optional)</label>
+//     <input
+//       type="file"
+//       id="userprofile"
+//       name="userprofile"
+//       accept="image/*"
+//       className="p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700"
+//       onChange={onChange}
+//     />
+//   </div>
+// );
 
 export default SignUp;

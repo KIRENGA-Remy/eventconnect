@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const User = require('../Models/user');
 const validateUser = require('../Models/valid');
-const upload = require('../middleware/multerConfig'); // Import multer configuration
+// const upload = require('../middleware/multerConfig'); // Import multer configuration
 
 router.post('/', (req, res) => {
   upload(req, res, async (err) => {
@@ -35,7 +35,7 @@ router.post('/', (req, res) => {
         password: hash,
         fullName: req.body.fullName,
         phoneNumber: req.body.phoneNumber,
-        userprofile: req.file ? `/uploads/${req.file.filename}` : '../assets/user.png' // Path to the uploaded file or a default image
+        userprofile: req.body.userprofile
       });
 
       // Save the user to the database
