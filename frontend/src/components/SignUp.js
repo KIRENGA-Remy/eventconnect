@@ -78,7 +78,7 @@ const SignUp = () => {
     //   userprofile: formData.userprofile
     // };
 
-    const {fullName, email, password, username, phoneNumber, userprofile} = formData;
+    const {fullName, email, password, username, phoneNumber} = formData;
 
     setLoading(true);
 
