@@ -36,14 +36,6 @@ router.post('/', async (req, res) => {  // Added async keyword
     // Save the user to the database
     await user.save();
 
-    const userData = {
-      id: user._id,
-      username: user.username,
-      fullName: user.fullName,
-      phoneNumber: user.phoneNumber,
-      userprofile: user.userprofile
-    };
-
     // Send the success message
     res.status(201).send({ message: 'Account created', data: userData });
   } catch (error) {

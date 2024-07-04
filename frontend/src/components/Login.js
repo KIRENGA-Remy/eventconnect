@@ -32,7 +32,7 @@ export default function Login() {
       const dataRes = await response.json();
       toast(dataRes.message);
   
-      if (response.status === 302) {
+      if (response.status === 201) {
         dispatch(loginRedux(dataRes));
         setTimeout(() => {
           navigate("/dashboard");

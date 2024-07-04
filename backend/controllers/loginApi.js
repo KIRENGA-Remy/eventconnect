@@ -29,9 +29,17 @@ router.post('/', async (req, res) => {
   const validPassword = await bcrypt.compare(req.body.password, user.password);
   if (!validPassword) return res.status(401).send({ message: 'This password is not the correct one.' });
 
+  const userData = {
+    id: user._id,
+    username: user.username,
+    fullName: user.fullName,
+    phoneNumber: user.phoneNumber,
+    userprofile: user.userprofile
+  };
+
   // Access JWT_SECRET from environment variable
   const token = jwt.sign({ _id: user._id, email: user.email }, process.env.JWT_SECRET);
-  res.status(302).send({  token: token , message: "Successful login"});
+  res.status(201).send({ token: token , message: "Successful login", data: userData});
 });
 
 module.exports = router;
