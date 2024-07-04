@@ -5,7 +5,8 @@ import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { ImagetoBase64 } from './utility/ImagetoBase64';
 
-const SignUp = () => {
+const SignUp = () => { 
+    
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -19,11 +20,6 @@ const SignUp = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData({ ...formData, [name]: value });
-  // };
-
   const handleChange = (e) => {
     const {name, value} = e.target;
     setFormData((preve) => ({ 
@@ -31,19 +27,6 @@ const SignUp = () => {
       [name] : value
     }))
   }
-
-  const handleImageChange = async (e) => {
-    const file = e.target.files[0];
-    if (file.size > 2 * 1024 * 1024) { // 2MB limit
-      toast.error("Image size should be less than 2MB");
-      return;
-    }
-    const data = await ImagetoBase64(file);
-    setFormData((prev) => ({
-      ...prev,
-      userprofile: data
-    }));
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -68,15 +51,6 @@ const SignUp = () => {
       toast.error("Password must be at least 6 characters long");
       return;
     }
-
-    // const formDataPayload = {
-    //   fullName: formData.fullName,
-    //   email: formData.email,
-    //   password: formData.password,
-    //   username: formData.username,
-    //   phoneNumber: formData.phoneNumber,
-    //   userprofile: formData.userprofile
-    // };
 
     const {fullName, email, password, username, phoneNumber} = formData;
 
@@ -152,7 +126,6 @@ const SignUp = () => {
         <span className="border border-black w-full min-w-full"></span>
       </div>
       <form className="grid grid-flow-row gap-3 md:w-3/5 w-1/2 self-center mx-auto pt-3 rounded-lg px-8 py-5 relative" onSubmit={handleSubmit} id="loginForm">
-        {/* <InputField type="text" placeholder="Your Full Names" name="fullName" value={formData.fullName} onChange={handleChange} /> */}
         <input type={"text"} name='fullName' placeholder="Enter your fullnames" className='p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700' value={formData.fullName} 
         onChange={handleChange} />
         <input type={"email"} name='email' placeholder="Enter your email" className='p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700' value={formData.email} 
@@ -172,17 +145,11 @@ const SignUp = () => {
     onChange={handleChange} />
     <label htmlFor="userprofile">
      <div className='flex flex-col'>
-      <p className='text-gray-400 py-1'>User_Profile(Optional)</p>
+      <p className='text-gray-400 py-1'>UserProfile(Optional)</p>
       <input type={"file"} name='userprofile' accept='image/*' id='userprofile'
         onChange={handleUploadProfileImage} className='p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700'/>
       </div>
     </label>
-        {/* <InputField type="email" placeholder="Email..." name="email" value={formData.email} onChange={handleChange} /> */}
-        {/* <PasswordField visible={visible} name="password" setVisible={setVisible} value={formData.password} onChange={handleChange} /> */}
-        {/* <InputField type="tel" placeholder="Tel: +250 789903099" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} /> */}
-        {/* <InputField type="text" placeholder="Username..." name="username" value={formData.username} onChange={handleChange} /> */}
-        {/* <InputField type={"file"} placeholder="User Profile" accept='image/*' id='userprofile' name="userprofile" value={formData.userprofile} onChange={handleUploadProfileImage} /> */}
-        {/* <FileInputField onChange={handleImageChange} /> */}
         <div className="text-sm text-center">
           <input type="checkbox" id="terms" className="w-5" onChange={() => setTerms(!terms)} />
           <label>
@@ -192,59 +159,13 @@ const SignUp = () => {
             <Link className="text-[#20B486] hover:text-[#43edb7] font-semibold" to="./privacy">Privacy Policy</Link>
           </label>
         </div>
-        <button type="submit" className={`w-full my-1 py-1 shadow-lg text-white shadow-slate-500/50 font-semibold rounded-lg mt-1 ${terms ? "bg-[#20B486] hover:bg-[#608d7f]" : "bg-gray-400 cursor-not-allowed"}`} disabled={!terms || loading}>
+        <button type="submit" className={`w-full my-1 py-1 shadow-lg text-white shadow-slate-500/50 font-semibold rounded-lg mt-1 
+          ${terms ? "bg-[#20B486] hover:bg-[#608d7f]" : "bg-gray-400 cursor-not-allowed"}`} disabled={!terms || loading}>
           Create account
         </button>
       </form>
     </div>
   );
 };
-
-const InputField = ({ type, placeholder, name, value, onChange }) => (
-  <div className="flex flex-col text-gray-800 py-1">
-    <input
-      className="p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700"
-      type={type}
-      placeholder={placeholder}
-      name={name}
-      value={value}
-      onChange={onChange}
-      autoComplete="off"
-    />
-  </div>
-);
-
-const PasswordField = ({ visible, setVisible, value, onChange }) => (
-  <div className="flex flex-col relative text-gray-400 py-1">
-    <input
-      className="p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700"
-      type={visible ? "text" : "password"}
-      placeholder="Password"
-      name="password"
-      value={value}
-      onChange={onChange}
-      autoComplete="off"
-    />
-    {visible ? (
-      <AiOutlineEye className="absolute top-3 right-1 cursor-pointer" onClick={() => setVisible(false)} />
-    ) : (
-      <AiOutlineEyeInvisible className="absolute top-3 right-1 cursor-pointer" onClick={() => setVisible(true)} />
-    )}
-  </div>
-);
-
-// const FileInputField = ({ onChange }) => (
-//   <div className="flex flex-col text-gray-400 py-1">
-//     <label htmlFor="userprofile" className="text-sm">Profile Picture (Optional)</label>
-//     <input
-//       type="file"
-//       id="userprofile"
-//       name="userprofile"
-//       accept="image/*"
-//       className="p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700"
-//       onChange={onChange}
-//     />
-//   </div>
-// );
 
 export default SignUp;
