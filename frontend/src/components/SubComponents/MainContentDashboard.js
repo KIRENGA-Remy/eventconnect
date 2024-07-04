@@ -1,5 +1,6 @@
 import React from 'react';
 import { heroImg } from '../../assets';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 const stats = [
@@ -15,6 +16,7 @@ const reports = [
 ];
 
 function MainContentDashboard() {
+
   return (
     <div className="flex-grow p-4 bg-gray-100 overflow-auto">
       <div className="flex flex-col md:flex-row justify-between">
