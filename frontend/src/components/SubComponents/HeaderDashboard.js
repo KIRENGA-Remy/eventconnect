@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 function HeaderDashboard() {
 
   const userData = useSelector(state => state.user);
-  console.log(userData.userprofile);
   const dispatch = useDispatch();
 
   return (

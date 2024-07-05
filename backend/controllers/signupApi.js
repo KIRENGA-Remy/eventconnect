@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {  // Added async keyword
     await user.save();
 
     // Send the success message
-    res.status(201).send({ message: 'Account created', data: userData });
+    res.status(201).send({ message: 'Account created' });
   } catch (error) {
     console.error(error.message);
     res.status(500).send({ message: 'Internal server error' });
