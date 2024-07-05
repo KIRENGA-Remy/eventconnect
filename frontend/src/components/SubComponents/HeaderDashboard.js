@@ -21,7 +21,7 @@ function HeaderDashboard() {
        <Link to="/notification"> <FaBell size={20} className="text-gray-500" /></Link>
       {/* <Link to="/profile">  <FaUserCircle size={40} className="text-gray-500" /></Link> */}
       <div className='text-4xl items-center w-10 h-10 rounded-full overflow-hidden'>
-      { userData.userprofile ? <img src={userData.userprofile} className='h-full w-full' alt={userData.image} /> : <img src={userImage} className='h-full w-full' alt={userData.userprofile} /> }
+      { userData.userprofile ? <img src={userData.userprofile} className='h-full w-full' alt={userData.userprofile} /> : <img src={userImage} className='h-full w-full' alt={userImage} /> }
       </div>
       </div>
     </div>

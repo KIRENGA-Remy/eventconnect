@@ -31,15 +31,14 @@ router.post('/', async (req, res) => {
 
   const userData = {
     id: user._id,
+    email: user.email,
     username: user.username,
     fullName: user.fullName,
     phoneNumber: user.phoneNumber,
     userprofile: user.userprofile
   };
 
-  // Access JWT_SECRET from environment variable
-  const token = jwt.sign({ _id: user._id, email: user.email }, process.env.JWT_SECRET);
-  res.status(201).send({ token: token , message: "Successful login", data: userData});
+  res.status(201).send({ message: "Successful login", data: userData});
 });
 
 module.exports = router;
