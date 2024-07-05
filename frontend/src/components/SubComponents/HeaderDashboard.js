@@ -16,10 +16,13 @@ function HeaderDashboard() {
         <p>All systems are running smoothly! You have 3 unread alerts!</p>
       </div>
       <div className="flex items-center space-x-4">
+      <div className='text-4xl items-center '>
+      { userData.username ? <p className='flex text-green-600 font-semibold'>{userData.username}</p> : <p>User</p> }
+      </div>
        <Link to="/create">  <FaPlus size={20} className="text-gray-500" /></Link>
        <Link to="/notification"> <FaBell size={20} className="text-gray-500" /></Link>
       {/* <Link to="/profile">  <FaUserCircle size={40} className="text-gray-500" /></Link> */}
-      <div className='text-4xl items-center w-10 h-10 rounded-full overflow-hidden'>
+      <div className='text-4xl items-center w-14 h-14 rounded-full overflow-hidden'>
       { userData.userprofile ? <img src={userData.userprofile} className='h-full w-full' alt={userData.userprofile} /> : <img src={userImage} className='h-full w-full' alt={userImage} /> }
       </div>
       </div>
