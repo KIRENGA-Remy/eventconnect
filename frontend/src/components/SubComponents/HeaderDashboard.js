@@ -8,6 +8,7 @@ function HeaderDashboard() {
 
   const userData = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  console.log(userData.userprofile);
 
   return (
     <div className="flex justify-between items-center p-4 bg-white border-b shadow">
