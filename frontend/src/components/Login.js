@@ -8,7 +8,7 @@ import { loginRedux } from "../redux/userSlice";
 export default function Login() {
 
   const userData = useSelector(state => state.user);
-  console.log(userData);
+  console.log(userData.userprofile);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

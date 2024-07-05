@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 function HeaderDashboard() {
 
-  const userData = useSelector((state) => state.user);
-  const dispatch = useDispatch();
+  const userData = useSelector(state => state.user);
   console.log(userData.userprofile);
+  const dispatch = useDispatch();
 
   return (
     <div className="flex justify-between items-center p-4 bg-white border-b shadow">
