@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import { logo, lock, hamburgerMenu, close } from '../assets';
+import userImage from '../assets/user.png';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Navbar = () => {
     const [toggle, setToggle] = useState(false);
     const handleClick = () => setToggle(!toggle);
 
+    const userData = useSelector(state => state.user);
+    const dispatch = useDispatch();
+
     return (
-        <div className='w-full h-[80px] bg-white border-b fixed top-0 z-20'>
+        <div className='w-full h-[80px] bg-white top-0 border-b z-20'>
             <div className='container mx-auto flex justify-between items-center h-full px-4'>
                 <Link to='/'>
                     <img src={logo} className="w-40" alt="logo" />
@@ -28,6 +33,9 @@ const Navbar = () => {
                     <Link to='/authentication/signup' className='px-4 py-2 rounded-md bg-[#20B486] text-white font-bold hover:bg-[#558173]'>
                         Sign Up
                     </Link>
+                    <div className='text-2xl items-center w-[40px] h-[40px] rounded-full'>
+                         { userData.userprofile ? <img src={userData.userprofile} className='h-full w-full' alt={userData.userprofile} /> : <img src={userImage} className='h-full w-full' alt={userImage} /> }
+                    </div>
                 </div>
                 <div className='md:hidden' onClick={handleClick}>
                     <img src={toggle ? close : hamburgerMenu} alt='toggle' />

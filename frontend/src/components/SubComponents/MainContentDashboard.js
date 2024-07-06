@@ -1,6 +1,9 @@
 import React from 'react';
 import { heroImg } from '../../assets';
 import { useDispatch, useSelector } from 'react-redux';
+import { FaBell, FaPlus, FaUserCircle } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import userImage from '../../assets/user.png';
 
 
 const stats = [
@@ -17,8 +20,34 @@ const reports = [
 
 function MainContentDashboard() {
 
+  const userData = useSelector(state => state.user);
+  const dispatch = useDispatch();
+
   return (
-    <div className="flex-grow p-4 bg-gray-100 overflow-auto">
+    <>
+    <div className="flex justify-between p-16 gap-16 items-center">
+<div>
+  { userData.username ? 
+    <h2 className="text-2xl font-semibold">Welcome {userData.username}</h2> : 
+    <p className='text-2xl font-semibold'>Welcome User</p> 
+  }
+  <p className='flex md:flex-col'>
+    We aim to streamline the event management process,
+  </p>
+  <p className='hidden md:flex md:flex-col'>
+    making it easier for organizers to create successful events and for attendees to find and participate in their favorite events.
+  </p>
+</div>
+
+      <div className="flex items-center space-x-4">
+      <div className='text-4xl items-center '>
+      </div>
+       <Link to="/create">  <FaPlus size={20} className="text-gray-500" /></Link>
+       <Link to="/notification"> <FaBell size={20} className="text-gray-500" /></Link>
+      {/* <Link to="/profile">  <FaUserCircle size={40} className="text-gray-500" /></Link> */}
+      </div>
+    </div>
+    <div className="flex-grow p-16 ">
       <div className="flex flex-col md:flex-row justify-between">
         <div className="w-full md:w-1/2">
            <div className="text-center">
@@ -46,6 +75,7 @@ function MainContentDashboard() {
         ))}
       </div>
     </div>
+    </>
   );
 }
 
