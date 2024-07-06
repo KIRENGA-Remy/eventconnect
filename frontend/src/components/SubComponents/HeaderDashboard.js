@@ -22,7 +22,7 @@ function HeaderDashboard() {
        <Link to="/create">  <FaPlus size={20} className="text-gray-500" /></Link>
        <Link to="/notification"> <FaBell size={20} className="text-gray-500" /></Link>
       {/* <Link to="/profile">  <FaUserCircle size={40} className="text-gray-500" /></Link> */}
-      <div className='text-4xl items-center w-14 h-14 rounded-full overflow-hidden'>
+      <div className='text-4xl items-center w-[60px] h-[60px] rounded-full'>
       { userData.userprofile ? <img src={userData.userprofile} className='h-full w-full' alt={userData.userprofile} /> : <img src={userImage} className='h-full w-full' alt={userImage} /> }
       </div>
       </div>
