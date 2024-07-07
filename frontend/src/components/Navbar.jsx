@@ -33,7 +33,7 @@ const Navbar = () => {
                     <Link to='/authentication/signup' className='px-4 py-2 rounded-md bg-[#20B486] text-white font-bold hover:bg-[#558173]'>
                         Sign Up
                     </Link>
-                    <div className='text-2xl items-center w-[40px] h-[40px] rounded-full'>
+                    <div className='text-2xl items-center w-[40px] h-[40px] rounded-full cursor-pointer'>
                          { userData.userprofile ? <img src={userData.userprofile} className='h-full w-full' alt={userData.userprofile} /> : <img src={userImage} className='h-full w-full' alt={userImage} /> }
                     </div>
                 </div>
