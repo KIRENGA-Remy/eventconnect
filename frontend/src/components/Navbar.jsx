@@ -12,7 +12,7 @@ const Navbar = () => {
     const dispatch = useDispatch();
 
     return (
-        <div className='w-full h-[80px] bg-white top-0 border-b z-20'>
+        <div className='w-full h-[80px] bg-white top-0 border-b z-20 fixed'>
             <div className='container mx-auto flex justify-between items-center h-full px-4'>
                 <Link to='/'>
                     <img src={logo} className="w-40" alt="logo" />

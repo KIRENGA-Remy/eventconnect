@@ -1,28 +1,29 @@
 import React from 'react';
-import { FaTachometerAlt, FaChartBar, FaTable, FaBell, FaIcons, FaMap, FaPlus } from 'react-icons/fa';
+import { FaTachometerAlt, FaChartBar, FaTable, FaBell, FaIcons, FaMap, FaUser, FaPlus } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const menuItems = [
-  { icon: <FaTachometerAlt />, label: 'Dashboard' },
-  { icon: <FaPlus />, label: 'Create event' },
-  { icon: <FaChartBar />, label: 'Widgets' },
-  { icon: <FaTable />, label: 'Tables' },
-  { icon: <FaBell />, label: 'Notifications' },
-  { icon: <FaIcons />, label: 'Icons' },
-  { icon: <FaMap />, label: 'Maps' },
+  { icon: <FaTachometerAlt />, label: 'Dashboard', path: '/dashboard' },
+  { icon: <FaPlus />, label: 'Create event', path: '/create' },
+  { icon: <FaChartBar />, label: 'Widgets', path: '/widgets' },
+  { icon: <FaTable />, label: 'Tables', path: '/tables' },
+  { icon: <FaBell />, label: 'Notifications', path: '/notifications' },
+  { icon: <FaIcons />, label: 'Icons', path: '/icons' },
+  { icon: <FaMap />, label: 'Maps', path: '/maps' },
+  { icon: <FaUser />, label: 'Profile', path: '/profile' },
   // Add more items as needed
 ];
 
 function SidebarDashboard() {
   return (
-    <div className="w-64 bg-gray-800 text-white h-full hidden md:block">
-      <div className="p-4">
-        <h1 className="text-2xl font-bold">Event connect</h1>
-      </div>
+    <div className="w-72 bg-gray-800 text-white py-8 md:block">
       <ul>
         {menuItems.map((item, index) => (
-          <li key={index} className="flex items-center px-4 py-2 hover:bg-gray-700">
-            <span className="mr-2">{item.icon}</span>
-            {item.label}
+          <li key={index} className="flex items-center justify-items-start py-2 hover:bg-gray-700 cursor-pointer">
+            <Link to={item.path} className="flex items-center w-full p-4">
+              <span className="mr-2">{item.icon}</span>
+              {item.label}
+            </Link>
           </li>
         ))}
       </ul>
