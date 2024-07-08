@@ -1,5 +1,6 @@
 import React from 'react'
 import { cta } from '../assets'
+import { Link } from 'react-router-dom'
 
 const CTA = () => {
   return (
@@ -11,8 +12,9 @@ const CTA = () => {
         <div>
             <h1 className='py-2  text-3xl font-semibold'>Join <span className='text-[#20B486]'>World's largest</span> events connect platform today </h1>
             <p className='py-2 text-lg text-gray-600'>Start exploring by registering for free here</p>
-          <a href="/authentication/signup"> <button className='max-[780px]:w-full my-4 px-8 py-5 rounded-md bg-[#20B486] hover:bg-[#81dabe] text-white font-bold'>Sign Up For Free</button></a>
-
+          <Link to='/authentication/signup'>
+          <button className='max-[780px]:w-full my-4 px-8 py-5 rounded-md bg-[#20B486] hover:bg-[#81dabe] text-white font-bold'>Sign Up For Free</button>
+          </Link>
              
         </div>
         

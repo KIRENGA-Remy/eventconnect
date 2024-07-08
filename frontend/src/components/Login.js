@@ -19,8 +19,24 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate required fields and email/password format
+    if (!email || !password ) {
+      toast.error("Please enter all required fields.");
+      return;
+    }
+
+    if (!email.match(/^\S+@\S+\.\S+$/)) {
+      toast.error("Invalid email format");
+      return;
+    }
+
+    if (password.length < 6) {
+      toast.error("Password must be at least 6 characters long");
+      return;
+    }
+
     const formData = { email, password };
-    
     try {
       setLoading(true);
       const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/login`, {

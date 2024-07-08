@@ -3,18 +3,29 @@ import { logo } from '../assets'
 import { FaDribbble, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { RiFacebookFill } from "react-icons/ri";
+import { useSelector } from 'react-redux';
 
 const Footer = () => {
+    const userData = useSelector(state => state.user);
+
   return (
     <div className='w-full bg-white py-24'>
         <div className='md:max-w-[1480px] m-auto grid md:grid-cols-5 max-[780px]:grid-cols-2  gap-2 max-w-[600px]  px-4 md:px-8'>
             
             <div className='col-span-2'>
+            { userData.email ?                 
+            <Link to="/dashboard">
                 <img src={logo} className="w-[10rem]" alt='logo' />
+            </Link>
+            :
+            <Link to="/">
+            <img src={logo} className="w-[10rem]" alt='logo' />
+            </Link>
+            }
                 <h3 className='text-2xl font-bold mt-10'>Contact Us</h3>
                 <h3 className='py-2 text-[#6D737A]'>Call : +250 784191775</h3>
                 <h3 className='py-2 text-[#6D737A]'>We value your opinion. Tell us how we can enhance your app experience.</h3>
-                <h3>Email: <a href="mailto: eventconnect123@gmail.com" className="text-blue-500 underline">eventconnect123@gmail.com</a></h3>
+                <h3>Email: <a href="mailto: eventconnect123@gmail.com" className=" font-bold hover:underline">eventconnect123@gmail.com</a></h3>
                 <div className='flex max-sm:gap-1'>
                     <a
                     href="https://www.facebook.com/kirengaremyclaudien/"
