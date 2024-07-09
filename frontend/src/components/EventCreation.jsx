@@ -14,8 +14,8 @@ const EventCreation = () => {
         <section className="w-full p-3 px-2 my-10 flex flex-col justify-center items-center">
           <EventForm />
         </section>
-        <footer className="bg-slate-100 text-gray-600 text-center w-full py-4">
-          <p>&copy; Copyright Event Connect 2024 All rights reserved</p>
+        <footer className="bg-white text-gray-600 text-center w-full py-4">
+        <p>&copy; Copyright Event Connect {new Date().getFullYear()} All rights reserved</p>
         </footer>
       </main>
     </div>

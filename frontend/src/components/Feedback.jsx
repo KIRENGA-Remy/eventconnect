@@ -8,29 +8,29 @@ import Avator3 from '../assets/avatar.png'
 const feedbacks = [
   {
     id: 1,
-    person: "Jenny Wilson",
-    role: "Frontend Designer",
+    person: "David Luiz",
+    role: "Artist Manager",
     avator: Avator1,
     feedback: "The overall design is clean and user-friendly, but there are areas where the layout can be more intuitive."
   },
   {
     id: 2,
-    person: "John Doe",
-    role: "Event Organiser",
+    person: "James Rodriguez",
+    role: "Events Organiser",
     avator: Avator2,
     feedback: "The color scheme is pleasant, but it could be more cohesive. Try using a consistent palette throughout the application."
   },
   {
     id: 3,
-    person: "Jane Doe",
+    person: "Nathan Ake",
     role: "Customer",
     avator: Avator3,
     feedback: "The application works well on desktop, but some elements need adjustment for mobile and tablet views."
   },
   {
     id: 4,
-    person: "Jacob Moans",
-    role: "Customer",
+    person: "Jannet Smith",
+    role: "Event attendee",
     avator: Avator2,
     feedback: "The application works well on desktop, but some elements need adjustment for mobile and tablet views."
   },

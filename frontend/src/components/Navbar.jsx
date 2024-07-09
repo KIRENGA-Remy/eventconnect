@@ -6,7 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const Navbar = () => {
     const [toggle, setToggle] = useState(false);
+    const [authenticate, setAuthenticate] = useState(false);
     const handleClick = () => setToggle(!toggle);
+    const handleLogout = () => setAuthenticate(!authenticate);
 
     const userData = useSelector(state => state.user);
     const dispatch = useDispatch();
@@ -14,7 +16,7 @@ const Navbar = () => {
     return (
         <div className='w-full h-[80px] bg-white top-0 border-b shadow-md z-20 fixed'>
             <div className='container mx-auto flex justify-between items-center h-full px-4'>
-                <Link to='/' className='md:-ml-24'>
+                <Link to='/' className='md:-ml-8 sm:-ml-12'>
                     <img src={logo} className="w-40" alt="logo" />
                 </Link>
                 <div className='hidden md:flex items-center'>
@@ -25,16 +27,23 @@ const Navbar = () => {
                         <li><Link to='/support' className='hover:underline font-semibold p-4'>Support</Link></li>
                     </ul>
                 </div>
-                <div className='hidden md:flex items-center space-x-4 -mr-20'>
+                <div className='hidden md:flex items-center space-x-4 sm:-mr-2'>
                     <Link to='/authentication' className='flex items-center space-x-2 p-1 text-black font-semibold hover:underline'>
                         <img src={lock} alt='lock' />
                         <span>Login</span>
                     </Link>
-                    <Link to='/authentication/signup' className='px-4 py-2 rounded-md bg-[#20B486] hover:bg-white border hover:border-[#20B486] hover:text-[#20B486] text-white font-bold '>
+                    <Link to='/authentication/signup' className='px-4 py-2 rounded-md bg-[#20B486] hover:bg-white border hover:border-[#20B486] hover:text-[#20B486] text-white font-bold'>
                         Sign Up
                     </Link>
-                    <div className='text-2xl items-center w-[40px] h-[40px] rounded-full cursor-pointer'>
-                         { userData.userprofile ? <img src={userData.userprofile} className='h-full w-full' alt={userData.userprofile} /> : <img src={userImage} className='h-full w-full' alt={userImage} /> }
+                    <div className='text-2xl items-center w-[40px] h-[40px] rounded-full cursor-pointer mr-8'>
+                         {/* { userData.userprofile ? ( userData.userprofile ? <img src={userData.userprofile} className='h-full w-full' alt={userData.userprofile} onClick={handleLogout} /> : <div></div> ) : <img src={userImage} className='h-full w-full' alt={userImage} /> } */}
+                         { userData.userprofile ? 
+                                   <div className='flex flex-col py-2'> 
+                                        <img src={userData.userprofile} className='h-full w-full' alt={userData.userprofile} />  
+                                        <p className='hover:underline' onClick={handleLogout}>Logout ({userData.username}) </p> : <Link to={"authentication"} className='text-center whitespace-nowrap hover:underline text-base'>Login</Link>
+                                   </div> 
+                            : 
+                                   <img src={userImage} className='h-full w-full' alt={userImage} /> }
                     </div>
                 </div>
                 <div className='md:hidden' onClick={handleClick}>

@@ -24,7 +24,7 @@ const Footer = () => {
             }
                 <h3 className='text-2xl font-bold mt-10'>Contact Us</h3>
                 <h3 className='py-2 text-[#6D737A]'>Call : +250 784191775</h3>
-                <h3 className='py-2 text-[#6D737A]'>We value your opinion. Tell us how we can enhance your app experience.</h3>
+                <h3 className='py-2 text-[#6D737A]'>We value your opinions, Tell us how we can enhance your app experience.</h3>
                 <h3>Email: <a href="mailto: eventconnect123@gmail.com" className=" font-bold hover:underline">eventconnect123@gmail.com</a></h3>
                 <div className='flex max-sm:gap-1'>
                     <a
@@ -83,13 +83,12 @@ const Footer = () => {
             <div>
                 <h3 className='text-2xl font-bold'>Category</h3>
                 <ul className='py-6 text-[#6D737A]'>
-                      <Link to='design'><li className='py-2 hover:underline'>Design</li></Link>
-                      <Link to='development'><li className='py-2 hover:underline'>Development</li></Link>
-                      <Link to='marketing'><li className='py-2 hover:underline'>Marketing</li></Link>
-                      <Link to='business'><li className='py-2 hover:underline'>Business</li></Link>
-                      <Link to='lifestyle'><li className='py-2 hover:underline'>Lifestyle</li></Link>
-                      <Link to='photography'><li className='py-2 hover:underline'>Photography</li></Link>
-                      <Link to='music'><li className='py-2 hover:underline'>Music</li></Link>
+                      <Link to='design'><li className='py-2 hover:underline'>Concert</li></Link>
+                      <Link to='development'><li className='py-2 hover:underline'>Meeting</li></Link>
+                      <Link to='marketing'><li className='py-2 hover:underline'>Hackathon</li></Link>
+                      <Link to='business'><li className='py-2 hover:underline'>Worship</li></Link>
+                      <Link to='lifestyle'><li className='py-2 hover:underline'>Conference</li></Link>
+                      <Link to='music'><li className='py-2 hover:underline'>Other</li></Link>
 
                 </ul>
             </div>
@@ -98,10 +97,12 @@ const Footer = () => {
                 <h3 className='text-2xl font-bold'>Subscribe</h3>
                 <h3 className='py-2 text-[#6D737A]'>Enter your email to subscribe <br></br> so that you can stay connected to upcoming events worldwide.</h3>
                 <form className='py-4'>
-                    <input 
+                    {/* <input 
                         className='bg-[#F2F3F4] p-4 w-full rounded' 
                         placeholder='Email here' 
-                    />
+                    /> */}
+                    <input type={"text"} name='Email here' placeholder="Email here..." className='py-2 px-8 rounded-md focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700' 
+                      />
                     <button className='max-[780px]:w-full my-4 px-5 py-3 rounded-md hover:bg-[#6dcfb0] bg-[#20B486]  text-white font-medium'>Subscribe Now</button>
 
                   </form>

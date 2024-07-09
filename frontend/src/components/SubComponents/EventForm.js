@@ -97,6 +97,16 @@ const EventForm = () => {
     navigate("/dashboard", { replace: true });
   };
 
+  const handleUploadProfileImage =  async(e) => {
+    const data = await ImagetoBase64(e.target.files[0])
+    setEventData((preve) => {
+      return {
+        ...preve,
+        eventimages : data
+      }
+    })
+  }
+
   return (
     <div className="pt-3 flex flex-col justify-center items-center w-full">
       {loading && (
@@ -478,11 +488,11 @@ const EventForm = () => {
             />
           </div>
           <div className="col-span-2">
-            <label className="block text-lg font-semibold mb-2" htmlFor="eventimages">Event Images
-              <div className="flex items-center justify-center w-full p-3 border rounded-md cursor-pointer">
+            {/* <label className="block text-lg font-semibold mb-2" htmlFor="eventimages">Event Images */}
+              {/* <div className="flex items-center justify-center w-full p-3 border rounded-md cursor-pointer">
                 <IoCloudUploadOutline className="mr-2" /> <p className="text-sm text-black">Upload</p>
-              </div>
-              <input
+              </div> */}
+              {/* <input
                 type="file"
                 id="eventimages"
                 name="eventimages"
@@ -490,8 +500,15 @@ const EventForm = () => {
                 className="hidden"
                 onChange={handleImageChange}
                 required 
-              />
-            </label>
+              /> */}
+
+<div className='flex flex-col'>
+      <p className='text-black py-1'>Event Images</p>
+      <input type={"file"} name='userprofile' accept='image/*' id='userprofile'
+        onChange={handleUploadProfileImage} className='p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700'/>
+      </div>
+
+            {/* </label> */}
           </div>
         </div>
         <button
