@@ -101,9 +101,9 @@ const Footer = () => {
                         className='bg-[#F2F3F4] p-4 w-full rounded' 
                         placeholder='Email here' 
                     /> */}
-                    <input type={"text"} name='Email here' placeholder="Email here..." className='py-2 px-8 rounded-md focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700' 
+                    <input type={"text"} name='Email here' placeholder="Email here..." className='py-2 px-8 w-full rounded-md focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700' 
                       />
-                    <button className='max-[780px]:w-full my-4 px-5 py-3 rounded-md hover:bg-[#6dcfb0] bg-[#20B486]  text-white font-medium'>Subscribe Now</button>
+                    <button className='max-[780px]:w-full my-4 px-5 py-3 rounded-md hover:bg-[#6dcfb0] bg-[#20B486]  text-white font-semibold'>Subscribe Now</button>
 
                   </form>
 
