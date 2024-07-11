@@ -66,7 +66,48 @@ const Footer = () => {
                 </div>
 
             </div>
+            {
+                userData.email ? 
+                    <>
+            <div>
+                <h3 className='text-2xl font-bold'>Explore</h3>
+                <ul className='py-6 text-[#6D737A]'>
+                    <li className='py-2 hover:underline'><Link to={'/dashboard'}>Home</Link></li>
+                    <li className='py-2 hover:underline'><Link to={'/about'}>About</Link></li>
+                    <li className='py-2 hover:underline'><Link to={'/support'}>Support</Link></li>
+                    <li className='py-2 hover:underline'><Link to={'/contact'}>Contacts</Link></li>
+                    <li className='py-2 hover:underline'><Link to={'/termsandconditions'}>Terms & Conditions</Link></li>
+                    <li className='py-2 hover:underline'><Link to={'/privacyandpolicy'}>Privacy & Policy</Link></li>
 
+                </ul>
+            </div>
+
+            <div>
+                <h3 className='text-2xl font-bold'>Category</h3>
+                <ul className='py-6 text-[#6D737A]'>
+                      <Link to='design'><li className='py-2 hover:underline'>Concert</li></Link>
+                      <Link to='development'><li className='py-2 hover:underline'>Meeting</li></Link>
+                      <Link to='marketing'><li className='py-2 hover:underline'>Hackathon</li></Link>
+                      <Link to='business'><li className='py-2 hover:underline'>Worship</li></Link>
+                      <Link to='lifestyle'><li className='py-2 hover:underline'>Conference</li></Link>
+                      <Link to='music'><li className='py-2 hover:underline'>Other</li></Link>
+
+                </ul>
+            </div>
+            <div className='md:hidden'>
+                <h3 className='text-2xl font-bold'>Navigations</h3>
+                <ul className='py-6 text-[#6D737A]'>
+                      <Link to='design'><li className='py-2 hover:underline'>Dashboard</li></Link>
+                      <Link to='development'><li className='py-2 hover:underline'>Create event</li></Link>
+                      <Link to='marketing'><li className='py-2 hover:underline'>Widgets</li></Link>
+                      <Link to='lifestyle'><li className='py-2 hover:underline'>Notifications</li></Link>
+                      <Link to='music'><li className='py-2 hover:underline'>Maps</li></Link>
+                      <Link to='music'><li className='py-2 hover:underline'>Profile</li></Link>
+                </ul>
+            </div>
+                    </> 
+                        : 
+                    <>
             <div>
                 <h3 className='text-2xl font-bold'>Explore</h3>
                 <ul className='py-6 text-[#6D737A]'>
@@ -92,15 +133,12 @@ const Footer = () => {
 
                 </ul>
             </div>
-
+                    </>            
+                }
             <div className='max-[780px]:col-span-2'>
                 <h3 className='text-2xl font-bold'>Subscribe</h3>
                 <h3 className='py-2 text-[#6D737A]'>Enter your email to subscribe <br></br> so that you can stay connected to upcoming events worldwide.</h3>
                 <form className='py-4'>
-                    {/* <input 
-                        className='bg-[#F2F3F4] p-4 w-full rounded' 
-                        placeholder='Email here' 
-                    /> */}
                     <input type={"text"} name='Email here' placeholder="Email here..." className='py-2 px-8 w-full rounded-md focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700' 
                       />
                     <button className='max-[780px]:w-full my-4 px-5 py-3 rounded-md hover:bg-[#6dcfb0] bg-[#20B486]  text-white font-semibold'>Subscribe Now</button>

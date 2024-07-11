@@ -1,18 +1,26 @@
 import React, { useState } from 'react';
 import { logo, lock, hamburgerMenu, close } from '../assets';
+import userImage from '../assets/user.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { logoutRedux } from '../redux/userSlice';
+import { toast } from "react-hot-toast";
 
 const Navbar = () => {
     const navigate = useNavigate();
     const [toggle, setToggle] = useState(false);
     const handleClick = () => setToggle(!toggle);
-    const handleLogout = () => (
-        navigate("/")
-    );
+    const handleProfile = () => (
+        <div></div>
+    )
 
     const userData = useSelector(state => state.user);
     const dispatch = useDispatch();
+
+    const handleLogout = () => {
+    dispatch(logoutRedux())
+    toast("Logout successfully")
+};
 
     return (
         <div className='w-full h-[80px] bg-white top-0 border-b shadow-md z-20 fixed'>
@@ -48,9 +56,19 @@ const Navbar = () => {
                 </div>
             {userData.email ?                        
                 <div className='hidden md:flex items-center lg:-mr-4 *:max-lg:ml-4  sm:mr-2 '> 
-                    <p className='hover:underline' onClick={handleLogout}>Logout ( {userData.username} ) </p> 
-                    <div className='h-[40px] w-[40px]'>
-                        <img src={userData.userprofile} className='h-full w-full' alt={userData.userprofile} />  
+                    <p className='hover:underline font-semibold cursor-pointer bg-red-500 text-white p-1' onClick={handleLogout}>Logout ( {userData.username} ) </p> 
+                    <div className='' onClick={handleProfile}>
+                    <div className='w-10 h-10 rounded-full overflow-hidden drop-shadow-md'>
+                    {userData.userprofile ? <img src={userData.userprofile} className='h-full w-full' alt={userData.userprofile} />  : <img src={userImage} className='h-full w-full' alt={userImage} />   }  
+                    </div>
+                    {
+                        toggle && (
+                            <div className='absolute right-2 bg-white py-2 px-2 shadow drop-shadow-md flex flex-col justify-center items-center'>
+                                <Link to={"allevents"} className='whitespace-nowrap cursor-pointer'>All Events?</Link>
+                                <Link to={"allbookings"} className='whitespace-nowrap cursor-pointer'>All Bookings?</Link>
+                            </div>
+                        )
+                    }
                     </div>
                 </div> 
                              :                 
@@ -73,7 +91,20 @@ const Navbar = () => {
                 <div className='absolute top-[80px] left-0 w-full bg-white z-10 border-b'>
                     <ul className='flex flex-col p-10'>
                         <div className='flex flex-col items-center'>
-                        <li><Link to='/' className='p-2 hover:underline font-semibold'>Home</Link></li>
+
+                        { userData.email ?
+                <li>
+                    <Link to='/dashboard' className='hover:underline font-semibold p-2'>
+                          Home
+                    </Link>
+                </li>
+                             : 
+                <li>
+                    <Link to='/' className='hover:underline font-semibold p-2'>
+                          Home
+                    </Link>
+                </li>
+            }
                         <li><Link to='/services' className='p-2 hover:underline font-semibold'>Products & Services</Link></li>
                         <li><Link to='/about' className='p-2 hover:underline font-semibold'>About</Link></li>
                         <li><Link to='/support' className='p-2 hover:underline font-semibold'>Support</Link></li>
@@ -81,8 +112,9 @@ const Navbar = () => {
             { userData.email ? 
                 <div className='flex flex-col mt-4 space-y-2'>
                     <p className='hover:underline' onClick={handleLogout}>Logout ( {userData.username} ) </p> 
-                    <div className='h-[40px] w-[40px]'>
-                        <img src={userData.userprofile} className='h-full w-full' alt={userData.userprofile} />  
+                    <div className='w-10 h-10 rounded-full overflow-hidden drop-shadow-md'>
+                        {userData.userprofile ? <img src={userData.userprofile} className='h-full w-full' alt={userData.userprofile} />  : <img src={userImage} className='h-full w-full' alt={userImage} />   }
+                        {/* <img src={userData.userprofile} className='h-full w-full' alt={userData.userprofile} />   */}
                     </div>
                 </div>
                              :                         

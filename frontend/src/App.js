@@ -52,6 +52,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setDataevent } from "./redux/eventSlide";
 
 import NewDashboard from "./components/NewDashboard";
+import AllBookings from "./components/AllBookings";
+import AllEvents from "./components/AllEvents";
 
 function App() {
   const dispatch = useDispatch()
@@ -83,6 +85,8 @@ function App() {
         </Route>
         <Route path="/home" exact element={<Home />} />
         <Route path="/create" exact element={<EventCreation />} />
+        <Route path="/allbookings" exact element={<AllBookings />} />
+        <Route path="/allevents" exact element={<AllEvents />} />
         <Route path="/bookVenue/:id" exact element={<BookPage />} />
 
         <Route path="/bookEvent/:id" exact element={<BookEvent />} />

@@ -55,7 +55,7 @@ export default function Login() {
       }
     } catch (error) {
       console.error(error);
-      toast.error("Login failed. Please check your email and password.");
+      toast.error("Login failed. Please check well your email and password.");
     } finally {
       setLoading(false);
     }
