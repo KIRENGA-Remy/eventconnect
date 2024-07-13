@@ -36,6 +36,7 @@ router.post('/', async (req, res) => {
       startTime, 
       location, 
       categories, 
+      organizer,
       ticketInfo, 
       eventimages 
     } = req.body;
@@ -93,18 +94,18 @@ router.post('/', async (req, res) => {
     }
 
     // Extract user ID from the request (set by the auth middleware)
-    const organizer = req.user._id;
+    // const organizer = req.user._id;
 
-    const existingEvent = await Event.findOne({
-      eventname: eventname,
-      date: date,
-      startTime: startTime,
-      organizer: new mongoose.Types.ObjectId(organizer) // Use 'new' keyword
-    });
+    // const existingEvent = await Event.findOne({
+    //   eventname: eventname,
+    //   date: date,
+    //   startTime: startTime,
+    //   organizer: new mongoose.Types.ObjectId(organizer) // Use 'new' keyword
+    // });
 
-    if (existingEvent) {
-      return res.status(400).json({ message: 'Event already exists' });
-    }
+    // if (existingEvent) {
+    //   return res.status(400).json({ message: 'Event already exists' });
+    // }
     
     const event = new Event({
       eventname,
