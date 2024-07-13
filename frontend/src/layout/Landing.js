@@ -14,6 +14,7 @@ export default function Landing() {
         <Hero />
         <Companies />
         {/* <Courses /> */}
+        <div className='flex flex-wrap gap-5 items-center justify-center'>
         {
           homeEventsCardList[0] && homeEventsCardList.map(el => {
             return(
@@ -28,6 +29,7 @@ export default function Landing() {
             )
           })
         }
+        </div>
         <Achievement />
         <Categories />
         <Feedback />
