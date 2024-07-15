@@ -492,7 +492,7 @@ const EventForm = () => {
           <div>
             <label className="block text-lg font-semibold mb-2" htmlFor="availability">organizer</label>
             <input
-              type="number"
+              type="text"
               id="organizer"
               name="organizer"
               className="w-full p-3 border rounded-md"
