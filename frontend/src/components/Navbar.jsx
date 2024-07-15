@@ -89,7 +89,7 @@ const Navbar = () => {
             </div>
             {toggle && (
                 <div className='absolute top-[80px] left-0 w-full bg-white z-10 border-b'>
-                    <ul className='flex flex-col p-10'>
+                    <ul className='flex flex-row p-10'>
                         <div className='flex flex-col items-center'>
 
                         { userData.email ?
@@ -111,7 +111,7 @@ const Navbar = () => {
                         </div>
             { userData.email ? 
                 <div className='flex flex-col mt-4 space-y-2'>
-                    <p className='hover:underline' onClick={handleLogout}>Logout ( {userData.username} ) </p> 
+                    <p className='hover:underline bg-red-500 rounded-md p-1' onClick={handleLogout}>Logout ( {userData.username} ) </p> 
                     <div className='w-10 h-10 rounded-full overflow-hidden drop-shadow-md'>
                         {userData.userprofile ? <img src={userData.userprofile} className='h-full w-full' alt={userData.userprofile} />  : <img src={userImage} className='h-full w-full' alt={userImage} />   }
                         {/* <img src={userData.userprofile} className='h-full w-full' alt={userData.userprofile} />   */}
