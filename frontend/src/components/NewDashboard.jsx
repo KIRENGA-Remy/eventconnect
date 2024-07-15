@@ -18,7 +18,7 @@ const NewDashboard = () => {
         </div> */}
         {/* <div className="flex flex-col flex-grow"> */}
   <Navbar />
-  <div className='flex flex-row mt-24'>
+  <div className='flex flex-row mt-24 min-h-screen'>
     <div className='hidden md:block'>
   <SidebarDashboard />
   </div>
