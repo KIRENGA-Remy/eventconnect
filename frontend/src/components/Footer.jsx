@@ -97,8 +97,8 @@ const Footer = () => {
             <div className='md:hidden'>
                 <h3 className='text-2xl font-bold'>Navigations</h3>
                 <ul className='py-6 text-[#6D737A]'>
-                      <Link to='design'><li className='py-2 hover:underline'>Dashboard</li></Link>
-                      <Link to='development'><li className='py-2 hover:underline'>Create event</li></Link>
+                      <Link to='/dashboard'><li className='py-2 hover:underline'>Dashboard</li></Link>
+                      <Link to='/create'><li className='py-2 hover:underline'>Create event</li></Link>
                       <Link to='marketing'><li className='py-2 hover:underline'>Widgets</li></Link>
                       <Link to='lifestyle'><li className='py-2 hover:underline'>Notifications</li></Link>
                       <Link to='music'><li className='py-2 hover:underline'>Maps</li></Link>
