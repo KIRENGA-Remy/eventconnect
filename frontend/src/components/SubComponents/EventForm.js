@@ -206,9 +206,9 @@ const EventForm = () => {
             <label className="block text-lg font-semibold mb-2" htmlFor="country">Country</label>
             <select
               id="country"
-              name="country"
+              name="location.country"
               className="w-full p-3 border rounded-md"
-              value={eventData.country}
+              value={eventData.location.country}
               onChange={handleChange}
               required
             >
@@ -493,7 +493,7 @@ const EventForm = () => {
             <label className="block text-lg font-semibold mb-2" htmlFor="availability">organizer</label>
             <input
               type="number"
-              id="availability"
+              id="organizer"
               name="organizer"
               className="w-full p-3 border rounded-md"
               value={eventData.organizer}
