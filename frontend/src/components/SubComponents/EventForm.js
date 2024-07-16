@@ -125,6 +125,7 @@ const EventForm = () => {
               type="text"
               id="eventname"
               name="eventname"
+              placeholder='event name'
               className="w-full p-3 border rounded-md"
               value={eventData.eventname}
               onChange={handleChange}
@@ -136,6 +137,7 @@ const EventForm = () => {
             <textarea
               id="description"
               name="description"
+              placeholder='This is the event description...'
               className="w-full p-3 border rounded-md"
               value={eventData.description}
               onChange={handleChange}
@@ -160,6 +162,7 @@ const EventForm = () => {
               type="text"
               id="startTime"
               name="startTime"
+              placeholder='00:00'
               className="w-full p-3 border rounded-md"
               value={eventData.startTime}
               onChange={handleChange}
@@ -172,6 +175,7 @@ const EventForm = () => {
               type="text"
               id="address"
               name="location.address"
+              placeholder='host location'
               className="w-full p-3 border rounded-md"
               value={eventData.location.address}
               onChange={handleChange}
@@ -184,6 +188,7 @@ const EventForm = () => {
               type="text"
               id="city"
               name="location.city"
+              placeholder='District'
               className="w-full p-3 border rounded-md"
               value={eventData.location.city}
               onChange={handleChange}
@@ -196,6 +201,7 @@ const EventForm = () => {
               type="text"
               id="state"
               name="location.state"
+              placeholder='Province'
               className="w-full p-3 border rounded-md"
               value={eventData.location.state}
               onChange={handleChange}
@@ -417,6 +423,7 @@ const EventForm = () => {
               type="text"
               id="postalCode"
               name="location.postalCode"
+              placeholder='0000'
               className="w-full p-3 border rounded-md"
               value={eventData.location.postalCode}
               onChange={handleChange}
@@ -454,6 +461,7 @@ const EventForm = () => {
               type="number"
               id="price"
               name="ticketInfo.price"
+              placeholder='123...'
               className="w-full p-3 border rounded-md"
               value={eventData.ticketInfo.price}
               onChange={handleChange}
@@ -483,6 +491,7 @@ const EventForm = () => {
               type="number"
               id="availability"
               name="ticketInfo.availability"
+              placeholder='123...'
               className="w-full p-3 border rounded-md"
               value={eventData.ticketInfo.availability}
               onChange={handleChange}
@@ -490,11 +499,12 @@ const EventForm = () => {
             />
           </div>
           <div>
-            <label className="block text-lg font-semibold mb-2" htmlFor="availability">organizer</label>
+            <label className="block text-lg font-semibold mb-2" htmlFor="availability">Event Organizer</label>
             <input
               type="text"
               id="organizer"
               name="organizer"
+              placeholder='6633280760bcac...'
               className="w-full p-3 border rounded-md"
               value={eventData.organizer}
               onChange={handleChange}

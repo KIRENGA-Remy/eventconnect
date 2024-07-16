@@ -82,7 +82,7 @@ const ImgCarousel = () => {
     <div className='w-full md:w-11/12 lg:w-3/4 xl:w-2/3 mx-auto'>
       <Slider {...settings} className='mt-10 md:mt-20 lg:mt-32'>
         {data.map((carousel) => (
-          <div key={carousel.id} className="w-full p-4 md:p-2 bg-white rounded-xl relative overflow-hidden">
+          <div key={carousel.id} className="w-full p-4 md:p-2 bg-white relative overflow-hidden">
             <div className='w-full h-auto md:h-[18rem] lg:h-[20rem] flex flex-col justify-center items-center'>
               <span className='text-4xl text-indigo-700 font-bold'>{carousel.icon}</span>
               <strong className='font-bold text-2xl md:text-3xl lg:text-4xl text-blue-950'>{carousel.head} <span className='text-indigo-400'>EV<span className='text-green-600'>E</span>NT</span></strong>
