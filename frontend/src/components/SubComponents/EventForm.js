@@ -3,6 +3,7 @@ import { IoCloudUploadOutline } from "react-icons/io5";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { ImagetoBase64 } from '../utility/ImagetoBase64';
+import { useSelector } from 'react-redux';
 
 const EventForm = () => {
   const [eventData, setEventData] = useState({
@@ -29,7 +30,7 @@ const EventForm = () => {
 
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
+  const userData = useSelector(state => state.user);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -47,16 +48,15 @@ const EventForm = () => {
     }
   };
 
-  const handleImageChange =  async(e)=>{
-    const data = await ImagetoBase64(e.target.files[0])
-    setEventData((preve)=>{
-        return{
-          ...preve,
-          eventimages : data
-        }
-    })
-
-}
+//   const handleImageChange =  async(e)=>{
+//     const data = await ImagetoBase64(e.target.files[0])
+//     setEventData((preve)=>{
+//         return{
+//           ...preve,
+//           eventimages : data
+//         }
+//     })
+// }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -94,10 +94,10 @@ const EventForm = () => {
     }
   };
 
-  const handleReturnHome = (e) => {
-    e.preventDefault();
-    navigate("/dashboard", { replace: true });
-  };
+  // const handleReturnHome = (e) => {
+  //   e.preventDefault();
+  //   navigate("/dashboard", { replace: true });
+  // };
 
   const handleUploadProfileImage =  async(e) => {
     const data = await ImagetoBase64(e.target.files[0])
@@ -542,13 +542,15 @@ const EventForm = () => {
           Create Event
         </button>
       </form>
-      <a
-        href="/dashboard"
-        onClick={handleReturnHome}
-        className="text-violet-900 hover:text-violet-800 hover:underline py-6"
-      >
-        Return home?
-      </a>
+      { userData.email ?
+                    <Link to='/dashboard' className='text-violet-900 hover:text-violet-800 hover:underline py-6 font-semibold'>
+                         Return Home?
+                    </Link>
+                             : 
+                    <Link to='/' className='text-violet-900 hover:text-violet-800 hover:underline py-6 font-semibold'>
+                         Return  Home?
+                    </Link>
+            }
     </div>
   );
 };
