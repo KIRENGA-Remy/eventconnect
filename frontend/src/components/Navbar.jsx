@@ -9,10 +9,9 @@ import { toast } from "react-hot-toast";
 const Navbar = () => {
     const navigate = useNavigate();
     const [toggle, setToggle] = useState(false);
+    const [showProfile, setShowProfile] = useState(false);
     const handleClick = () => setToggle(!toggle);
-    const handleProfile = () => (
-        <div></div>
-    )
+    const handleProfile = () => setShowProfile(!showProfile)
 
     const userData = useSelector(state => state.user);
     const dispatch = useDispatch();
@@ -63,10 +62,10 @@ const Navbar = () => {
                     {userData.userprofile ? <img src={userData.userprofile} className='h-full w-full' alt={userData.userprofile} />  : <img src={userImage} className='h-full w-full' alt={userImage} />   }  
                     </div>
                     {
-                        toggle && (
+                        showProfile && (
                             <div className='absolute right-2 bg-white py-2 px-2 shadow drop-shadow-md flex flex-col justify-center items-center'>
-                                <Link to={"allevents"} className='whitespace-nowrap cursor-pointer'>All Events?</Link>
-                                <Link to={"allbookings"} className='whitespace-nowrap cursor-pointer'>All Bookings?</Link>
+                                <Link to={"allevents"} className='whitespace-nowrap cursor-pointer text-black hover:underline'>All Events?</Link>
+                                <Link to={"allbookings"} className='whitespace-nowrap cursor-pointer text-black hover:underline'>All Bookings?</Link>
                             </div>
                         )
                     }
