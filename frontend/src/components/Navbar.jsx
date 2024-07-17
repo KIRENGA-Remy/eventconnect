@@ -64,8 +64,8 @@ const Navbar = () => {
                     {
                         showProfile && (
                             <div className='absolute right-2 bg-white py-2 px-2 shadow drop-shadow-md flex flex-col justify-center items-center'>
-                                <Link to={"allevents"} className='whitespace-nowrap cursor-pointer text-black hover:underline'>All Events?</Link>
-                                <Link to={"allbookings"} className='whitespace-nowrap cursor-pointer text-black hover:underline'>All Bookings?</Link>
+                                <Link to='allevents' className='whitespace-nowrap cursor-pointer text-black hover:underline font-semibold px-8 flex items-center justify-center'>All Events</Link>
+                                <Link to='allbookings' className='whitespace-nowrap cursor-pointer text-black hover:underline font-semibold px-8 flex items-center justify-center'>All Bookings</Link>
                             </div>
                         )
                     }
