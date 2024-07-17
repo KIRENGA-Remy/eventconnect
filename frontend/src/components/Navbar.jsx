@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutRedux } from '../redux/userSlice';
 import { toast } from "react-hot-toast";
+import { FaHandshake, FaRing } from 'react-icons/fa'
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -57,15 +58,15 @@ const Navbar = () => {
             {userData.email ?                        
                 <div className='hidden md:flex items-center lg:-mr-4 *:max-lg:ml-4  sm:mr-2 '> 
                     <p className='hover:underline font-bold rounded-md cursor-pointer bg-red-500 text-white p-2' onClick={handleLogout}>Logout ( {userData.username} ) </p> 
-                    <div className='ml-4' onClick={handleProfile}>
+                    <div className='ml-4  cursor-pointer' onClick={handleProfile}>
                     <div className='w-16 h-16 rounded-full overflow-hidden drop-shadow-md'>
                     {userData.userprofile ? <img src={userData.userprofile} className='h-full w-full' alt={userData.userprofile} />  : <img src={userImage} className='h-full w-full' alt={userImage} />   }  
                     </div>
                     {
                         showProfile && (
                             <div className='absolute right-2 bg-white py-2 px-2 shadow drop-shadow-md flex flex-col justify-center items-center'>
-                                <Link to='allevents' className='whitespace-nowrap cursor-pointer text-black hover:underline font-semibold px-8 flex items-center justify-center'>All Events</Link>
-                                <Link to='allbookings' className='whitespace-nowrap cursor-pointer text-black hover:underline font-semibold px-8 flex items-center justify-center'>All Bookings</Link>
+                                <Link to='allevents' className='whitespace-nowrap cursor-pointer text-black hover:underline font-semibold px-8 flex items-center justify-center'><FaHandshake className='px-2' /> All Events</Link>
+                                <Link to='allbookings' className='whitespace-nowrap cursor-pointer text-black hover:underline font-semibold px-8 flex items-center justify-center'><FaRing className='px-2' /> All Bookings</Link>
                             </div>
                         )
                     }
