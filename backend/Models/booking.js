@@ -18,7 +18,8 @@ const bookingSchema = new mongoose.Schema({
     type: String
   },
   userEmail: {
-    type: String
+    type: String,
+    required: true
   },
   eventName: {
     type: String,
@@ -40,7 +41,5 @@ const bookingSchema = new mongoose.Schema({
     type: Date,
     required: true
   }
-},
-{ timestamps: true}
-);
-module.exports = mongoose.model('booking', bookingSchema);
+});
+module.exports = mongoose.model('Booking', bookingSchema);
