@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const Booking = require('../Models/Bookings.js');
+const Booking = require('../Models/booking')
 
 router.post('/', async (req,res) =>{
         const newBooking = new Booking(req.body)

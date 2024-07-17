@@ -20,6 +20,7 @@ const Navbar = () => {
     const handleLogout = () => {
     dispatch(logoutRedux())
     toast("Logout successfully")
+    navigate("/");
 };
 
     return (
