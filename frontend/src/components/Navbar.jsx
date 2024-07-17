@@ -56,9 +56,9 @@ const Navbar = () => {
                 </div>
             {userData.email ?                        
                 <div className='hidden md:flex items-center lg:-mr-4 *:max-lg:ml-4  sm:mr-2 '> 
-                    <p className='hover:underline font-semibold cursor-pointer bg-red-500 text-white p-1' onClick={handleLogout}>Logout ( {userData.username} ) </p> 
-                    <div className='' onClick={handleProfile}>
-                    <div className='w-10 h-10 rounded-full overflow-hidden drop-shadow-md'>
+                    <p className='hover:underline font-bold rounded-md cursor-pointer bg-red-500 text-white p-2' onClick={handleLogout}>Logout ( {userData.username} ) </p> 
+                    <div className='ml-4' onClick={handleProfile}>
+                    <div className='w-16 h-16 rounded-full overflow-hidden drop-shadow-md'>
                     {userData.userprofile ? <img src={userData.userprofile} className='h-full w-full' alt={userData.userprofile} />  : <img src={userImage} className='h-full w-full' alt={userImage} />   }  
                     </div>
                     {
