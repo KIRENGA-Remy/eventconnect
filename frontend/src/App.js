@@ -85,8 +85,8 @@ function App() {
         </Route>
         <Route path="/home" exact element={<Home />} />
         <Route path="/create" exact element={<EventCreation />} />
-        <Route path="/dashboard/allbookings" exact element={<AllBookings />} />
-        <Route path="/dashboard/allevents" exact element={<AllEvents />} />
+        <Route path="/allbookings" exact element={<AllBookings />} />
+        <Route path="/allevents" exact element={<AllEvents />} />
         <Route path="/bookVenue/:id" exact element={<BookPage />} />
 
         <Route path="/bookEvent/:id" exact element={<BookEvent />} />

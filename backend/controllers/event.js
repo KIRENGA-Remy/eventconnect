@@ -46,7 +46,7 @@ router.post('/', async (req, res) => {
       return res.status(400).send({ message: 'Missing required fields eventname' });
     }
     if (!description ) {
-      return res.status(400).send({ message: 'Missing required fields descr' });
+      return res.status(400).send({ message: 'Missing required fields description' });
     }
     if ( !date ) {
       return res.status(400).send({ message: 'Missing required fields date' });
