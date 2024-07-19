@@ -2,9 +2,9 @@ import React from 'react';
 import { Hero, Navbar, Companies, Courses, Achievement, Categories, Feedback, CTA, Footer } from '../components';
 import EventsCard from '../components/EventsCard';
 import { useSelector } from 'react-redux';
-import  image  from '../assets/arenas.jpg'
-import genz  from '../assets/genz.jpeg'
-import  gen  from '../assets/genz.jpg'
+// import  image  from '../assets/arenas.jpg'
+// import genz  from '../assets/genz.jpeg'
+// import  gen  from '../assets/genz.jpg'
 
 export default function Landing() {
   const eventData = useSelector((state) => state.event.eventList)
@@ -15,7 +15,7 @@ export default function Landing() {
       <div className="mx-auto max-w-screen-xl px-4 mt-16 sm:px-6 lg:px-8">
         <Hero />
         <Companies />
-        <div className=' flex justify-center w-full h-full flex-col md:flex-row gap-8 cursor-pointer'>
+        {/* <div className=' flex justify-center w-full h-full flex-col md:flex-row gap-8 cursor-pointer'>
         <span className=' shadow-md p-4 rounded-md'><img src={genz} className='w-[300px] h-[180px] object-fill my-2' />
           <div className='flex flex-row justify-between'>
           <p><span className='font-bold text-2xl text-[#20B486]'>Argentina vs Colombia</span></p><h1><span className='px-1 font-bold'>At</span>12:00</h1>
@@ -52,10 +52,10 @@ export default function Landing() {
           <p className='py-3 px-4  rounded-md bg-[#20B486] hover:bg-white border hover:border-[#20B486] hover:text-[#20B486] text-white font-bold cursor-pointer'>Book</p>
           </div>
           </span>
-      </div>
+      </div> */}
         {/* <Courses /> */}
 
-        {/* <div className=' flex justify-center w-full h-full flex-col md:flex-row gap-8 cursor-pointer'>
+        <div className=' flex justify-center w-full h-full flex-col md:flex-row gap-8 cursor-pointer'>
         {
           homeEventsCardList[0] && homeEventsCardList.map(el => {
             return(
@@ -70,7 +70,7 @@ export default function Landing() {
             )
           })
         }
-        </div> */}
+        </div>
 
 
 
