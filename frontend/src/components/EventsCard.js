@@ -18,9 +18,9 @@ function EventsCard({name, image, category, country, startTime}) {
     //   </div>
     //   <h3>{country}</h3>
     // </div>
-    <span className=' shadow-md p-4 rounded-md'><img src={image} className='w-[300px] h-[180px] object-fill my-2' />
+    <span className=' shadow-md p-4 rounded-md'><img src={image} className='w-[340px] h-[220px] object-fill my-2' />
     <div className='flex flex-row justify-between'>
-    <p><span className='font-bold text-2xl text-[#20B486]'>{name}</span></p><h1><span className='px-1 font-bold flex flex-row'><FaClock />At</span>{startTime}</h1>
+    <p><span className='font-bold text-2xl text-[#20B486]'>{name}</span></p><h1><span className='px-1 font-bold '>At</span>{startTime}</h1>
     </div>
     <div className='flex flex-row justify-between py-2'>
       <div className='flex flex-col'>
