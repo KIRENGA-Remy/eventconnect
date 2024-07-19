@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 
 export default function Landing() {
   const eventData = useSelector((state) => state.event.eventList)
-  const homeEventsCardList = eventData.slice(0, 4)
+  const homeEventsCardList = eventData.slice(0, 6)
   return (
     <div>
       <Navbar />
