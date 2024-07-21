@@ -6,8 +6,8 @@ import Navbar from '../Navbar';
 import Footer from '../Footer';
 
 function Menu() {
-    const { filterby } = useParams();
-    console.log("id is ", filterby);
+    const params = useParams();
+    console.log("id is ", params.filterby);
     const eventData = useSelector((state) => state.event.eventList);
     const eventDisplay = eventData.find(el => el._id === filterby);
   return (
