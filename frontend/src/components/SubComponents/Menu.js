@@ -7,7 +7,6 @@ import Footer from '../Footer';
 
 function Menu() {
     const params = useParams();
-    console.log("id is ", params.filterby);
     const eventData = useSelector((state) => state.event.eventList);
     const eventDisplay = eventData.filter(el => el._id === params.filterby)[0]
   return (
@@ -21,28 +20,28 @@ function Menu() {
       <div>
         <h2 className='font-bold text-2xl text-[#20B486]'>{eventDisplay.eventname}</h2>
         <div className='flex flex-row justify-between py-2'>
-        <p><span className='font-bold'>Event Date: </span>{eventDisplay.date}</p>
+        <p><span className='font-bold pr-4'>Event Date: </span>{eventDisplay.date}</p>
         <p><span className='font-bold'>At </span>{eventDisplay.startTime}</p>
         </div>
         <div className='flex flex-row justify-between'>
         <div className='p-2'>
             <h2 className=' font-bold underline pt-2'>Event's location</h2>
             <div className='flex flex-col'>
-                <p><span className='font-bold'>Address: </span>{eventDisplay.address}</p>
-                <p><span className='font-bold'>City: </span>{eventDisplay.city}</p>
-                <p><span className='font-bold'>State: </span>{eventDisplay.state}</p>
-                <p><span className='font-bold'>Country: </span>{eventDisplay.country}</p>
-                <p><span className='font-bold'>Postalcode: </span>{eventDisplay.postalCode}</p>
+                <p><span className='font-bold'>Address: </span>{eventDisplay.location.address}</p>
+                <p><span className='font-bold'>City: </span>{eventDisplay.location.city}</p>
+                <p><span className='font-bold'>State: </span>{eventDisplay.location.state}</p>
+                <p><span className='font-bold'>Country: </span>{eventDisplay.location.country}</p>
+                <p><span className='font-bold'>Postalcode: </span>{eventDisplay.location.postalCode}</p>
             </div>
         </div>
         <div className='p-2'>
             <h2 className='font-semibold underline pt-2'>Event's Ticket information</h2>
             <div className='flex flex-col'>
                 <div className='flex flex-row'>
-                <p><span className='font-bold'>Price: </span>{eventDisplay.price}</p>
-                {eventDisplay.currency === 'USD' ? <p>$/person</p> : <p>{eventDisplay.currency}/person</p> }
+                <p><span className='font-bold'>Price: </span>{eventDisplay.ticketInfo.price}</p>
+                {eventDisplay.currency === 'USD' ? <p>$/person</p> : <p>{eventDisplay.ticketInfo.currency}/person</p> }
                 </div>
-                <p><span className='font-bold'>Availability: </span>{eventDisplay.availability} people</p>
+                <p><span className='font-bold'>Availability: </span>{eventDisplay.ticketInfo.availability} people</p>
                 {/* <Link to='./'><p className='bg-blue-600 hover:bg-blue-700 w-full p-2 text-white flex justify-center font-semibold cursor-pointer'>Buy Ticket</p></Link> */}
             </div>
         </div>
