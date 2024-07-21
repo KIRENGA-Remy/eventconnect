@@ -9,7 +9,7 @@ import Slider from 'react-slick';
 
 export default function Landing() {
   const eventData = useSelector((state) => state.event.eventList)
-  const homeEventsCardList = eventData.slice(1, 4)
+  const homeEventsCardList = eventData.slice(0, 100)
 
   // const settings = {
   //   dots: true,
@@ -82,7 +82,7 @@ export default function Landing() {
       </div> */}
         {/* <Courses /> */}
 
-        <div className=' flex justify-center w-full h-full flex-col md:flex-row gap-8 cursor-pointer'>
+        <div className='flex flex-row justify-center w-full h-full shadow-md gap-8 cursor-pointer'>
         {
           homeEventsCardList[0] && homeEventsCardList.map(el => {
             return(
