@@ -1,12 +1,13 @@
 import React from 'react'
 import { FaClock , FaRegCalendar} from 'react-icons/fa'
+import { Link } from 'react-router-dom';
 import Slider from 'react-slick'
 // import  image  from '../assets/arenas.jpg'
 // import genz  from '../assets/genz.jpeg'
 // import  gen  from '../assets/genz.jpg'
 
 
-function EventsCard({name, image, category, country, startTime}) {
+function EventsCard({name, id, image, category, country, startTime}) {
   const settings = {
     dots: true,
     infinite: true,
@@ -29,6 +30,7 @@ function EventsCard({name, image, category, country, startTime}) {
     //   <h3>{country}</h3>
     // </div>
     <Slider {...settings} className=''>
+      <Link to={`menu/${id}`}>
     <span className=' shadow-md p-4 rounded-md'>
     <div className='relative'>
           <img src={image} className='w-[300px] h-[180px] object-fill my-2' />
@@ -46,6 +48,7 @@ function EventsCard({name, image, category, country, startTime}) {
     </div>
     <p className='bg-blue-600 hover:bg-blue-700 w-full p-2 text-white flex justify-center'>Buy Ticket</p>
     </span>
+    </Link>
     </Slider>
   )
 }

@@ -54,6 +54,7 @@ import { setDataevent } from "./redux/eventSlide";
 import NewDashboard from "./components/NewDashboard";
 import AllBookings from "./components/AllBookings";
 import AllEvents from "./components/AllEvents";
+import Menu from "./components/SubComponents/Menu";
 
 function App() {
   const dispatch = useDispatch()
@@ -87,6 +88,7 @@ function App() {
         <Route path="/create" exact element={<EventCreation />} />
         <Route path="/allbookings" exact element={<AllBookings />} />
         <Route path="/allevents" exact element={<AllEvents />} />
+        <Route path="/menu/filterby" exact element={<Menu />} />
         <Route path="/bookVenue/:id" exact element={<BookPage />} />
 
         <Route path="/bookEvent/:id" exact element={<BookEvent />} />
