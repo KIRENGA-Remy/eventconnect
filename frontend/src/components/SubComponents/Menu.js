@@ -9,7 +9,7 @@ function Menu() {
     const {filterby} = useParams();
     console.log("id is ", {filterby});
     const eventData = useSelector((state) => state.event.eventList);
-    const eventDisplay = eventData.find(el => el._id === filterby);
+    const eventDisplay = eventData.filter(el => el._id === filterby)[0]
   return (
     <>
     <Navbar />
