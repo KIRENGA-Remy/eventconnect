@@ -20,10 +20,10 @@ function Menu() {
       <div>
         <h2 className='font-bold text-2xl text-[#20B486]'>{eventDisplay.eventname}</h2>
         <div className='flex flex-row justify-between py-2'>
-        <p><span className='font-bold pr-4'>Event Date: </span>{eventDisplay.date}</p>
+        <p><span className='font-bold pr-2'>Event Date: </span>{eventDisplay.date}</p>
         <p><span className='font-bold'>At </span>{eventDisplay.startTime}</p>
         </div>
-        <div className='flex flex-row justify-between'>
+        <div className='flex flex-col md:flex md:flex-row md:justify-between'>
         <div className='p-2'>
             <h2 className=' font-bold underline pt-2'>Event's location</h2>
             <div className='flex flex-col'>
