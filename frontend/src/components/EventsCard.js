@@ -29,7 +29,7 @@ function EventsCard({name, id, image, category, country, startTime}) {
     //   </div>
     //   <h3>{country}</h3>
     // </div>
-    <Slider {...settings} className=''>
+    // <Slider {...settings} className=''>
       <Link to={`menu/${id}`}>
     <span className=' shadow-md p-4 rounded-md'>
     <div className='relative'>
@@ -49,7 +49,7 @@ function EventsCard({name, id, image, category, country, startTime}) {
     <p className='bg-blue-600 hover:bg-blue-700 w-full p-2 text-white flex justify-center'>Buy Ticket</p>
     </span>
     </Link>
-    </Slider>
+    // </Slider>
   )
 }
 

@@ -11,15 +11,15 @@ export default function Landing() {
   const eventData = useSelector((state) => state.event.eventList)
   const homeEventsCardList = eventData.slice(1, 4)
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 4000
-  };
+  // const settings = {
+  //   dots: true,
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 3,
+  //   slidesToScroll: 1,
+  //   autoplay: true,
+  //   autoplaySpeed: 4000
+  // };
   return (
     <div>
       <Navbar />
