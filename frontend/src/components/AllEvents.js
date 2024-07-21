@@ -24,8 +24,10 @@ function AllEvents() {
       <p><span className='pr-1 font-bold'>Country:</span>{el.location.country}</p>
       <p><span className='pr-1 font-bold'>Category:</span>{el.categories}</p>
     </div>
-    <Link to='../'><p className='py-3 px-4 mt-4 flex justify-center rounded-md bg-blue-600 hover:bg-white border hover:border-[#20B486] hover:text-[#20B486] text-white cursor-pointer'>Cancel</p></Link>
+    <div className='flex flex-row'>
+    <Link to='../'><p className='py-3 px-4 rounded-md bg-blue-600 hover:bg-white border hover:border-[#20B486] hover:text-[#20B486] text-white cursor-pointer'>Cancel</p></Link>
     <p className='py-3 px-4  rounded-md bg-[#20B486] hover:bg-white border hover:border-[#20B486] hover:text-[#20B486] text-white font-bold cursor-pointer'>Book</p>
+    </div>
     </div>
     <p className='bg-blue-600 hover:bg-blue-700 w-full p-2 text-white flex justify-center'>Buy Ticket</p>
     </span>

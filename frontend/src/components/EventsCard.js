@@ -31,12 +31,12 @@ function EventsCard({name, id, image, category, country, startTime}) {
     // </div>
     // <Slider {...settings} className=''>
       <Link to={`menu/${id}`}>
-    <span className='shadow-md p-4 rounded-md bg-white'>
+    <span className='bg-white shadow-md p-4 rounded-md'>
     <div className='relative'>
           <img src={image} className='w-[300px] h-[180px] object-fill my-2' />
           <span className='absolute bottom-0 right-0 w-max h-max z-10 bg-green-500 text-white p-2 rounded-t-md rounded-tr-none font-semibold'>Upcoming</span>
     </div>
-    <div className='w-[300px] h-[180px] flex flex-row justify-between'>
+    <div className='flex flex-row justify-between'>
     <p><span className='font-bold text-2xl text-[#20B486]'>{name}</span></p><h1><span className='px-1 font-bold '>At</span>{startTime}</h1>
     </div>
     <div className='flex flex-row justify-between py-2'>

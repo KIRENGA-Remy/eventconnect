@@ -23,7 +23,7 @@ export default function Landing() {
   return (
     <div>
       <Navbar />
-      <div className="mx-auto max-w-screen-xl px-4 mt-16 sm:px-6 lg:px-8">
+      <div className="flex  mx-auto max-w-screen-xl px-4 mt-16 sm:px-6 lg:px-8">
         <Hero />
         <Companies />
         {/* <div className=' flex justify-center w-full h-full flex-col md:flex-row gap-8 cursor-pointer'>
@@ -82,7 +82,7 @@ export default function Landing() {
       </div> */}
         {/* <Courses /> */}
 
-        <div className='flex flex-row justify-center w-full h-full shadow-md gap-8 cursor-pointer'>
+        <div className='flex flex-row justify-center w-full h-full bg-white shadow-md gap-8 cursor-pointer'>
         {
           homeEventsCardList[0] && homeEventsCardList.map(el => {
             return(
