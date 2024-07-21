@@ -1,12 +1,16 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import Footer from './Footer'
+import Navbar from './Navbar'
 
 function AllEvents() {
   const eventData = useSelector((state) => state.event.eventList)
   const homeEventsCardList = eventData.slice(0, 400)
   return (
-    <div className=' flex justify-center w-full h-full flex-col md:flex-row gap-8 cursor-pointer'>
+    <>    
+    <Navbar />
+    <div className=' flex justify-center w-full h-full flex-col md:flex-row gap-8 my-28 cursor-pointer'>
     {
       homeEventsCardList[0] && homeEventsCardList.map(el => {
         return(
@@ -25,7 +29,7 @@ function AllEvents() {
       <p><span className='pr-1 font-bold'>Category:</span>{el.categories}</p>
     </div>
     <div className='flex flex-row'>
-    <Link to='../'><p className='py-3 px-4 rounded-md bg-blue-600 hover:bg-white border hover:border-[#20B486] hover:text-[#20B486] text-white cursor-pointer'>Cancel</p></Link>
+    <Link to='../'><p className='py-3 px-4 mr-2 rounded-md bg-blue-600 hover:bg-white border hover:border-[#20B486] hover:text-[#20B486] text-white cursor-pointer'>Cancel</p></Link>
     <p className='py-3 px-4  rounded-md bg-[#20B486] hover:bg-white border hover:border-[#20B486] hover:text-[#20B486] text-white font-bold cursor-pointer'>Book</p>
     </div>
     </div>
@@ -36,6 +40,8 @@ function AllEvents() {
       })
     }
     </div>
+    <Footer />
+    </>
   )
 }
 
