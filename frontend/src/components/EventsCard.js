@@ -8,15 +8,15 @@ import Slider from 'react-slick'
 
 
 function EventsCard({name, id, image, category, country, startTime}) {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 4000
-  };
+  // const settings = {
+  //   dots: true,
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 4,
+  //   slidesToScroll: 1,
+  //   autoplay: true,
+  //   autoplaySpeed: 4000
+  // };
   return (
     // <div className='bg-white shadow-md p-2 rounded'>
     //   <div className='absolute gap-8 mx-auto w-[240px] h-[180px]'>
@@ -29,7 +29,7 @@ function EventsCard({name, id, image, category, country, startTime}) {
     //   </div>
     //   <h3>{country}</h3>
     // </div>
-    <Slider {...settings} className=''>
+    // <Slider {...settings} className=''>
       <Link to={`menu/${id}`}>
     <span className=' shadow-md p-4 rounded-md'>
     <div className='relative'>
@@ -49,7 +49,7 @@ function EventsCard({name, id, image, category, country, startTime}) {
     <p className='bg-blue-600 hover:bg-blue-700 w-full p-2 text-white flex justify-center'>Buy Ticket</p>
     </span>
     </Link>
-    </Slider>
+    // </Slider>
   )
 }
 
