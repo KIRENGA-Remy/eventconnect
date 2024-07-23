@@ -82,7 +82,7 @@ export default function Landing() {
       </div> */}
         {/* <Courses /> */}
 
-        <div className='flex flex-row justify-center w-full h-full bg-white shadow-md gap-8 cursor-pointer'>
+        <div className='flex justify-center w-full h-full flex-col md:flex-row gap-8 cursor-pointer'>
         {
           homeEventsCardList[0] && homeEventsCardList.map(el => {
             return(
