@@ -31,7 +31,7 @@ function EventsCard({name, id, image, category, country, startTime}) {
     // </div>
     // <Slider {...settings} className=''>
       <Link to={`menu/${id}`}>
-    <span className='shadow-md p-4 rounded-md'>
+    <span className='shadow-md p-4 rounded-md w-[300px] h-[340px]'>
     <div className='relative'>
           <img src={image} className='w-[300px] h-[180px] object-fill my-2' />
           <span className='absolute bottom-0 right-0 w-max h-max z-10 bg-green-500 text-white p-2 rounded-t-md rounded-tr-none font-semibold'>Upcoming</span>

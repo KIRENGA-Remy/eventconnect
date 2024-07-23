@@ -27,13 +27,13 @@ export default function Landing() {
         <Hero />
         <Companies />
         {/* <div className=' flex justify-center w-full h-full flex-col md:flex-row gap-8 cursor-pointer'>
-        <span className=' shadow-md p-4 rounded-md'>
+        <span className=' shadow-md p-4 rounded-md w-[300px] h-[340px]'>
           <div className='relative'>
           <img src={genz} className='w-[300px] h-[180px] object-fill my-2' />
           <span className='absolute bottom-0 right-0 w-max h-max z-10 bg-green-500 text-white p-2 rounded-t-md rounded-tr-none font-semibold'>Upcoming</span>
           </div>
           <div className='flex flex-row justify-between'>
-          <p><span className='font-bold text-2xl text-[#20B486]'>Argentina vs Colombia</span></p><h1><span className='px-1 font-bold'>At</span>12:00</h1>
+          <p><span className='font-bold text-2xl text-[#20B486]'>Argentina vs Colombia gggggg jjjjjj kkkkkk</span></p><h1><span className='px-1 font-bold'>At</span>12:00</h1>
           </div>
           <div className='flex flex-row justify-between py-2'>
             <div className='flex flex-col'>
@@ -82,7 +82,7 @@ export default function Landing() {
       </div> */}
         {/* <Courses /> */}
 
-        <div className='flex justify-center w-full h-[360px] flex-col md:flex-row gap-8 cursor-pointer'>
+        <div className='flex justify-center w-full h-full flex-col md:flex-row gap-8 cursor-pointer'>
         {
           homeEventsCardList[0] && homeEventsCardList.map(el => {
             return(
