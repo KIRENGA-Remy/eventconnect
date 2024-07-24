@@ -31,7 +31,7 @@ function EventsCard({name, id, image, category, country, startTime}) {
     // </div>
     // <Slider {...settings} className=''>
       <Link to={`menu/${id}`}>
-    <span className='shadow-md p-4 rounded-md w-[300px] h-[340px]'>
+    <span className='shadow-md p-4 rounded-md w-full h-full'>
     <div className='relative'>
           <img src={image} className='w-[300px] h-[180px] object-fill my-2' />
           <span className='absolute bottom-0 right-0 w-max h-max z-10 bg-green-500 text-white p-2 rounded-t-md rounded-tr-none font-semibold'>Upcoming</span>
@@ -41,7 +41,7 @@ function EventsCard({name, id, image, category, country, startTime}) {
     </div>
     <div className='flex flex-row justify-between py-2'>
       <div className='flex flex-col'>
-      <p><span className='pr-1 '>Country:</span>{country}</p>
+      <p><span className='pr-1 font-bold'>Country:</span>{country}</p>
       <p><span className='pr-1 font-bold'>Category:</span>{category}</p>
     </div>
     <p className='py-3 px-4  rounded-md bg-[#20B486] hover:bg-white border hover:border-[#20B486] hover:text-[#20B486] text-white font-bold cursor-pointer'>Book</p>
