@@ -23,7 +23,7 @@ export default function Landing() {
   return (
     <div>
       <Navbar />
-      <div className=" max-w-screen-xl px-4 mt-16 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-screen-xl px-4 mt-16 sm:px-6 lg:px-8">
         <Hero />
         <Companies />
         {/* <div className=' flex justify-center w-full h-full flex-col md:flex-row gap-8 cursor-pointer'>
