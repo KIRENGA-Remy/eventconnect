@@ -10,7 +10,7 @@ function AllEvents() {
   return (
     <>    
     <Navbar />
-    <div className=' flex justify-center w-full h-full flex-col md:flex-row gap-8 my-28 cursor-pointer'>
+    <div className=' flex justify-center w-full h-full flex-col md:flex-row md:gap-8 gap-2 my-28 mx-4 cursor-pointer'>
     {
       homeEventsCardList[0] && homeEventsCardList.map(el => {
         return(
