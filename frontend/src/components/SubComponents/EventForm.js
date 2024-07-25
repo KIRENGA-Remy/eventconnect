@@ -15,14 +15,11 @@ const EventForm = () => {
     location: {
       address: '',
       city: '',
-      state: '',
       country: '',
-      postalCode: ''
     },
     categories: '',
     ticketInfo: {
       price: '',
-      currency: 'USD',
       availability: ''
     },
     eventimages: ''
@@ -47,16 +44,6 @@ const EventForm = () => {
       }));
     }
   };
-
-//   const handleImageChange =  async(e)=>{
-//     const data = await ImagetoBase64(e.target.files[0])
-//     setEventData((preve)=>{
-//         return{
-//           ...preve,
-//           eventimages : data
-//         }
-//     })
-// }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -93,11 +80,6 @@ const EventForm = () => {
       setLoading(false);
     }
   };
-
-  // const handleReturnHome = (e) => {
-  //   e.preventDefault();
-  //   navigate("/dashboard", { replace: true });
-  // };
 
   const handleUploadProfileImage =  async(e) => {
     const data = await ImagetoBase64(e.target.files[0])
@@ -191,19 +173,6 @@ const EventForm = () => {
               placeholder='District'
               className="w-full p-3 border rounded-md"
               value={eventData.location.city}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-lg font-semibold mb-2" htmlFor="state">State</label>
-            <input
-              type="text"
-              id="state"
-              name="location.state"
-              placeholder='Province'
-              className="w-full p-3 border rounded-md"
-              value={eventData.location.state}
               onChange={handleChange}
               required
             />
@@ -418,19 +387,6 @@ const EventForm = () => {
             </select>
           </div>
           <div>
-            <label className="block text-lg font-semibold mb-2" htmlFor="postalCode">Zip/Postal Code*</label>
-            <input
-              type="text"
-              id="postalCode"
-              name="location.postalCode"
-              placeholder='0000'
-              className="w-full p-3 border rounded-md"
-              value={eventData.location.postalCode}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
             <label className="block text-lg font-semibold mb-2" htmlFor="categories">Categories</label>
             <select
               id="categories"
@@ -469,23 +425,6 @@ const EventForm = () => {
             />
           </div>
           <div>
-            <label className="block text-lg font-semibold mb-2" htmlFor="currency">Currency</label>
-            <select
-              id="currency"
-              name="ticketInfo.currency"
-              className="w-full p-3 border rounded-md"
-              value={eventData.ticketInfo.currency}
-              onChange={handleChange}
-              required
-            >
-              <option value="USD">USD</option>
-              <option value="EUR">EUR</option>
-              <option value="GBP">GBP</option>
-              <option value="RWF">RWF</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-          <div>
             <label className="block text-lg font-semibold mb-2" htmlFor="availability">Ticket Availability</label>
             <input
               type="number"
@@ -512,27 +451,11 @@ const EventForm = () => {
             />
             </div>
           <div className="col-span-2">
-            {/* <label className="block text-lg font-semibold mb-2" htmlFor="eventimages">Event Images */}
-              {/* <div className="flex items-center justify-center w-full p-3 border rounded-md cursor-pointer">
-                <IoCloudUploadOutline className="mr-2" /> <p className="text-sm text-black">Upload</p>
-              </div> */}
-              {/* <input
-                type="file"
-                id="eventimages"
-                name="eventimages"
-                accept='image/*'
-                className="hidden"
-                onChange={handleImageChange}
-                required 
-              /> */}
-
-<div className='flex flex-col'>
+       <div className='flex flex-col'>
       <p className='text-black py-1'>Event Images</p>
       <input type={"file"} name='userprofile' accept='image/*' id='userprofile'
         onChange={handleUploadProfileImage} className='p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700'/>
       </div>
-
-            {/* </label> */}
           </div>
         </div>
         <button

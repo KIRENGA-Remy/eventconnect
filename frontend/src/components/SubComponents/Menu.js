@@ -31,7 +31,6 @@
 //                 <p><span className='font-bold'>City: </span>{eventDisplay.location.city}</p>
 //                 <p><span className='font-bold'>State: </span>{eventDisplay.location.state}</p>
 //                 <p><span className='font-bold'>Country: </span>{eventDisplay.location.country}</p>
-//                 <p><span className='font-bold'>Postalcode: </span>{eventDisplay.location.postalCode}</p>
 //             </div>
 //         </div>
 //         <div className='p-2'>
@@ -85,9 +84,14 @@ import  gen  from '../../assets/genz.jpg'
 import Navbar from '../Navbar';
 import Footer from '../Footer';
 import Booking from './Booking';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 // import reviews from '../../reviews/reviews'
 
 function Menu() {
+  const params = useParams();
+  const eventData = useSelector((state) => state.event.eventList);
+  const eventDisplay = eventData.filter(el => el._id === params.filterby)[0]
   const [ eventRating, setEventRating] = useState(0);
   const submitHandler = () => {};
   const reviewMsgRef = useRef();
@@ -96,19 +100,19 @@ function Menu() {
     <Navbar />
     <div className='flex m-32 w-full'>
       <div className='flex flex-row w-10/12'>
-      <div className=''>
-        <img src={gen} alt='gen' className='w-[550px] h-[350px] object-fill rounded-md mb-4' />
-        <div className='tour_info border p-5 rounded-md w-[550px]'>
-          <h2 className='font-extrabold'>Name</h2>
+      <div className='border rounded-md'>
+        <img src={eventDisplay.eventimages} alt='gen' className='w-[550px] h-[350px] object-fill rounded-md mb-4' />
+        <div className='tour_info p-5 w-[550px]'>
+          <h2 className='font-extrabold'>{eventDisplay.eventname}</h2>
           <div className='flex flex-col gap-5'>
             <span className='tour_rating flex items-center justify-between'>
               <div className='flex gap-2'>
               <i>Icon</i>
-              <span>21/04/2024</span>
+              <span>{eventDisplay.date}</span>
               </div>
               <div className='flex gap-2'>
               <i className='font-semibold'>At</i>
-              <span>12:00</span>
+              <span>{eventDisplay.startTime}</span>
               </div>
             </span>
             {/* <span>
@@ -117,23 +121,17 @@ function Menu() {
           </div>
           <div className='tour_extra-details py-4 flex gap-8'>
             <span className='flex gap-1'>
-              <i>icon</i>address
+              <i>icon</i>{eventDisplay.location.address}
             </span>
             <span className='flex gap-1'>
-              <i>icon</i>city
+              <i>icon</i>{eventDisplay.location.city}
             </span>
             <span className='flex gap-1'>
-              <i>icon</i>state
-            </span>
-            <span className='flex gap-1'>
-              <i>icon</i>country
-            </span>
-            <span className='flex gap-1'>
-              <i>icon</i>postalcode
+              <i>icon</i>{eventDisplay.location.country}
             </span>
           </div>
           <h5 className='font-bold underline'>Description</h5>
-          <p>descgggggggggggggggggg ggggggggggggggggggggggggggggggggggggg gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg ggggggggggggggggggggggggg </p>
+          <p>{eventDisplay.description}</p>
         </div>
         <div className='tour_reviews mt-4'>
           <h4 className='p-4 font-semibold'>Reviews (3 reviews)</h4>
@@ -165,7 +163,7 @@ function Menu() {
                />
                <button
                type='submit'
-               className='px-4 py-2 mx-2 rounded-3xl bg-[#20B486] hover:bg-white border hover:border-[#20B486] hover:text-[#20B486] text-white font-bold'>
+               className='px-4 py-2 mx-2 rounded-3xl bg-blue-700 hover:bg-white border hover:border-blue-700 hover:text-blue-700 text-white font-bold'>
                 Submit
                </button>
             </div>
@@ -214,8 +212,8 @@ function Menu() {
           </div>
         </div>
       </div>
-      <div className='p-4 border w-10/12'>
-      <Booking />
+      <div className='p-8 border mx-3 rounded-md w-10/12'>
+      <Booking eventDisplay={eventDisplay} />
       </div>
       </div>
     </div>

@@ -26,7 +26,7 @@ export default function Landing() {
       <div className="mx-auto max-w-screen-xl px-4 mt-16 sm:px-6 lg:px-8">
         <Hero />
         <Companies />
-        <div className=' flex justify-center w-full h-full flex-col md:flex-row gap-8 cursor-pointer'>
+        {/* <div className=' flex justify-center w-full h-full flex-col md:flex-row gap-8 cursor-pointer'>
         <span className=' shadow-md p-4 rounded-md w-[300px] h-[340px]'>
           <div className='relative'>
           <img src={genz} className='w-[300px] h-[180px] object-fill my-2' />
@@ -79,10 +79,10 @@ export default function Landing() {
           <p className='bg-blue-600 hover:bg-blue-700 w-full p-2 text-white flex justify-center font-semibold'>Buy Ticket</p>
           </span>
           
-      </div>
+      </div> */}
         {/* <Courses /> */}
 
-        {/* <div className='flex justify-center w-full h-full flex-col md:flex-row gap-8 cursor-pointer'>
+        <div className='flex justify-center w-full h-full flex-col md:flex-row gap-8 cursor-pointer'>
         {
           homeEventsCardList[0] && homeEventsCardList.map(el => {
             return(
@@ -98,7 +98,7 @@ export default function Landing() {
             )
           })
         }
-        </div> */}
+        </div>
 
 
 
