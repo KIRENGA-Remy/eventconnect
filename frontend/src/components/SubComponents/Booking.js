@@ -61,10 +61,10 @@ function Booking({ eventDisplay }) {
     <div className="booking -m-4 p-4">
       <div className="booking_top flex items-center border-b-2 pb-8 justify-between">
         <h3>
-          <span className="text-3xl pr-2 font-bold">${price}</span>/per person
+          <span className="text-3xl pr-2 font-bold">${eventDisplay.price}</span>/per person
         </h3>
         <span className="tour_rating flex items-center">
-          <i><CiStar /></i>
+          <i className='text-blue-600 text-xl'><CiStar /></i>
           {/* {avgRating === 0 ? null : avgRating} ({reviews?.length}) */}
         </span>
       </div>
@@ -92,7 +92,7 @@ function Booking({ eventDisplay }) {
             onChange={handleChange}
           />
           <input
-            type="number"
+            type="text"
             name="phone"
             value={credentials.phone}
             className="border border-t-0 border-l-0 border-r-0 w-full pb-2"
@@ -133,7 +133,7 @@ function Booking({ eventDisplay }) {
       <div className="flex flex-col">
         <div className="flex flex-row justify-between font-semibold py-4 text-gray-600">
           <span className="pr-2 text-lg">
-            ${price} x {credentials.guestSize} person
+            ${eventDisplay.price} x {credentials.guestSize} person
           </span>
           <span className="pr-2 text-lg">${multiplePrice}</span>
         </div>

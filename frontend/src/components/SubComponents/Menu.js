@@ -83,7 +83,7 @@ import Footer from '../Footer';
 import Booking from './Booking';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { CiStar } from "react-icons/ci";
+import { CiStar } from "react-<CiStar />s/ci";
 
 function Menu() {
   const params = useParams();
@@ -104,51 +104,51 @@ function Menu() {
           <div className='border rounded-md'>
             <img src={eventDisplay.eventimages} alt='gen' className='w-[550px] h-[350px] object-fill rounded-md mb-4' />
             <div className='tour_info p-5 w-[550px]'>
-              <h2 className='font-extrabold'>{eventDisplay.eventname}</h2>
+              <h2 className='font-extrabold text-2xl py-4'>{eventDisplay.eventname}</h2>
               <div className='flex flex-col gap-5'>
                 <span className='tour_rating flex items-center justify-between'>
-                  <div className='flex gap-2'>
-                    <i>Icon</i>
+                  <div className='flex gap-2 text-xl'>
+                    <i className='text-blue-600'><CiStar /></i>
                     <span>{formattedDate}</span>
                   </div>
-                  <div className='flex gap-2'>
+                  <div className='flex gap-2 text-xl'>
                     <i className='font-semibold'>At</i>
                     <span>{eventDisplay.startTime}</span>
                   </div>
                 </span>
               </div>
               <div className='tour_extra-details py-4 flex gap-8'>
-                <span className='flex gap-1'>
-                  <i>icon</i>{eventDisplay.location.address}
+                <span className='flex gap-1 text-xl'>
+                  <i className='text-blue-600'><CiStar /></i>{eventDisplay.location.address}
                 </span>
-                <span className='flex gap-1'>
-                  <i>icon</i>{eventDisplay.location.city}
+                <span className='flex gap-1 text-xl'>
+                  <i className='text-blue-600'><CiStar /></i>{eventDisplay.location.city}
                 </span>
-                <span className='flex gap-1'>
-                  <i>icon</i>{eventDisplay.location.country}
+                <span className='flex gap-1 text-xl'>
+                  <i className='text-blue-600'><CiStar /></i>{eventDisplay.location.country}
                 </span>
               </div>
-              <h5 className='font-bold underline'>Description</h5>
+              <h5 className='font-bold underline text-2xl'>Description</h5>
               <p>{eventDisplay.description}</p>
             </div>
             <div className='tour_reviews mt-4'>
-              <h4 className='p-4 font-semibold'>Reviews (3 reviews)</h4>
+              <h4 className='p-4 font-semibold text-2xl underline'>Reviews (3 reviews)</h4>
               <form onSubmit={submitHandler}>
-                <div className='flex items-center gap-1 mb-4 rating_group p-4'>
+                <div className='flex items-center justify-center gap-3 mb-4 rating_group p-4'>
                   <span onClick={() => setEventRating(1)}>
-                    1<i><CiStar /></i>
+                    1<i className='text-blue-600'><CiStar /></i>
                   </span>
                   <span onClick={() => setEventRating(2)}>
-                    2<i><CiStar /></i>
+                    2<i className='text-blue-600'><CiStar /></i>
                   </span>
                   <span onClick={() => setEventRating(3)}>
-                    3<i><CiStar /></i>
+                    3<i className='text-blue-600'><CiStar /></i>
                   </span>
                   <span onClick={() => setEventRating(4)}>
-                    4<i><CiStar /></i>
+                    4<i className='text-blue-600'><CiStar /></i>
                   </span>
                   <span onClick={() => setEventRating(5)}>
-                    5<i><CiStar /></i>
+                    5<i className='text-blue-600'><CiStar /></i>
                   </span>
                 </div>
                 <div className='review_input border rounded-3xl p-1 m-4 flex justify-between'>
@@ -161,7 +161,7 @@ function Menu() {
                   />
                   <button
                     type='submit'
-                    className='px-4 py-2 mx-2 rounded-3xl bg-blue-700 hover:bg-white border hover:border-blue-700 hover:text-blue-700 text-white font-bold'>
+                    className='px-4 py-2 mx-2 rounded-3xl bg-green-500 hover:bg-white border hover:border-green-500 hover:text-green-500 text-white font-bold'>
                     Submit
                   </button>
                 </div>
@@ -169,12 +169,12 @@ function Menu() {
                   <div className=' flex flex-row gap-4'>
                     <img src={gen} alt='gen' className='w-[40px] h-[40px] rounded-full object-cover' />
                     <div className='flex flex-col'>
-                      <h3 className='font-semibold'>Remy</h3>
+                      <h3 className='font-semibold text-xl'>Remy</h3>
                       <p className=''>12/09/2024</p>
                       <span className='py-2'>Comment is placed here ... </span>
                     </div>
                   </div>
-                  <span><CiStar /> 4.5</span>
+                  <span className='flex flex-row text-blue-600'><CiStar /> 4.5</span>
                 </div>
               </form>
             </div>
