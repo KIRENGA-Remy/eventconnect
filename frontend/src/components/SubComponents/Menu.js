@@ -83,7 +83,7 @@ import Footer from '../Footer';
 import Booking from './Booking';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { CiStar } from "react-<CiStar />s/ci";
+import { CiStar } from 'react-icons/ci';
 
 function Menu() {
   const params = useParams();
