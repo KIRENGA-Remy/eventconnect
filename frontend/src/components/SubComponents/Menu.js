@@ -76,150 +76,117 @@
 
 
 
-
-import React, { useRef, useState } from 'react'
-import  gen  from '../../assets/genz.jpg'
-// import { useSelector } from 'react-redux'
-// import { Link, useParams } from 'react-router-dom'
+import React, { useRef, useState } from 'react';
+import gen from '../../assets/genz.jpg';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
 import Booking from './Booking';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-// import reviews from '../../reviews/reviews'
+import { CiStar } from "react-icons/ci";
 
 function Menu() {
   const params = useParams();
   const eventData = useSelector((state) => state.event.eventList);
-  const eventDisplay = eventData.filter(el => el._id === params.filterby)[0]
-  const [ eventRating, setEventRating] = useState(0);
+  const eventDisplay = eventData.filter(el => el._id === params.filterby)[0];
+  const [eventRating, setEventRating] = useState(0);
   const submitHandler = () => {};
   const reviewMsgRef = useRef();
+
+  // Convert the ISO date string to a Date object and then to the desired format
+  const formattedDate = new Date(eventDisplay.date).toISOString().split('T')[0];
+
   return (
     <>
-    <Navbar />
-    <div className='flex m-32 w-full'>
-      <div className='flex flex-row w-10/12'>
-      <div className='border rounded-md'>
-        <img src={eventDisplay.eventimages} alt='gen' className='w-[550px] h-[350px] object-fill rounded-md mb-4' />
-        <div className='tour_info p-5 w-[550px]'>
-          <h2 className='font-extrabold'>{eventDisplay.eventname}</h2>
-          <div className='flex flex-col gap-5'>
-            <span className='tour_rating flex items-center justify-between'>
-              <div className='flex gap-2'>
-              <i>Icon</i>
-              <span>{eventDisplay.date}</span>
-              </div>
-              <div className='flex gap-2'>
-              <i className='font-semibold'>At</i>
-              <span>{eventDisplay.startTime}</span>
-              </div>
-            </span>
-            {/* <span>
-              <i>icon</i>address
-            </span> */}
-          </div>
-          <div className='tour_extra-details py-4 flex gap-8'>
-            <span className='flex gap-1'>
-              <i>icon</i>{eventDisplay.location.address}
-            </span>
-            <span className='flex gap-1'>
-              <i>icon</i>{eventDisplay.location.city}
-            </span>
-            <span className='flex gap-1'>
-              <i>icon</i>{eventDisplay.location.country}
-            </span>
-          </div>
-          <h5 className='font-bold underline'>Description</h5>
-          <p>{eventDisplay.description}</p>
-        </div>
-        <div className='tour_reviews mt-4'>
-          <h4 className='p-4 font-semibold'>Reviews (3 reviews)</h4>
-          <form onSubmit={submitHandler}>
-            <div className='flex items-center gap-1 mb-4 rating_group p-4'>
-              <span onClick={() => setEventRating(1)}>
-                1<i>star icon</i>
-              </span>
-              <span onClick={() => setEventRating(2)}>
-                2<i>star icon</i>
-              </span>
-              <span onClick={() => setEventRating(3)}>
-                3<i>star icon</i>
-              </span>
-              <span onClick={() => setEventRating(4)}>
-                4<i>star icon</i>
-              </span>
-              <span onClick={() => setEventRating(5)}>
-                5<i>star icon</i>
-              </span>
-            </div>
-            <div className='review_input border rounded-3xl p-1 m-4 flex justify-between'>
-              <input
-              type='text'
-              ref={reviewMsgRef}
-              placeholder='Share your thoughts'
-              required
-              className='px-5'
-               />
-               <button
-               type='submit'
-               className='px-4 py-2 mx-2 rounded-3xl bg-blue-700 hover:bg-white border hover:border-blue-700 hover:text-blue-700 text-white font-bold'>
-                Submit
-               </button>
-            </div>
-            <div className='flex justify-between p-4'>
-            <div className=' flex flex-row gap-4'>
-              <img src={gen} alt='gen' className='w-[40px] h-[40px] rounded-full object-cover' />
-              <div className='flex flex-col'>
-                <h3 className='font-semibold'>Remy</h3>
-                <p className=''>12/09/2024</p>
-                <span className='py-2'>Comment is placed here ... </span>
-              </div>
-            </div>
-            <span>icon 4.5</span>
-            </div>
-          </form>
-          {/* <div className='user_reviews'>
-            {
-              reviews?.map(review => (
-                <div className='review_item'>
-                  <img src='avatar' alt='avatar' />
-                  <div className='w-100'>
-                    <div className='flex items-center justify-between'>
-                      <div>
-                        <h5>remy</h5>
-                        <p>
-                          {
-                            new Date("01-18-2023").toLocaleDateString(
-                              "en-US",
-                              // options
-                            )
-                          }
-                        </p>
-                      </div>
-                      <span className='flex items-center'>
-                        5<i>star icon</i>
-                      </span>
-                    </div>
-                    <h6>Amazing event</h6>
+      <Navbar />
+      <div className='flex m-32 w-full'>
+        <div className='flex flex-row w-10/12'>
+          <div className='border rounded-md'>
+            <img src={eventDisplay.eventimages} alt='gen' className='w-[550px] h-[350px] object-fill rounded-md mb-4' />
+            <div className='tour_info p-5 w-[550px]'>
+              <h2 className='font-extrabold'>{eventDisplay.eventname}</h2>
+              <div className='flex flex-col gap-5'>
+                <span className='tour_rating flex items-center justify-between'>
+                  <div className='flex gap-2'>
+                    <i>Icon</i>
+                    <span>{formattedDate}</span>
                   </div>
+                  <div className='flex gap-2'>
+                    <i className='font-semibold'>At</i>
+                    <span>{eventDisplay.startTime}</span>
+                  </div>
+                </span>
+              </div>
+              <div className='tour_extra-details py-4 flex gap-8'>
+                <span className='flex gap-1'>
+                  <i>icon</i>{eventDisplay.location.address}
+                </span>
+                <span className='flex gap-1'>
+                  <i>icon</i>{eventDisplay.location.city}
+                </span>
+                <span className='flex gap-1'>
+                  <i>icon</i>{eventDisplay.location.country}
+                </span>
+              </div>
+              <h5 className='font-bold underline'>Description</h5>
+              <p>{eventDisplay.description}</p>
+            </div>
+            <div className='tour_reviews mt-4'>
+              <h4 className='p-4 font-semibold'>Reviews (3 reviews)</h4>
+              <form onSubmit={submitHandler}>
+                <div className='flex items-center gap-1 mb-4 rating_group p-4'>
+                  <span onClick={() => setEventRating(1)}>
+                    1<i><CiStar /></i>
+                  </span>
+                  <span onClick={() => setEventRating(2)}>
+                    2<i><CiStar /></i>
+                  </span>
+                  <span onClick={() => setEventRating(3)}>
+                    3<i><CiStar /></i>
+                  </span>
+                  <span onClick={() => setEventRating(4)}>
+                    4<i><CiStar /></i>
+                  </span>
+                  <span onClick={() => setEventRating(5)}>
+                    5<i><CiStar /></i>
+                  </span>
                 </div>
-              ))
-            }
-          </div> */}
-          <div>
-
+                <div className='review_input border rounded-3xl p-1 m-4 flex justify-between'>
+                  <input
+                    type='text'
+                    ref={reviewMsgRef}
+                    placeholder='Share your thoughts'
+                    required
+                    className='px-5'
+                  />
+                  <button
+                    type='submit'
+                    className='px-4 py-2 mx-2 rounded-3xl bg-blue-700 hover:bg-white border hover:border-blue-700 hover:text-blue-700 text-white font-bold'>
+                    Submit
+                  </button>
+                </div>
+                <div className='flex justify-between p-4'>
+                  <div className=' flex flex-row gap-4'>
+                    <img src={gen} alt='gen' className='w-[40px] h-[40px] rounded-full object-cover' />
+                    <div className='flex flex-col'>
+                      <h3 className='font-semibold'>Remy</h3>
+                      <p className=''>12/09/2024</p>
+                      <span className='py-2'>Comment is placed here ... </span>
+                    </div>
+                  </div>
+                  <span><CiStar /> 4.5</span>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div className='p-8 border mx-3 rounded-md w-10/12'>
+            <Booking eventDisplay={{ price: eventDisplay.price, eventName: eventDisplay.eventname }} />
           </div>
         </div>
       </div>
-      <div className='p-8 border mx-3 rounded-md w-10/12'>
-      <Booking eventDisplay={eventDisplay} />
-      </div>
-      </div>
-    </div>
-    <Footer />
+      <Footer />
     </>
-  )
+  );
 }
 
 export default Menu;

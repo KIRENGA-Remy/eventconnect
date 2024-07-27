@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+import { CiStar } from 'react-icons/ci';
+import { useSelector } from 'react-redux';
 
 function Booking({ eventDisplay }) {
+  const userData = useSelector(state => state.user);
   const { price, eventName } = eventDisplay;
   const [credentials, setCredentials] = useState({
     userId: '',
@@ -19,7 +22,7 @@ function Booking({ eventDisplay }) {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
-  const handleClick = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/booking`, {
@@ -33,7 +36,8 @@ function Booking({ eventDisplay }) {
           bookAt: credentials.bookAt,
           guestSize: credentials.guestSize,
           phone: credentials.phone,
-          eventName: eventName
+          eventName: eventName,
+          userId: userData._id
         })
       });
       const dataRes = await response.json();
@@ -49,7 +53,7 @@ function Booking({ eventDisplay }) {
     }
   };
 
-  const serviceFee = 10;
+  const serviceFee = 10
   const multiplePrice = Number(price) * Number(credentials.guestSize);
   const totalAmount = multiplePrice + serviceFee;
 
@@ -60,13 +64,13 @@ function Booking({ eventDisplay }) {
           <span className="text-3xl pr-2 font-bold">${price}</span>/per person
         </h3>
         <span className="tour_rating flex items-center">
-          <i>star icon</i>
+          <i><CiStar /></i>
           {/* {avgRating === 0 ? null : avgRating} ({reviews?.length}) */}
         </span>
       </div>
       <div className="booking_form pt-8">
         <h5 className="font-bold text-2xl pb-4">Information</h5>
-        <form className="booking_info-form border p-8 flex flex-col gap-8" onSubmit={handleClick}>
+        <form className="booking_info-form border p-8 flex flex-col gap-8" onSubmit={handleSubmit}>
           <input
             type="text"
             name="fullName"
