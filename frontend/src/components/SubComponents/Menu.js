@@ -100,11 +100,12 @@ function Menu() {
     <>
       <Navbar />
       <div className='flex m-32 w-full'>
-        <div className='flex flex-row w-10/12'>
+        <div className='md:flex md:flex-row flex flex-col w-10/12'>
           <div className='border rounded-md'>
             <img src={eventDisplay.eventimages} alt='gen' className='w-[550px] h-[350px] object-fill rounded-md mb-4' />
             <div className='tour_info p-5 w-[550px]'>
-              <h2 className='font-extrabold text-2xl py-4'>{eventDisplay.eventname}</h2>
+            <h2 className='mb-4 -mt-2 text-xl'>{eventDisplay.categories}</h2>
+              <h2 className='font-extrabold text-2xl py-2'>{eventDisplay.eventname}</h2>
               <div className='flex flex-col gap-5'>
                 <span className='tour_rating flex items-center justify-between'>
                   <div className='flex gap-2 text-xl'>

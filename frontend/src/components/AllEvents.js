@@ -10,7 +10,7 @@ function AllEvents() {
   return (
     <>    
     <Navbar />
-    <div className=' flex justify-center w-full h-full flex-col md:flex-row md:gap-8 gap-2 my-28 mx-4 cursor-pointer'>
+    <div className='flex justify-center w-full h-full flex-col md:flex md:flex-row md:gap-8 gap-2 my-28 mx-4 cursor-pointer'>
     {
       homeEventsCardList[0] && homeEventsCardList.map(el => {
         return(
@@ -30,7 +30,7 @@ function AllEvents() {
     </div>
     <div className='flex flex-row'>
     <Link to='../'><p className='py-3 px-4 mr-2 rounded-md bg-blue-600 hover:bg-white border hover:border-[#20B486] hover:text-[#20B486] text-white cursor-pointer'>Cancel</p></Link>
-    <p className='py-3 px-4  rounded-md bg-[#20B486] hover:bg-white border hover:border-[#20B486] hover:text-[#20B486] text-white font-bold cursor-pointer'>Book</p>
+    <Link to={`menu/${el._id}`}><p className='py-3 px-4  rounded-md bg-[#20B486] hover:bg-white border hover:border-[#20B486] hover:text-[#20B486] text-white font-bold cursor-pointer'>Book</p></Link>
     </div>
     </div>
     <p className='bg-blue-600 hover:bg-blue-700 w-full p-2 text-white flex justify-center'>Buy Ticket</p>
