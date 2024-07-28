@@ -6,6 +6,11 @@ import { useSelector } from 'react-redux';
 
 function Booking({ eventDisplay }) {
   const userData = useSelector(state => state.user);
+  console.log('userData Props event name:', userData);
+  console.log('userData Props event name:', userData._id);
+  console.log('Received Props:', eventDisplay);
+  console.log('Received Props:', eventDisplay.price);
+  console.log('Received Props:', eventDisplay.eventName);
   const { price, eventName } = eventDisplay;
   const [credentials, setCredentials] = useState({
     userId: '',

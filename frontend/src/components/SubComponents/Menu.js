@@ -92,6 +92,10 @@ function Menu() {
   const [eventRating, setEventRating] = useState(0);
   const submitHandler = () => {};
   const reviewMsgRef = useRef();
+  console.log('Event Display Props:', eventDisplay);
+  console.log('Event Display Props price:', eventDisplay.price);
+  console.log('Event Display Props event name:', eventDisplay.eventname);
+  console.log('Event Display Props event name:', eventDisplay.eventName);
 
   // Convert the ISO date string to a Date object and then to the desired format
   const formattedDate = new Date(eventDisplay.date).toISOString().split('T')[0];
