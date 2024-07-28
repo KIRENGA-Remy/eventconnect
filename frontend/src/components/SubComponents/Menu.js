@@ -120,13 +120,13 @@ function Menu() {
               </div>
               <div className='tour_extra-details py-4 flex gap-8'>
                 <span className='flex gap-1 text-xl'>
-                  <i className='text-blue-600'><CiStar /></i>{eventDisplay.location.address}
+                  <i className='text-blue-600 text-2xl'><CiStar /></i>{eventDisplay.location.address}
                 </span>
                 <span className='flex gap-1 text-xl'>
-                  <i className='text-blue-600'><CiStar /></i>{eventDisplay.location.city}
+                  <i className='text-blue-600 text-2xl'><CiStar /></i>{eventDisplay.location.city}
                 </span>
                 <span className='flex gap-1 text-xl'>
-                  <i className='text-blue-600'><CiStar /></i>{eventDisplay.location.country}
+                  <i className='text-blue-600 text-2xl'><CiStar /></i>{eventDisplay.location.country}
                 </span>
               </div>
               <h5 className='font-bold underline text-2xl'>Description</h5>
@@ -136,20 +136,20 @@ function Menu() {
               <h4 className='p-4 font-semibold text-2xl underline'>Reviews (3 reviews)</h4>
               <form onSubmit={submitHandler}>
                 <div className='flex items-center justify-center gap-3 mb-4 rating_group p-4'>
-                  <span onClick={() => setEventRating(1)}>
-                    1<i className='text-blue-600'><CiStar /></i>
+                  <span className='p-1 md:px-4' onClick={() => setEventRating(1)}>
+                    1<i className='text-blue-600 text-2xl'><CiStar /></i>
                   </span>
-                  <span onClick={() => setEventRating(2)}>
-                    2<i className='text-blue-600'><CiStar /></i>
+                  <span className='p-1 md:px-4' onClick={() => setEventRating(2)}>
+                    2<i className='text-blue-600 text-2xl'><CiStar /></i>
                   </span>
-                  <span onClick={() => setEventRating(3)}>
-                    3<i className='text-blue-600'><CiStar /></i>
+                  <span className='p-1 md:px-4' onClick={() => setEventRating(3)}>
+                    3<i className='text-blue-600 text-2xl'><CiStar /></i>
                   </span>
-                  <span onClick={() => setEventRating(4)}>
-                    4<i className='text-blue-600'><CiStar /></i>
+                  <span className='p-1 md:px-4' onClick={() => setEventRating(4)}>
+                    4<i className='text-blue-600 text-2xl'><CiStar /></i>
                   </span>
-                  <span onClick={() => setEventRating(5)}>
-                    5<i className='text-blue-600'><CiStar /></i>
+                  <span className='p-1 md:px-4' onClick={() => setEventRating(5)}>
+                    5<i className='text-blue-600 text-2xl'><CiStar /></i>
                   </span>
                 </div>
                 <div className='review_input border rounded-3xl p-1 m-4 flex justify-between'>
