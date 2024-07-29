@@ -74,7 +74,6 @@ const EventForm = () => {
         toast.error(dataRes.message);
       }
     } catch (error) {
-      console.error(error);
       toast.error("Event creation failed. Network issues, Please try again.");
     } finally {
       setLoading(false);

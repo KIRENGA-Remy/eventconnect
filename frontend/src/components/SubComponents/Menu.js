@@ -12,6 +12,7 @@ function Menu() {
   const eventData = useSelector((state) => state.event.eventList);
   const eventDisplay = eventData.filter(el => el._id === params.filterby)[0];
   const [eventRating, setEventRating] = useState(0);
+  const [loading, setLoading] = useState(false);
   const submitHandler = () => {};
   const reviewMsgRef = useRef();
 
@@ -22,6 +23,11 @@ function Menu() {
     <>
       <Navbar />
       <div className='flex m-32 w-full'>
+      {loading && (
+        <div className="fixed inset-0 bg-purple-500 bg-opacity-40 flex justify-center items-center z-10">
+          <div className="animate-spin rounded-full h-20 w-20 border-t-2 border-b-2 border-purple-900"></div>
+        </div>
+      )}
         <div className='md:flex md:flex-row flex flex-col w-10/12'>
           <div className='border rounded-md'>
             <img src={eventDisplay.eventimages} alt='gen' className='w-[550px] h-[350px] object-fill rounded-md mb-4' />
@@ -29,9 +35,9 @@ function Menu() {
             <h2 className='mb-4 -mt-2 text-xl'>{eventDisplay.categories}</h2>
               <h2 className='md:font-extrabold md:text-2xl md:py-2 font-extrabold text-2xl py-2 mx-1'>{eventDisplay.eventname}</h2>
               <div className='flex flex-col gap-5'>
-                <span className='md:flex md:items-center md:justify-between flex items-center justify-between w-[550px] mx-1'>
+                <span className='md:flex md:items-center md:justify-between flex items-center justify-between gap-6'>
                   <div className='flex gap-2 text-xl'>
-                    <i className='text-blue-600 font-bold'><CiStar /></i>
+                    <i className='text-blue-600 text-2xl font-bold'><CiStar /></i>
                     <span>{formattedDate}</span>
                   </div>
                   <div className='flex gap-2 text-xl'>
@@ -52,7 +58,7 @@ function Menu() {
                 </span>
               </div>
               <h5 className='font-bold underline text-2xl'>Description</h5>
-              <p className='w-[550px] mx-1 md:mr-2'>{eventDisplay.description}</p>
+              <p className='flex'>{eventDisplay.description}</p>
             </div>
             <div className='mt-4'>
               <h4 className='p-4 font-semibold text-2xl underline'>Reviews (3 reviews)</h4>
@@ -103,7 +109,7 @@ function Menu() {
             </div>
           </div>
           <div className='p-8 border mx-3 rounded-md w-10/12'>
-            <Booking eventDisplay={{ price: eventDisplay.ticketInfo.price, eventName: eventDisplay.eventname }} />
+            <Booking setLoading={{setLoading}} eventDisplay={{ price: eventDisplay.ticketInfo.price, eventName: eventDisplay.eventname }} />
           </div>
         </div>
       </div>

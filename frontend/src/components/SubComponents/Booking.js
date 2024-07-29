@@ -4,15 +4,16 @@ import { toast } from 'react-hot-toast';
 import { CiStar } from 'react-icons/ci';
 import { useSelector } from 'react-redux';
 
-function Booking({ eventDisplay }) {
+function Booking({ eventDisplay, setLoading }) {
   const userData = useSelector(state => state.user);
   const { price, eventName } = eventDisplay;
+  const {setLoading} = setLoading;
   const [credentials, setCredentials] = useState({
     userId: '',
     userEmail: '',
     eventName: '',
     fullName: '',
-    guestSize: '',
+    guestSize: '1',
     phone: '',
     bookAt: ''
   });
@@ -25,6 +26,7 @@ function Booking({ eventDisplay }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/booking`, {
         method: 'POST',
         headers: {
@@ -48,8 +50,9 @@ function Booking({ eventDisplay }) {
         toast.error(dataRes.message);
       }
     } catch (error) {
-      console.error(error);
       toast.error('Booking event failed. Network issues, Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -58,17 +61,17 @@ function Booking({ eventDisplay }) {
   const totalAmount = multiplePrice + serviceFee;
 
   return (
-    <div className="booking -m-4 p-4">
-      <div className="booking_top flex items-center border-b-2 pb-8 justify-between">
+    <div className=" -m-4 p-4">
+      <div className="flex items-center border-b-2 pb-8 justify-between">
         <h3>
           <span className="text-3xl pr-2 font-bold">${eventDisplay.price}</span>/per person
         </h3>
-        <span className="tour_rating flex items-center">
+        <span className="flex items-center">
           <i className='text-blue-600 font-bold text-xl'><CiStar /></i>
           {/* {avgRating === 0 ? null : avgRating} ({reviews?.length}) */}
         </span>
       </div>
-      <div className="booking_form pt-8">
+      <div className="pt-8">
         <h5 className="font-bold text-2xl pb-4">Information</h5>
         <form className="booking_info-form border p-8 flex flex-col gap-8" onSubmit={handleSubmit}>
           <input
