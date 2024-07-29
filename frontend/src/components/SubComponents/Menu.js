@@ -185,7 +185,7 @@ function Menu() {
             </div>
           </div>
           <div className='p-8 border mx-3 rounded-md w-10/12'>
-            <Booking eventDisplay={{ price: eventDisplay.price, eventName: eventDisplay.eventname }} />
+            <Booking eventDisplay={{ price: eventDisplay.ticketInfo.price, eventName: eventDisplay.eventname }} />
           </div>
         </div>
       </div>

@@ -138,7 +138,7 @@ function Booking({ eventDisplay }) {
       <div className="flex flex-col">
         <div className="flex flex-row justify-between font-semibold py-4 text-gray-600">
           <span className="pr-2 text-lg">
-            ${eventDisplay.price} ${price} x {credentials.guestSize} person
+            ${eventDisplay.price} x {credentials.guestSize} person
           </span>
           <span className="pr-2 text-lg">${multiplePrice}</span>
         </div>
