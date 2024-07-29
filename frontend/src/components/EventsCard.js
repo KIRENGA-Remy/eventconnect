@@ -30,7 +30,7 @@ function EventsCard({name, id, image, category, country, startTime}) {
     //   <h3>{country}</h3>
     // </div>
     // <Slider {...settings} className=''>
-      <Link to={`menu/${id}`}>
+      <Link to={`allevents/menu/${id}`}>
     <span className='shadow-md p-4 rounded-md w-full h-full'>
     <div className='relative'>
           <img src={image} className='w-[300px] h-[180px] object-fill my-2' />
