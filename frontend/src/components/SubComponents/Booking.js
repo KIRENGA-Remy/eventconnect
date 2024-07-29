@@ -69,7 +69,7 @@ function Booking({ eventDisplay }) {
           <span className="text-3xl pr-2 font-bold">${eventDisplay.price}</span>/per person
         </h3>
         <span className="tour_rating flex items-center">
-          <i className='text-blue-600 text-xl'><CiStar /></i>
+          <i className='text-blue-600 font-bold text-xl'><CiStar /></i>
           {/* {avgRating === 0 ? null : avgRating} ({reviews?.length}) */}
         </span>
       </div>
