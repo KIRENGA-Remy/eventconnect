@@ -112,7 +112,7 @@ function Menu() {
             </div>
           </div>
           <div className='p-8 border mx-3 rounded-md w-10/12'>
-            <Booking setLoading={{setLoading}} eventDisplay={{ price: eventDisplay.ticketInfo.price, eventName: eventDisplay.eventname }} />
+          <Booking setLoading={setLoading} eventDisplay={{ price: eventDisplay.ticketInfo.price, eventName: eventDisplay.eventname }} />
           </div>
         </div>
       </div>
