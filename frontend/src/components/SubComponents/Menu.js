@@ -103,7 +103,10 @@ function Menu() {
                       <span className='py-2'>Comment is placed here ... </span>
                     </div>
                   </div>
-                  <span className='flex flex-row text-blue-600 font-bold'><CiStar /> 4.5</span>
+                  <span className='flex gap-1 text-xl'>
+                    <i className='text-blue-600 text-2xl font-bold'><CiStar /></i> 
+                    4.5
+                  </span>
                 </div>
               </form>
             </div>

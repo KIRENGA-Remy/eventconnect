@@ -100,7 +100,6 @@ import { FaBell, FaPlus, FaUserCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import userImage from '../../assets/user.png';
 
-
 const stats = [
   { bg: 'bg-blue-500', title: "Today's Bookings", count: 4006, percent: '10.00% (30 days)' },
   { bg: 'bg-purple-500', title: 'Total Bookings', count: 61344, percent: '22.00% (30 days)' },
