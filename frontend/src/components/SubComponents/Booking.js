@@ -42,7 +42,7 @@ function Booking({ eventDisplay }) {
           guestSize: credentials.guestSize,
           phone: credentials.phone,
           eventName: eventName,
-          userId: userData._id
+          userId: userData.id
         })
       });
       const dataRes = await response.json();
