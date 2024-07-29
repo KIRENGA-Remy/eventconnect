@@ -139,20 +139,20 @@ function Menu() {
             <div className='tour_reviews mt-4'>
               <h4 className='p-4 font-semibold text-2xl underline'>Reviews (3 reviews)</h4>
               <form onSubmit={submitHandler}>
-                <div className='flex items-center justify-center gap-3 mb-4 rating_group p-4'>
-                  <span className='p-1 md:px-4' onClick={() => setEventRating(1)}>
+                <div className='flex items-center justify-center gap-3 mb-4 rating_group p-4 cursor-pointer'>
+                  <span className='p-1 md:px-4 flex items-center' onClick={() => setEventRating(1)}>
                     1<i className='text-blue-600 text-2xl font-bold'><CiStar /></i>
                   </span>
-                  <span className='p-1 md:px-4' onClick={() => setEventRating(2)}>
+                  <span className='p-1 md:px-4 flex items-center' onClick={() => setEventRating(2)}>
                     2<i className='text-blue-600 text-2xl font-bold'><CiStar /></i>
                   </span>
-                  <span className='p-1 md:px-4' onClick={() => setEventRating(3)}>
+                  <span className='p-1 md:px-4 flex items-center' onClick={() => setEventRating(3)}>
                     3<i className='text-blue-600 text-2xl font-bold'><CiStar /></i>
                   </span>
-                  <span className='p-1 md:px-4' onClick={() => setEventRating(4)}>
+                  <span className='p-1 md:px-4 flex items-center' onClick={() => setEventRating(4)}>
                     4<i className='text-blue-600 text-2xl font-bold'><CiStar /></i>
                   </span>
-                  <span className='p-1 md:px-4' onClick={() => setEventRating(5)}>
+                  <span className='p-1 md:px-4 flex items-center' onClick={() => setEventRating(5)}>
                     5<i className='text-blue-600 text-2xl font-bold'><CiStar /></i>
                   </span>
                 </div>
