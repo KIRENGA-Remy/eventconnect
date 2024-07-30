@@ -30,7 +30,7 @@ function Menu() {
       )}
         <div className='md:flex md:flex-row flex flex-col w-11/12'>
           <div className='border rounded-md  w-10/12'>
-            <img src={eventDisplay.eventimages} alt='gen' className='w-full h-[350px] object-fill rounded-md mb-4' />
+            <img src={eventDisplay.eventimages} alt='gen' className='w-full h-[450px] object-fill rounded-md mb-4' />
             <div className='p-5'>
             <h2 className='mb-4 -mt-2 text-xl'>{eventDisplay.categories}</h2>
               <h2 className='md:font-extrabold md:text-2xl md:py-2 font-extrabold text-2xl py-2 mx-1'>{eventDisplay.eventname}</h2>

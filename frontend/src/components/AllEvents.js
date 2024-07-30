@@ -16,14 +16,14 @@ function AllEvents() {
         return(
 <Link to={`menu/${el._id}`}>
     <span className='shadow-md p-4 rounded-md mx-2'>
-    <div className='relative w-[300px] h-[180px] md:relative'>
+    <div className='relative'>
           <img src={el.eventimages} className='w-[300px] h-[180px] object-fill my-2' />
           <span className='absolute bottom-0 right-0 w-max h-max z-10 bg-green-500 text-white p-2 rounded-t-md rounded-tr-none font-semibold'>Upcoming</span>
     </div>
     <div className='md:flex md:flex-row md:justify-between flex flex-col gap-4'>
     <p><span className='font-bold text-2xl text-[#20B486]'>{el.eventname}</span></p><h1><span className='px-1 font-bold '>At</span>{el.startTime}</h1>
     </div>
-    <div className='flex flex-row justify-between py-2'>
+    <div className='md:flex md:flex-row md:justify-between md:py-2  flex flex-col gap-2'>
       <div className='flex flex-col'>
       <p><span className='pr-1 font-bold'>Country:</span>{el.location.country}</p>
       <p><span className='pr-1 font-bold'>Category:</span>{el.categories}</p>
