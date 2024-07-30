@@ -33,7 +33,7 @@ function EventsCard({name, id, image, category, country, startTime}) {
       <Link to={`allevents/menu/${id}`}>
     <span className='shadow-md p-4 rounded-md w-full h-full'>
     <div className='relative'>
-          <img src={image} className='w-[300px] h-[180px] object-fill my-2' />
+          <img src={image} className='w-full h-[180px] object-fill my-2' />
           <span className='absolute bottom-0 right-0 w-max h-max z-10 bg-green-500 text-white p-2 rounded-t-md rounded-tr-none font-semibold'>Upcoming</span>
     </div>
     <div className='flex flex-row justify-between'>

@@ -85,7 +85,7 @@ const Navbar = () => {
             }
 
                 <div className='md:hidden' onClick={handleClick}>
-                    <img src={toggle ? close : hamburgerMenu} alt='toggle' />
+                    <img src={toggle ? close : hamburgerMenu} alt='toggle' className='cursor-pointer' />
                 </div>
             </div>
             {toggle && (
