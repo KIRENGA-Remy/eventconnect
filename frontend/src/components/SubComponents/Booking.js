@@ -12,7 +12,7 @@ function Booking({ eventDisplay, setLoading }) {
     userEmail: '',
     eventName: '',
     fullName: '',
-    guestSize: '1',
+    guestSize: '',
     phone: '',
     bookAt: ''
   });
@@ -55,6 +55,7 @@ function Booking({ eventDisplay, setLoading }) {
     }
   };
 
+  const defaultPeople = 1;
   const serviceFee = 10
   const multiplePrice = Number(price) * Number(credentials.guestSize);
   const totalAmount = multiplePrice + serviceFee;
@@ -135,7 +136,7 @@ function Booking({ eventDisplay, setLoading }) {
       <div className="flex flex-col">
         <div className="flex flex-row justify-between font-semibold py-4 text-gray-600">
           <span className="pr-2 text-lg">
-            ${eventDisplay.price} x {credentials.guestSize} person
+            ${eventDisplay.price} x {credentials.guestSize ? credentials.guestSize : defaultPeople } person
           </span>
           <span className="pr-2 text-lg">${multiplePrice}</span>
         </div>
