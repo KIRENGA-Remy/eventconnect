@@ -28,8 +28,8 @@ function Menu() {
           <div className="animate-spin rounded-full h-20 w-20 border-t-2 border-b-2 border-purple-900"></div>
         </div>
       )}
-        <div className='md:flex md:flex-row flex flex-col w-11/12'>
-          <div className='border rounded-md  w-10/12'>
+        <div className='md:flex md:flex-row flex flex-col w-12/12'>
+          <div className='border rounded-md w-10/12'>
             <img src={eventDisplay.eventimages} alt='gen' className='w-full h-[450px] object-fill rounded-md mb-4' />
             <div className='p-5'>
             <h2 className='mb-4 -mt-2 text-xl'>{eventDisplay.categories}</h2>
@@ -111,7 +111,7 @@ function Menu() {
               </form>
             </div>
           </div>
-          <div className='p-8 border mx-3 rounded-md'>
+          <div className='md:p-8 md:border md:mx-3 md:rounded-md p-8 border mx-0 rounded-md'>
           <Booking setLoading={setLoading} eventDisplay={{ price: eventDisplay.ticketInfo.price, eventName: eventDisplay.eventname }} />
           </div>
         </div>

@@ -90,7 +90,7 @@ const Navbar = () => {
             </div>
             {toggle && (
                 <div className='absolute top-[80px] left-0 w-full bg-white z-10 border-b'>
-                    <ul className='flex flex-row p-10'>
+                    <ul className='flex flex-row p-10 justify-center gap-6'>
                         <div className='flex flex-col items-center justify-start'>
 
                         { userData.email ?
