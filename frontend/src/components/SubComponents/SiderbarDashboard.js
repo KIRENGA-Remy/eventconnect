@@ -8,7 +8,7 @@ const menuItems = [
   { icon: <FaChartBar />, label: 'Widgets', path: '/widgets' },
   { icon: <FaTable />, label: 'Tables', path: '/tables' },
   { icon: <FaBell />, label: 'Notifications', path: '/notifications' },
-  { icon: <FaIcons />, label: 'Icons', path: '/icons' },
+  { icon: <FaIcons />, label: 'All events', path: '/allevents' },
   { icon: <FaMap />, label: 'Maps', path: '/maps' },
   { icon: <FaUser />, label: 'Profile', path: '/profile' },
   // Add more items as needed
