@@ -9,7 +9,7 @@ import Slider from 'react-slick';
 
 export default function Landing() {
   const eventData = useSelector((state) => state.event.eventList)
-  const homeEventsCardList = eventData.slice(0, 100)
+  const homeEventsCardList = eventData.slice(0, 3)
 
   // const settings = {
   //   dots: true,

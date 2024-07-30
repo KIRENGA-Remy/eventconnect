@@ -15,12 +15,12 @@ function AllEvents() {
       homeEventsCardList[0] && homeEventsCardList.map(el => {
         return(
 <Link to={`menu/${el._id}`}>
-    <span className='shadow-md p-4 rounded-md'>
-    <div className='relative'>
+    <span className='shadow-md p-4 rounded-md mx-2'>
+    <div className='relative w-[300px] h-[180px] md:relative'>
           <img src={el.eventimages} className='w-[300px] h-[180px] object-fill my-2' />
           <span className='absolute bottom-0 right-0 w-max h-max z-10 bg-green-500 text-white p-2 rounded-t-md rounded-tr-none font-semibold'>Upcoming</span>
     </div>
-    <div className='flex flex-row justify-between'>
+    <div className='md:flex md:flex-row md:justify-between flex flex-col gap-4'>
     <p><span className='font-bold text-2xl text-[#20B486]'>{el.eventname}</span></p><h1><span className='px-1 font-bold '>At</span>{el.startTime}</h1>
     </div>
     <div className='flex flex-row justify-between py-2'>
@@ -30,7 +30,7 @@ function AllEvents() {
     </div>
     <div className='flex flex-row'>
     <Link to='../'><p className='py-3 px-4 mr-2 rounded-md bg-blue-600 hover:bg-white border hover:border-[#20B486] hover:text-[#20B486] text-white cursor-pointer'>Cancel</p></Link>
- <p className='py-3 px-4  rounded-md bg-[#20B486] hover:bg-white border hover:border-[#20B486] hover:text-[#20B486] text-white font-bold cursor-pointer'>Book</p>
+    <p className='py-3 px-4  rounded-md bg-[#20B486] hover:bg-white border hover:border-[#20B486] hover:text-[#20B486] text-white font-bold cursor-pointer'>Book</p>
     </div>
     </div>
     <p className='bg-blue-600 hover:bg-blue-700 w-full p-2 text-white flex justify-center'>Buy Ticket</p>
