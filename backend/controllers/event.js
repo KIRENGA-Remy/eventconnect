@@ -40,6 +40,9 @@ router.post('/', async (req, res) => {
       ticketInfo, 
       eventimages 
     } = req.body;
+    if(!req.body.organizer){
+      return res.status(400).send({ message: "You're required to login"});
+    }
 
     // Check for missing required fields
     if (!eventname ) {
@@ -61,26 +64,25 @@ router.post('/', async (req, res) => {
       return res.status(400).send({ message: 'Missing required fields category' });
     }
 
-
     // Validate location fields
     const { address, city, country } = location;
-    if (!address || !city  || !country) {
-      return res.status(400).send({ message: 'Missing required location fields' });
-    }
     if(!address){
-      return res.status(400).send({ message: 'Missing required location fields address' });
+      return res.status(400).send({ message: 'Missing required fields address' });
     }
     if(!country){
-      return res.status(400).send({ message: 'Missing required location fields country' });
+      return res.status(400).send({ message: 'Missing required fields country' });
     }
     if(!city){
-      return res.status(400).send({ message: 'Missing required location fields city' });
+      return res.status(400).send({ message: 'Missing required fields city' });
     }
     
     // Validate ticketInfo fields
     const { price, availability } = ticketInfo;
-    if (price == null || availability == null) {
-      return res.status(400).send({ message: 'Missing required ticketInfo fields' });
+    if(!price){
+      return res.status(400).send({ message: 'Missing required fields price' });
+    }
+    if(!availability){
+      return res.status(400).send({ message: 'Missing required fields availability' });
     }
 
     // Extract user ID from the request (set by the auth middleware)

@@ -11,6 +11,7 @@ function AllEvents() {
     <>    
     <Navbar />
     <div className='flex justify-center w-full h-full flex-col md:flex md:flex-row md:gap-8 gap-2 my-28 mx-4 cursor-pointer'>
+      
     {
       homeEventsCardList[0] && homeEventsCardList.map(el => {
         return(

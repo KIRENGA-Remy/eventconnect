@@ -131,8 +131,6 @@ function MainContentDashboard() {
     making it easier for organizers to create successful events and for attendees to find and participate in their favorite events.
   </p>
 </div>
-<div className='flex flex-col'>
-</div>
      <div className="flex-grow p-16 ">
        <div className="flex flex-col md:flex-row justify-between">
          <div className="w-full md:w-1/2">

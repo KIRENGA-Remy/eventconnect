@@ -99,9 +99,10 @@ const Footer = () => {
                 <ul className='py-6 text-[#6D737A]'>
                       <Link to='/dashboard'><li className='py-2 hover:underline'>Dashboard</li></Link>
                       <Link to='/create'><li className='py-2 hover:underline'>Create event</li></Link>
-                      <Link to='marketing'><li className='py-2 hover:underline'>Widgets</li></Link>
+                      {/* <Link to='marketing'><li className='py-2 hover:underline'>Widgets</li></Link> */}
                       <Link to='lifestyle'><li className='py-2 hover:underline'>Notifications</li></Link>
                       <Link to='music'><li className='py-2 hover:underline'>Maps</li></Link>
+                      <Link to='allevents'><li className='py-2 hover:underline'>All events</li></Link>
                       <Link to='music'><li className='py-2 hover:underline'>Profile</li></Link>
                 </ul>
             </div>

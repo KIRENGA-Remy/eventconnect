@@ -60,7 +60,7 @@ const EventForm = () => {
           date: new Date(`${eventData.date}`).toISOString(),
           startTime: eventData.startTime,
           location: eventData.location,
-          organizer: eventData.organizer,
+          organizer: userData.id,
           categories: [eventData.categories],
           ticketInfo: eventData.ticketInfo,
           eventimages: eventData.eventimages
@@ -156,7 +156,7 @@ const EventForm = () => {
               type="text"
               id="address"
               name="location.address"
-              placeholder='host location'
+              placeholder='Host location'
               className="w-full p-3 border rounded-md"
               value={eventData.location.address}
               onChange={handleChange}
@@ -416,7 +416,7 @@ const EventForm = () => {
               type="number"
               id="price"
               name="ticketInfo.price"
-              placeholder='123...'
+              placeholder='$123...'
               className="w-full p-3 border rounded-md"
               value={eventData.ticketInfo.price}
               onChange={handleChange}
@@ -436,19 +436,6 @@ const EventForm = () => {
               required
             />
           </div>
-          <div>
-            <label className="block text-lg font-semibold mb-2" htmlFor="availability">Event Organizer</label>
-            <input
-              type="text"
-              id="organizer"
-              name="organizer"
-              placeholder='6633280760bcac...'
-              className="w-full p-3 border rounded-md"
-              value={eventData.organizer}
-              onChange={handleChange}
-              required
-            />
-            </div>
           <div className="col-span-2">
        <div className='flex flex-col'>
       <p className='text-black py-1'>Event Images</p>
