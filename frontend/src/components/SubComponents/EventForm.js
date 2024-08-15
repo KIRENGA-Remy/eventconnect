@@ -28,6 +28,7 @@ const EventForm = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const userData = useSelector(state => state.user);
+  console.log(userData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -60,7 +61,7 @@ const EventForm = () => {
           date: new Date(`${eventData.date}`).toISOString(),
           startTime: eventData.startTime,
           location: eventData.location,
-          organizer: userData.id,
+          organizer: userData._id,
           categories: [eventData.categories],
           ticketInfo: eventData.ticketInfo,
           eventimages: eventData.eventimages
