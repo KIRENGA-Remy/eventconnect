@@ -27,8 +27,10 @@ function Booking({ eventDisplay, setLoading }) {
     e.preventDefault();
     try {
       setLoading(true);
-      const response = await fetch('https://eventconnect2.onrender.com/v1/api/booking', {
+      const response =  await fetch('https://eventconnect2.onrender.com/v1/api/booking', {
         method: 'POST',
+        cache: 'no-cache',
+        credentials: 'same-origin',
         headers: {
           'Content-Type': 'application/json'
         },
