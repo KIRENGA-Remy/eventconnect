@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 
 function Booking({ eventDisplay, setLoading }) {
   const userData = useSelector(state => state.user);
+  console.log(userData);
   const { price, eventName } = eventDisplay;
   const [credentials, setCredentials] = useState({
     userId: '',
@@ -26,7 +27,7 @@ function Booking({ eventDisplay, setLoading }) {
     e.preventDefault();
     try {
       setLoading(true);
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/booking`, {
+      const response = await fetch('https://eventconnect2.onrender.com/v1/api/booking', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

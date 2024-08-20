@@ -125,7 +125,7 @@ function App() {
         />
         <Route path="/privacyandpolicy" exact element={<PrivacyPolicy />} />
 
-        {/* <Route path="/step1" exact element={<Step1 />} /> */}
+        <Route path="/step1" exact element={<Step1 />} />
         <Route path="/step2" exact element={<Step2 />} />
         <Route path="/step3" exact element={<Step3 />} />
         <Route path="/step4" exact element={<Step4 />} />
