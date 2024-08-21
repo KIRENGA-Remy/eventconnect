@@ -3,7 +3,7 @@ const Booking = require('../Models/booking')
 
 router.post('/', async (req,res) =>{
     const bookExist = await Booking.findOne({ userId: req.body.userId});
-    const existEventName = bookExist.findOne({eventName: req.body.eventName })
+    const existEventName = await bookExist.findOne({eventName: req.body.eventName })
     if (existEventName) {
         return res.status(400).send({ message: 'You already booked this event!'});
       }
