@@ -11,7 +11,13 @@ function Menu() {
   const params = useParams();
   const eventData = useSelector((state) => state.event.eventList);
   const eventDisplay = eventData.filter(el => el._id === params.filterby)[0];
+  const userData = useSelector(state => state.user);
   const [eventRating, setEventRating] = useState(0);
+  const [review, setReview] = useState({
+    username: '',
+    comment: '',
+    userprofile: ''
+  });
   const [loading, setLoading] = useState(false);
   const submitHandler = () => {};
   const reviewMsgRef = useRef();
@@ -19,7 +25,35 @@ function Menu() {
   // Convert the ISO date string to a Date object and then to the desired format
   const formattedDate = new Date(eventDisplay.date).toISOString().split('T')[0];
 
-  const handleReviewSubmit = async (e) => {};
+  const handleReviewSubmit = async (e) => {
+    e.preventDefault();
+    const formData = {
+      username: userData.username,
+      comment: review.comment,
+      userprofile: userData.userprofile
+    };
+  
+    try {
+      setLoading(true);
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/review`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const dataRes = await response.json();
+      toast(dataRes.message);
+  
+      if (response.status === 200) {
+        // Reload the page to display the updated review
+        window.location.reload();
+      }
+    } catch (error) {
+      toast.error('Review creation failed. Network issues, Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
   return (
     <>
@@ -86,6 +120,7 @@ function Menu() {
                   <form className='border rounded-3xl p-1 m-4 flex justify-between' onSubmit={handleReviewSubmit}>
                   <input
                     type='text'
+                    name='comment'
                     ref={reviewMsgRef}
                     placeholder='Share your thoughts'
                     required
