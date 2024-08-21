@@ -6,6 +6,7 @@ import Booking from './Booking';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { CiStar } from 'react-icons/ci';
+import { toast } from 'react-hot-toast';
 
 function Menu() {
   const params = useParams();
