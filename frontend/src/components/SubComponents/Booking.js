@@ -27,25 +27,32 @@ function Booking({ eventDisplay, setLoading }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formData = {
+      fullName: credentials.fullName,
+      userEmail: credentials.userEmail,
+      bookAt: credentials.bookAt,
+      guestSize: credentials.guestSize,
+      phone: credentials.phone,
+      eventName: eventName,
+      userId: userData.id
+     };
     try {
       setLoading(true);
-      const response =  await fetch('https://eventconnect2.onrender.com/v1/api/booking', {
-        method: 'POST',
-        cache: 'no-cache',
-        credentials: 'same-origin',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          fullName: credentials.fullName,
-          userEmail: credentials.userEmail,
-          bookAt: credentials.bookAt,
-          guestSize: credentials.guestSize,
-          phone: credentials.phone,
-          eventName: eventName,
-          userId: userData.id
-        })
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/booking`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
+        // body: JSON.stringify({
+        //   fullName: credentials.fullName,
+        //   userEmail: credentials.userEmail,
+        //   bookAt: credentials.bookAt,
+        //   guestSize: credentials.guestSize,
+        //   phone: credentials.phone,
+        //   eventName: eventName,
+        //   userId: userData.id
+        // })
+      // });
       const dataRes = await response.json();
       if (response.status === 200) {
         toast.success(dataRes.message);
