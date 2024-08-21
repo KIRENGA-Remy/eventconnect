@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import gen from '../../assets/genz.jpg';
+import userImage from '../../assets/user.png';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
 import Booking from './Booking';
@@ -12,6 +12,7 @@ function Menu() {
   const params = useParams();
   const eventData = useSelector((state) => state.event.eventList);
   const eventDisplay = eventData.filter(el => el._id === params.filterby)[0];
+  const reviewData = useSelector((state) => state.review);
   const userData = useSelector(state => state.user);
   const [eventRating, setEventRating] = useState(0);
   const [review, setReview] = useState({
@@ -21,10 +22,10 @@ function Menu() {
   });
   const [loading, setLoading] = useState(false);
   const submitHandler = () => {};
-  const reviewMsgRef = useRef();
 
   // Convert the ISO date string to a Date object and then to the desired format
-  const formattedDate = new Date(eventDisplay.date).toISOString().split('T')[0];
+  const formattedEventDate = new Date(eventDisplay.date).toISOString().split('T')[0];
+  const formattedReviewDate = new Date(reviewData.date).toISOString().split('T')[0];
 
   const handleReviewSubmit = async (e) => {
     e.preventDefault();
@@ -55,6 +56,9 @@ function Menu() {
     }
   };
 
+  const handleOnchange = (e) =>{
+    setReview((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  };
 
   return (
     <>
@@ -75,7 +79,7 @@ function Menu() {
                 <span className='md:flex md:items-center md:justify-between flex items-center justify-between gap-6'>
                   <div className='flex gap-2 text-xl'>
                     <i className='text-blue-600 text-2xl font-bold'><CiStar /></i>
-                    <span>{formattedDate}</span>
+                    <span>{formattedEventDate}</span>
                   </div>
                   <div className='flex gap-2 text-xl'>
                     <i className='font-semibold'>At</i>
@@ -122,7 +126,8 @@ function Menu() {
                   <input
                     type='text'
                     name='comment'
-                    ref={reviewMsgRef}
+                    onChange={handleOnchange}
+                    value={review.comment}
                     placeholder='Share your thoughts'
                     required
                     className='px-5'
@@ -136,11 +141,11 @@ function Menu() {
                 </div>
                 <div className='flex justify-between p-4'>
                   <div className='flex flex-row gap-4'>
-                    <img src={gen} alt='gen' className='w-[40px] h-[40px] rounded-full object-cover' />
+                    {userData.userprofile ? <img src={userData.userprofile} className='w-[40px] h-[40px] rounded-full object-cover' alt={userData.userprofile} />  : <img src={userImage} className='w-[40px] h-[40px] rounded-full object-cover' alt={userImage} />   } 
                     <div className='flex flex-col'>
-                      <h3 className='font-semibold text-xl'>Remy</h3>
-                      <p className=''>12/09/2024</p>
-                      <span className='py-2'>Comment is placed here ... </span>
+                      <h3 className='font-semibold text-xl'>{reviewData.username}</h3>
+                      <p className=''>{formattedReviewDate}</p>
+                      <span className='py-2'>{reviewData.comment}</span>
                     </div>
                   </div>
                   <span className='flex gap-1 text-xl'>
