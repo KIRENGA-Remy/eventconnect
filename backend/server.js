@@ -12,6 +12,7 @@ const loginRoute = require("./controllers/loginApi");
 const eventRoute = require("./controllers/event.js");
 const storeRoute = require("./controllers/storeApi");
 const bookingRoute = require("./controllers/booking.js");
+const reviewRoute = require("./controllers/review.js");
 const cookieSession = require("cookie-session");
 const UserModel = require("./Models/user.js");
 const jwt = require("jsonwebtoken");
@@ -56,6 +57,7 @@ app.use("/v1/api/event", eventRoute);
 app.use("/v1/api/store", storeRoute);
 app.use("/v1/api/payment",paymentRoute);
 app.use("/v1/api/booking", bookingRoute);
+app.use("/v1/api/review", reviewRoute);
 
 // Database connection
 connection();

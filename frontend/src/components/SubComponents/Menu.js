@@ -11,7 +11,6 @@ function Menu() {
   const params = useParams();
   const eventData = useSelector((state) => state.event.eventList);
   const eventDisplay = eventData.filter(el => el._id === params.filterby)[0];
-  console.log(eventDisplay.eventname);
   const [eventRating, setEventRating] = useState(0);
   const [loading, setLoading] = useState(false);
   const submitHandler = () => {};
@@ -19,6 +18,8 @@ function Menu() {
 
   // Convert the ISO date string to a Date object and then to the desired format
   const formattedDate = new Date(eventDisplay.date).toISOString().split('T')[0];
+
+  const handleReviewSubmit = async (e) => {};
 
   return (
     <>
@@ -81,7 +82,8 @@ function Menu() {
                     5<i className='text-blue-600 text-2xl font-bold'><CiStar /></i>
                   </span>
                 </div>
-                <div className='border rounded-3xl p-1 m-4 flex justify-between'>
+                {/* <div className='border rounded-3xl p-1 m-4 flex justify-between'> */}
+                  <form className='border rounded-3xl p-1 m-4 flex justify-between' onSubmit={handleReviewSubmit}>
                   <input
                     type='text'
                     ref={reviewMsgRef}
@@ -94,7 +96,8 @@ function Menu() {
                     className='px-4 py-2 mx-2 rounded-3xl bg-green-500 hover:bg-white border hover:border-green-500 hover:text-green-500 text-white font-bold'>
                     Submit
                   </button>
-                </div>
+                  </form>
+                {/* </div> */}
                 <div className='flex justify-between p-4'>
                   <div className='flex flex-row gap-4'>
                     <img src={gen} alt='gen' className='w-[40px] h-[40px] rounded-full object-cover' />

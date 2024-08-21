@@ -7,12 +7,7 @@ import { useSelector } from 'react-redux';
 
 function Booking({ eventDisplay, setLoading }) {
   const userData = useSelector(state => state.user);
-  console.log(userData.id);
-  console.log(userData.fullName);
   const { price, eventName } = eventDisplay;
-  console.log(eventDisplay.eventName);
-  console.log(eventDisplay.price);
-  console.log({eventName});
   const [credentials, setCredentials] = useState({
     userId: '',
     userEmail: '',
