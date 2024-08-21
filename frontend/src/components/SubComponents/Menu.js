@@ -11,6 +11,7 @@ function Menu() {
   const params = useParams();
   const eventData = useSelector((state) => state.event.eventList);
   const eventDisplay = eventData.filter(el => el._id === params.filterby)[0];
+  console.log(eventDisplay.eventname);
   const [eventRating, setEventRating] = useState(0);
   const [loading, setLoading] = useState(false);
   const submitHandler = () => {};
