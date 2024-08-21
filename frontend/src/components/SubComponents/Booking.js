@@ -4,9 +4,11 @@ import { toast } from 'react-hot-toast';
 import { CiStar } from 'react-icons/ci';
 import { useSelector } from 'react-redux';
 
+
 function Booking({ eventDisplay, setLoading }) {
   const userData = useSelector(state => state.user);
-  console.log(userData);
+  console.log(userData.id);
+  console.log(userData.fullName);
   const { price, eventName } = eventDisplay;
   const [credentials, setCredentials] = useState({
     userId: '',
