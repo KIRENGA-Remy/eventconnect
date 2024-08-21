@@ -13,7 +13,7 @@ export const userSlice = createSlice({
   name: "review",
   initialState,
   reducers: {
-    setDataevent: (state, action) => {
+    setDatareview: (state, action) => {
       state.username = action.payload.data.username
       state.userprofile = action.payload.data.userprofile
       state.comment = action.payload.data.comment
@@ -23,6 +23,6 @@ export const userSlice = createSlice({
 }
 });
 
-export const { setDataevent } = userSlice.actions;
+export const { setDatareview } = userSlice.actions;
 
 export default userSlice.reducer;
