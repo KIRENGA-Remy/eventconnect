@@ -57,11 +57,17 @@ function Booking({ eventDisplay, setLoading }) {
         // })
       // });
       const dataRes = await response.json();
+      toast(dataRes.message);
+      // if (response.status === 200) {
+      //   toast.success(dataRes.message);
+      //   navigate('/thankyou', { replace: true });
+      // } else {
+      //   toast.error(dataRes.message);
+      // }
       if (response.status === 200) {
-        toast.success(dataRes.message);
-        navigate('/thankyou', { replace: true });
-      } else {
-        toast.error(dataRes.message);
+        setTimeout(() => {
+          navigate("/thankyou", { replace: true });
+        }, 1000);
       }
     } catch (error) {
       toast.error('Booking event failed. Network issues, Please try again.');
