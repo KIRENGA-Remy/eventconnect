@@ -10,6 +10,9 @@ function Booking({ eventDisplay, setLoading }) {
   console.log(userData.id);
   console.log(userData.fullName);
   const { price, eventName } = eventDisplay;
+  console.log(eventDisplay.eventName);
+  console.log(eventDisplay.price);
+  console.log({eventName});
   const [credentials, setCredentials] = useState({
     userId: '',
     userEmail: '',
