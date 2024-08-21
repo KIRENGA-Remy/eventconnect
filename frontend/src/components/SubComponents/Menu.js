@@ -22,6 +22,7 @@ function Menu() {
   });
   const [loading, setLoading] = useState(false);
   const submitHandler = () => {};
+  const reviewMsgRef = useRef();
 
   // Convert the ISO date string to a Date object and then to the desired format
   const formattedEventDate = new Date(eventDisplay.date).toISOString().split('T')[0];
@@ -126,6 +127,7 @@ function Menu() {
                   <input
                     type='text'
                     name='comment'
+                    ref={reviewMsgRef}
                     onChange={handleOnchange}
                     value={review.comment}
                     placeholder='Share your thoughts'
