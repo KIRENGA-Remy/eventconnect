@@ -1,21 +1,27 @@
 const router = require('express').Router()
 const Booking = require('../Models/booking')
 
-router.post('/', async (req,res) =>{
-    const bookExist = await Booking.findOne({ userId: req.body.userId});
-    const existEventName = await bookExist.findOne({eventName: req.body.eventName })
-    if (existEventName) {
-        return res.status(400).send({ message: 'You already booked this event!'});
-      }
-        const newBooking = new Booking(req.body)
-        try {
-            const savedBooking = await newBooking.save();
-            res.status(200).send({success: true, message: "Your event is booked", data: savedBooking})
-        } catch (err) {
-            res.status(500).send({success: false, message: "Internal server error"})
-        }
+router.post('/', async (req, res) => {
+    const userId = req.body.userId;
+    const eventName = req.body.eventName;
+  
+    // Check if a booking already exists for the user and event
+    const existingBooking = await Booking.findOne({ userId, eventName });
+  
+    if (existingBooking) {
+      return res.status(400).send({ message: 'You already booked this event!' });
     }
-)
+  
+    // Create a new booking if it doesn't exist
+    const newBooking = new Booking(req.body);
+  
+    try {
+      const savedBooking = await newBooking.save();
+      res.status(200).send({ success: true, message: "Your event is booked", data: savedBooking });
+    } catch (err) {
+      res.status(500).send({ success: false, message: "Internal server error" });
+    }
+  });
 
 router.get('/:id', async (req,res)=>{
     const id = req.params.id
