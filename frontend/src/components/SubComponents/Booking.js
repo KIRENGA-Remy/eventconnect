@@ -36,7 +36,7 @@ function Booking({ eventDisplay, setLoading }) {
       bookAt: credentials.bookAt,
       guestSize: credentials.guestSize,
       phone: credentials.phone,
-      eventName: eventName,
+      eventName: eventDisplay.eventName,
       userId: userData.id
      };
     try {
