@@ -117,8 +117,8 @@ function Menu() {
                     5<i className='text-blue-600 text-2xl font-bold'><CiStar /></i>
                   </span>
                 </div>
-                {/* <div className='border rounded-3xl p-1 m-4 flex justify-between'> */}
-                  <form className='border rounded-3xl p-1 m-4 flex justify-between' onSubmit={handleReviewSubmit}>
+                <div className='border rounded-3xl p-1 m-4 flex justify-between'>
+                  <form onSubmit={handleReviewSubmit}>
                   <input
                     type='text'
                     name='comment'
@@ -133,7 +133,7 @@ function Menu() {
                     Submit
                   </button>
                   </form>
-                {/* </div> */}
+                </div>
                 <div className='flex justify-between p-4'>
                   <div className='flex flex-row gap-4'>
                     <img src={gen} alt='gen' className='w-[40px] h-[40px] rounded-full object-cover' />
