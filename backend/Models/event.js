@@ -1,3 +1,4 @@
+const { required } = require('joi');
 const mongoose = require('mongoose');
 
 const eventSchema = new mongoose.Schema({
@@ -22,7 +23,7 @@ const eventSchema = new mongoose.Schema({
     {
       type: mongoose.Types.ObjectId,
       ref: "Review",
-      default: ''
+      required: false
     },
   ],
   attendees: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User', default: [] }], // Changed 'default: empty' to 'default: []'

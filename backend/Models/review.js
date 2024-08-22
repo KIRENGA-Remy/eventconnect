@@ -39,12 +39,12 @@ const reviewSchema = new mongoose.Schema(
       required: true,
     },
     rating: {
-      type: Array,
+      type: Number,
       required: true,
       min: 0,
       max: 5,
       default: 0,
-    },
+    },    
   },
   { timestamps: true }
 );
