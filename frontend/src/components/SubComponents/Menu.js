@@ -189,24 +189,29 @@ import Navbar from '../Navbar';
 import Footer from '../Footer';
 import Booking from './Booking';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { CiStar } from 'react-icons/ci';
 import { toast } from 'react-hot-toast';
+import { setDatareview } from '../../redux/reviewSlice';
 
 function Menu() {
   const params = useParams();
   const eventData = useSelector((state) => state.event.eventList);
   const eventDisplay = eventData.find(el => el._id === params.filterby);
+  console.log(eventDisplay);
   const reviewData = useSelector(state => state.review);
+  console.log("log review data", reviewData);
   const userData = useSelector(state => state.user);
   const [eventRating, setEventRating] = useState(0);
-  const [review, setReview] = useState({ eventId : '', username: '',  reviewText: '', userprofile: '' });
+  const [review, setReview] = useState({ eventId : '', username: '', date: '',  reviewText: '', userprofile: '' });
   const [loading, setLoading] = useState(false);
   const reviewMsgRef = useRef();
 
   // Format event and review dates
   const formattedEventDate = eventDisplay ? new Date(eventDisplay.date).toISOString().split('T')[0] : '';
-  const formattedReviewDate = reviewData.date ? new Date(reviewData.date).toISOString().split('T')[0] : '';
+  // const formattedReviewDate = reviewData.date ? new Date(reviewData.date).toISOString().split('T')[0] : '';
+
+  const dispatch = useDispatch();
 
   const handleReviewSubmit = async (e) => {
     e.preventDefault();
@@ -215,12 +220,13 @@ function Menu() {
       username: userData.username,
       reviewText: review.reviewText,
       userprofile: userData.userprofile,
-      rating: eventRating
+      rating: eventRating,
+      date: new Date().toISOString(),
     };
-  
+    dispatch(setDatareview(formData));
     try {
       setLoading(true);
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/review/:reviewId/event/:eventId`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/review`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -314,21 +320,24 @@ function Menu() {
                 </div>
               </form>
               {reviewData.map((review, index) => (
-                <div key={index} className='flex justify-between p-4'>
-                  <div className='flex flex-row gap-4'>
-                    <img src={userData.userprofile || userImage} className='w-[40px] h-[40px] rounded-full object-cover' alt='User Profile' />
-                    <div className='flex flex-col'>
-                      <h3 className='font-semibold text-xl'>{review.username}</h3>
-                      <p>{formattedReviewDate}</p>
-                      <span className='py-2'>{review.reviewText}</span>
-                    </div>
-                  </div>
-                  <span className='flex gap-1 text-xl'>
-                    <i className='text-blue-600 text-2xl font-bold'><CiStar /></i> 
-                    4.5
-                  </span>
-                </div>
-              ))}
+  <div key={index} className='flex justify-between p-4'>
+    <div className='flex flex-row gap-4'>
+      <img
+        src={review.userprofile || userImage}
+        className='w-[40px] h-[40px] rounded-full object-cover'
+        alt='User Profile'
+      />
+      <div className='flex flex-col'>
+        <h3 className='font-semibold text-xl'>{review.username || 'Anonymous'}</h3>
+        <p>{review.date ? new Date(review.date).toISOString().split('T')[0] : '—'}</p>
+        <span className='py-2'>{review.reviewText || 'No review text'}</span>
+      </div>
+    </div>
+    <span className='flex gap-1 text-xl'>
+      <i className='text-blue-600 text-2xl font-bold'><CiStar /></i> {review.rating || 0}
+    </span>
+  </div>
+))}
             </div>
           </div>
           <div className='md:p-8 md:border md:mx-3 md:rounded-md p-8 border mx-0 rounded-md'>

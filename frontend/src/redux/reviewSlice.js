@@ -1,28 +1,40 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  
-username : "",
-Comment : "",
-userprofile: "",
-date: "",
-id : ""
+  eventId: "",
+  username: "",
+  reviewText: "",  
+  userprofile: "",
+  date: "",
+  id: "",  
+  rating: 0,  
 };
 
-export const userSlice = createSlice({
+export const reviewSlice = createSlice({
   name: "review",
   initialState,
   reducers: {
     setDatareview: (state, action) => {
-      state.username = action.payload.data.username
-      state.userprofile = action.payload.data.userprofile
-      state.comment = action.payload.data.comment
-      state.date = action.payload.data.date
-      state.id = action.payload.data.id
+      state.eventId = action.payload.data.eventId;
+      state.username = action.payload.data.username;
+      state.userprofile = action.payload.data.userprofile;
+      state.reviewText = action.payload.data.reviewText;  // Correct field name
+      state.date = action.payload.data.date;
+      state.id = action.payload.data.id;  // Assuming `id` is the review's `_id`
+      state.rating = action.payload.data.rating;  // Added to handle the rating
+    },
+    clearReviewData: (state) => {
+      state.eventId = "";
+      state.username = "";
+      state.userprofile = "";
+      state.reviewText = "";
+      state.date = "";
+      state.id = "";
+      state.rating = "";
     }
-}
+  },
 });
 
-export const { setDatareview } = userSlice.actions;
+export const { setDatareview, clearReviewData } = reviewSlice.actions;
 
-export default userSlice.reducer;
+export default reviewSlice.reducer;

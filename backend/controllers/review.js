@@ -3,7 +3,7 @@ const Event = require('../Models/event');
 const Review = require('../Models/review.js');
 
 router.post('/', async (req, res) => {
-  const { eventId, username, reviewText, rating } = req.body;
+  const { eventId, username, reviewText, date, userprofile, rating } = req.body;
 
   try {
     // Validate if event exists
@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
     }
 
     // Create a new review
-    const newReview = new Review({ eventId, username, reviewText, rating });
+    const newReview = new Review({ eventId, username, reviewText, userprofile, date, rating });
 
     // Save the review
     const savedReview = await newReview.save();
@@ -30,8 +30,8 @@ router.post('/', async (req, res) => {
 
   
 // Delete a review
-router.delete('/:reviewId/event/:eventId', async (req, res) => {
-  const { reviewId, eventId } = req.params;
+router.delete('/allevents/menu/:filterby/:reviewId', async (req, res) => {
+  const { reviewId, filterby } = req.params;
 
   try {
     // Find the review
@@ -41,7 +41,7 @@ router.delete('/:reviewId/event/:eventId', async (req, res) => {
     }
 
     // Validate if event exists
-    const event = await Event.findById(eventId);
+    const event = await Event.findById(filterby);
     if (!event) {
       return res.status(404).json({ message: "Event not found" });
     }

@@ -43,7 +43,7 @@ const reviewSchema = new mongoose.Schema(
       required: true,
       min: 0,
       max: 5,
-      default: 0,
+      default: 0
     },    
   },
   { timestamps: true }
