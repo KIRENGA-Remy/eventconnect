@@ -1,32 +1,62 @@
 const router = require('express').Router()
-const Review = require('../Models/review.js')
+const Event = require('../Models/event');
+const Review = require('../Models/review.js');
 
 router.post('/', async (req, res) => {
+  const { eventId, username, reviewText, rating } = req.body;
 
-    const newReview = new Review(req.body);
-    try {
-       await newReview.save();
-      res.status(200).send({ success: true, message: "Your comment is created on this event" });
-    } catch (err) {
-      res.status(500).send({ success: false, message: "Internal server error" });
+  try {
+    // Validate if event exists
+    const event = await Event.findById(eventId);
+    if (!event) {
+      return res.status(404).json({ message: "Event not found" });
     }
+
+    // Create a new review
+    const newReview = new Review({ eventId, username, reviewText, rating });
+
+    // Save the review
+    const savedReview = await newReview.save();
+
+    // Add the review reference to the event's reviews array
+    event.reviews.push(savedReview._id);
+    await event.save();
+
+    res.status(201).json({message: "Review created successfully" , data: savedReview});
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
   });
 
   
 // Delete a review
-router.delete('/:id', async (req, res) => {
-    try {
-      const deletedReview = await Review.findByIdAndDelete(req.params.id);
-  
-      if (!deletedReview) {
-        return res.status(404).send({ message: 'Comment not found' });
-      }
-  
-      res.status(200).send({ message: 'Comment deleted successfully' });
-    } catch (error) {
-      console.error(error.message);
-      res.status(500).send({ message: 'Internal Server Error' });
+router.delete('/:reviewId/event/:eventId', async (req, res) => {
+  const { reviewId, eventId } = req.params;
+
+  try {
+    // Find the review
+    const review = await Review.findById(reviewId);
+    if (!review) {
+      return res.status(404).json({ message: "Review not found" });
     }
+
+    // Validate if event exists
+    const event = await Event.findById(eventId);
+    if (!event) {
+      return res.status(404).json({ message: "Event not found" });
+    }
+
+    // Remove the review reference from the event's reviews array
+    event.reviews = event.reviews.filter((id) => id.toString() !== reviewId);
+    await event.save();
+
+    // Delete the review
+    await review.remove();
+
+    res.status(200).json({ message: "Review deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
   });
 
 module.exports = router;
