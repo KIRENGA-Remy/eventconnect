@@ -191,6 +191,9 @@ import Booking from './Booking';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { CiStar } from 'react-icons/ci';
+import { MdOutlineDateRange, MdMyLocation  } from "react-icons/md";
+import { FaLocationDot } from "react-icons/fa6";
+import { FaCity, FaAcquisitionsIncorporated } from "react-icons/fa";
 import { toast } from 'react-hot-toast';
 import { setDatareview } from '../../redux/reviewSlice';
 
@@ -200,7 +203,9 @@ function Menu() {
   const eventDisplay = eventData.find(el => el._id === params.filterby);
   console.log(eventDisplay);
   const reviewData = useSelector(state => state.review);
+  const reviewDisplay = reviewData.find(el => el.eventId === params.filterby);
   console.log("log review data", reviewData);
+  console.log("log review display", reviewDisplay);
   const userData = useSelector(state => state.user);
   const [eventRating, setEventRating] = useState(0);
   const [review, setReview] = useState({ eventId : '', username: '', date: '',  reviewText: '', userprofile: '' });
@@ -268,7 +273,7 @@ function Menu() {
               <div className='flex flex-col gap-5'>
                 <span className='md:flex md:items-center md:justify-between flex items-center justify-between gap-6'>
                   <div className='flex gap-2 text-xl'>
-                    <i className='text-blue-600 text-2xl font-bold'><CiStar /></i>
+                    <i className='text-blue-600 text-2xl font-bold'><MdOutlineDateRange /></i>
                     <span>{formattedEventDate}</span>
                   </div>
                   <div className='flex gap-2 text-xl'>
@@ -279,13 +284,13 @@ function Menu() {
               </div>
               <div className='md:py-4 md:flex md:gap-8 md:flex-row flex flex-col gap-3 py-1'>
                 <span className='flex gap-1 text-xl'>
-                  <i className='text-blue-600 text-2xl font-bold'><CiStar /></i>{eventDisplay.location.address}
+                  <i className='text-blue-600 text-2xl font-bold'><FaLocationDot /></i>{eventDisplay.location.address}
                 </span>
                 <span className='flex gap-1 text-xl'>
-                  <i className='text-blue-600 text-2xl font-bold'><CiStar /></i>{eventDisplay.location.city}
+                  <i className='text-blue-600 text-2xl font-bold'><FaCity /></i>{eventDisplay.location.city}
                 </span>
                 <span className='flex gap-1 text-xl'>
-                  <i className='text-blue-600 text-2xl font-bold'><CiStar /></i>{eventDisplay.location.country}
+                  <i className='text-blue-600 text-2xl font-bold'><MdMyLocation /></i>{eventDisplay.location.country}
                 </span>
               </div>
               <h5 className='font-bold underline text-2xl'>Description</h5>
@@ -297,7 +302,7 @@ function Menu() {
                 <div className='flex items-center justify-center gap-3 mb-4 rating_group p-4 cursor-pointer'>
                   {[1, 2, 3, 4, 5].map(rating => (
                     <span key={rating} className='p-1 md:px-4 flex items-center' onClick={() => setEventRating(rating)}>
-                      {rating}<i className='text-blue-600 text-2xl font-bold'><CiStar /></i>
+                      {rating}<i className='text-blue-600 text-2xl font-bold'><FaAcquisitionsIncorporated /></i>
                     </span>
                   ))}
                 </div>
@@ -334,7 +339,7 @@ function Menu() {
       </div>
     </div>
     <span className='flex gap-1 text-xl'>
-      <i className='text-blue-600 text-2xl font-bold'><CiStar /></i> {review.rating || 0}
+      <i className='text-blue-600 text-2xl font-bold'>{review.rating || 0}<FaAcquisitionsIncorporated /></i> 
     </span>
   </div>
 ))}
