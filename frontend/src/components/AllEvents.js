@@ -15,7 +15,7 @@ function AllEvents() {
     {
       homeEventsCardList[0] && homeEventsCardList.map(el => {
         return(
-<Link to={`allevents/menu/${el._id}`}>
+<Link to={`menu/${el._id}`}>
     <span className='shadow-md p-4 rounded-md mx-2'>
     <div className='relative'>
           <img src={el.eventimages} className='w-[300px] h-[180px] object-fill my-2' />

@@ -199,6 +199,7 @@ import { setDatareview } from '../../redux/reviewSlice';
 
 function Menu() {
   const params = useParams();
+  console.log(params.filterby);
   const eventData = useSelector((state) => state.event.eventList);
   const eventDisplay = eventData.find(el => el._id === params.filterby);
   console.log(eventDisplay);
