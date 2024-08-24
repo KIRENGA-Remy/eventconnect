@@ -60,8 +60,8 @@ const EventForm = () => {
           description: eventData.description,
           date: new Date(`${eventData.date}`).toISOString(),
           startTime: eventData.startTime,
-          location: eventData.location,
-          organizer: userData._id,
+          location: eventData.location, 
+          organizer: userData.id,
           categories: [eventData.categories],
           ticketInfo: eventData.ticketInfo,
           eventimages: eventData.eventimages
