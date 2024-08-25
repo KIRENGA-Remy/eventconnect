@@ -27,8 +27,9 @@ function Menu() {
   const [review, setReview] = useState({ eventId : '', username: '', date: '',  reviewText: '', userprofile: '' });
   const [loading, setLoading] = useState(false);
   const reviewMsgRef = useRef();
-  const numReviews = Array.isArray(reviewData) ? reviewData.length : (reviewData ? 1 : 0);
-
+  const numReview = eventDisplay.reviews.length + 1;
+console.log(numReview);
+console.log(eventDisplay.reviews.length);
   // Format event and review dates
   const formattedEventDate = eventDisplay ? new Date(eventDisplay.date).toISOString().split('T')[0] : '';
   // const formattedReviewDate = reviewData.date ? new Date(reviewData.date).toISOString().split('T')[0] : '';
@@ -113,7 +114,7 @@ function Menu() {
               <p className='flex'>{eventDisplay.description}</p>
             </div>
             <div className='mt-4'>
-              <h4 className='p-4 font-semibold text-2xl underline'>Reviews ({eventDisplay.reviews.length} reviews)</h4>
+              <h4 className='p-4 font-semibold text-2xl underline'>Reviews ({numReview} reviews)</h4>
               <form onSubmit={handleReviewSubmit}>
                 <div className='flex items-center justify-center gap-3 mb-4 rating_group p-4 cursor-pointer'>
                   {[1, 2, 3, 4, 5].map(rating => (
@@ -141,7 +142,7 @@ function Menu() {
                 </div>
               </form>
 {reviewData && (
-  <div key={reviewData.id} className='flex justify-between p-4'>
+  <div key={reviewData._id} className='flex justify-between p-4'>
     <div className='flex flex-row gap-4'>
       <img
         src={reviewData.userprofile || userImage}
