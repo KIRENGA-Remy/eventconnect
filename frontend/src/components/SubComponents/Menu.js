@@ -114,7 +114,7 @@ function Menu() {
               <p className='flex'>{eventDisplay.description}</p>
             </div>
             <div className='mt-4'>
-              <h4 className='p-4 font-semibold text-2xl underline'>Reviews ({numReviews} reviews)</h4>
+              <h4 className='p-4 font-semibold text-2xl underline'>Reviews ({eventDisplay.reviews.length} reviews)</h4>
               <form onSubmit={handleReviewSubmit}>
                 <div className='flex items-center justify-center gap-3 mb-4 rating_group p-4 cursor-pointer'>
                   {[1, 2, 3, 4, 5].map(rating => (
