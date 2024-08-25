@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
     const savedReview = await newReview.save();
 
     // Add the review reference to the event's reviews array
-    event.reviews.push(savedReview._id);
+    event.reviews.push(savedReview);
     await event.save();
 
     res.status(201).json({message: "Review created successfully" , data: savedReview});
