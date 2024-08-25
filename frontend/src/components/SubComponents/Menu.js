@@ -142,7 +142,7 @@ console.log(eventDisplay.reviews.length);
                   </button>
                 </div>
               </form>
-{reviewData && (
+{/* {reviewData && (
   <div key={reviewData._id} className='flex justify-between p-4'>
     <div className='flex flex-row gap-4'>
       <img
@@ -160,7 +160,32 @@ console.log(eventDisplay.reviews.length);
       <i className='text-blue-600 text-2xl font-bold'><CiStar /></i> {reviewData.rating || 0}
     </span>
   </div>
+)} */}
+
+{eventDisplay.reviews && eventDisplay.reviews.length > 0 ? (
+  eventDisplay.reviews.map((review, index) => (
+    <div key={index} className='flex justify-between p-4'>
+      <div className='flex flex-row gap-4'>
+        <img
+          src={review.userprofile || userImage}
+          className='w-[40px] h-[40px] rounded-full object-cover'
+          alt='User Profile'
+        />
+        <div className='flex flex-col'>
+          <h3 className='font-semibold text-xl'>{review.username || 'Anonymous'}</h3>
+          <p>{review.date ? new Date(review.date).toISOString().split('T')[0] : '—'}</p>
+          <span className='py-2'>{review.reviewText || 'No review text'}</span>
+        </div>
+      </div>
+      <span className='flex gap-1 text-xl'>
+        <i className='text-blue-600 text-2xl font-bold'><CiStar /></i> {review.rating || 0}
+      </span>
+    </div>
+  ))
+) : (
+  <p className='p-4'>No reviews available for this event.</p>
 )}
+
             </div>
           </div>
           <div className='md:p-8 md:border md:mx-3 md:rounded-md p-8 border mx-0 rounded-md w-10/12'>
