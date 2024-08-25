@@ -146,7 +146,7 @@ console.log(eventDisplay.reviews.length);
   <div key={reviewData._id} className='flex justify-between p-4'>
     <div className='flex flex-row gap-4'>
       <img
-        src={reviewData.userprofile || userImage}
+        src={userData.userprofile || userImage}
         className='w-[40px] h-[40px] rounded-full object-cover'
         alt='User Profile'
       />
