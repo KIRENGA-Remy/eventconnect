@@ -57,7 +57,6 @@ function Menu() {
   
       if (response.ok) {
         dispatch(setDatareview(dataRes));
-        window.location.reload();
       }
     } catch (error) {
       console.error(error);
