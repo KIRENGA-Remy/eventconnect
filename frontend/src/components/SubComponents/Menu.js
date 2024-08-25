@@ -23,6 +23,7 @@ function Menu() {
   console.log("log review data", reviewData);
   // console.log("log review display", reviewDisplay);
   const userData = useSelector(state => state.user);
+  console.log(userData);
   const [eventRating, setEventRating] = useState(0);
   const [review, setReview] = useState({ eventId : '', username: '', date: '',  reviewText: '', userprofile: '' });
   const [loading, setLoading] = useState(false);
