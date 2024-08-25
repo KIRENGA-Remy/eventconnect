@@ -15,13 +15,13 @@ export const reviewSlice = createSlice({
   initialState,
   reducers: {
     setDatareview: (state, action) => {
-      state.eventId = action.payload.data.eventId;
-      state.username = action.payload.data.username;
-      state.userprofile = action.payload.data.userprofile;
-      state.reviewText = action.payload.data.reviewText;  // Correct field name
-      state.date = action.payload.data.date;
-      state.id = action.payload.data.id;  // Assuming `id` is the review's `_id`
-      state.rating = action.payload.data.rating;  // Added to handle the rating
+      state.eventId = action.payload.eventId;
+      state.username = action.payload.username;
+      state.userprofile = action.payload.userprofile;
+      state.reviewText = action.payload.reviewText;  // Correct field name
+      state.date = action.payload.date;
+      state.id = action.payload.id;  // Assuming `id` is the review's `_id`
+      state.rating = action.payload.rating;  // Added to handle the rating
     },
     clearReviewData: (state) => {
       state.eventId = "";

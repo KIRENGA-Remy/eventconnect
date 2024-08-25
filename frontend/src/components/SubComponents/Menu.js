@@ -45,7 +45,6 @@ function Menu() {
       rating: eventRating,
       date: new Date().toISOString(),
     };
-    dispatch(setDatareview(formData));
     try {
       setLoading(true);
       const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/review`, {
@@ -57,6 +56,7 @@ function Menu() {
       toast(dataRes.message);
   
       if (response.ok) {
+        dispatch(setDatareview(dataRes));
         window.location.reload();
       }
     } catch (error) {
@@ -142,7 +142,7 @@ function Menu() {
                 </div>
               </form>
 {reviewData && (
-  <div key={reviewData._id} className='flex justify-between p-4'>
+  <div key={reviewData.id} className='flex justify-between p-4'>
     <div className='flex flex-row gap-4'>
       <img
         src={reviewData.userprofile || userImage}
