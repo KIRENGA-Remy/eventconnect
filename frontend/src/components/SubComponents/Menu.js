@@ -29,7 +29,7 @@ function Menu() {
   const [loading, setLoading] = useState(false);
   const reviewMsgRef = useRef();
   const numReview = eventDisplay.reviews.length + 1;
-console.log(numReview);
+console.log(eventDisplay.reviews);
 console.log(eventDisplay.reviews.length);
   // Format event and review dates
   const formattedEventDate = eventDisplay ? new Date(eventDisplay.date).toISOString().split('T')[0] : '';
