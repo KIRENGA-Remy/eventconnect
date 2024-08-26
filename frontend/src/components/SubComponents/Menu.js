@@ -14,12 +14,10 @@ import { setDatareview } from '../../redux/reviewSlice';
 
 function Menu() {
   const params = useParams();
-  console.log(params.filterby);
   const eventData = useSelector((state) => state.event.eventList);
   const eventDisplay = eventData.find(el => el._id === params.filterby);
   console.log(eventDisplay);
   const reviewData = useSelector((state) => state.review);
-  // const reviewDisplay = reviewData.find(el => el.eventId === params.filterby);
   console.log("log review data", reviewData);
   // console.log("log review display", reviewDisplay);
   const userData = useSelector(state => state.user);
@@ -28,10 +26,8 @@ function Menu() {
   const [review, setReview] = useState({ eventId : '', username: '', date: '',  reviewText: '', userprofile: '' });
   const [loading, setLoading] = useState(false);
   const reviewMsgRef = useRef();
-  const numReview = eventDisplay.reviews.length + 1;
+  const numReview = eventDisplay.reviews.length;
 console.log(eventDisplay.reviews);
-console.log(eventDisplay.reviews.length);
-  // Format event and review dates
   const formattedEventDate = eventDisplay ? new Date(eventDisplay.date).toISOString().split('T')[0] : '';
   // const formattedReviewDate = reviewData.date ? new Date(reviewData.date).toISOString().split('T')[0] : '';
 
