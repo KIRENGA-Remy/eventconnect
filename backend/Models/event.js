@@ -1,4 +1,3 @@
-const { required } = require('joi');
 const mongoose = require('mongoose');
 
 const reviewSchema = new mongoose.Schema(
@@ -13,7 +12,6 @@ const reviewSchema = new mongoose.Schema(
     },
     date: { 
       type: Date, 
-      required: false, 
       default: Date.now 
     },
     reviewText: {
@@ -46,14 +44,16 @@ const eventSchema = new mongoose.Schema({
     country: { type: String, required: true },
   },
   organizer: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  // organizer: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   categories: [{ type: String }], // e.g., ['Wedding', 'Festival']
   ticketInfo: {
     price: { type: Number, required: true },
     availability: { type: Number, required: true }, // Number of tickets available
   },
   eventimages: { type: String, required: true }, 
-  reviews: [reviewSchema],
+   reviews: {
+    type: [reviewSchema],
+    default: [], // Default to an empty array if not provided
+  },
   attendees: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User', default: [] }], // Changed 'default: empty' to 'default: []'
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now }
