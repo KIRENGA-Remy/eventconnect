@@ -16,18 +16,15 @@ function Menu() {
   const params = useParams();
   const eventData = useSelector((state) => state.event.eventList);
   const eventDisplay = eventData.find(el => el._id === params.filterby);
-  console.log(eventDisplay);
   const reviewData = useSelector((state) => state.review);
   console.log("log review data", reviewData);
   // console.log("log review display", reviewDisplay);
   const userData = useSelector(state => state.user);
-  console.log(userData);
   const [eventRating, setEventRating] = useState(0);
   const [review, setReview] = useState({ eventId : '', username: '', date: '',  reviewText: '', userprofile: '' });
   const [loading, setLoading] = useState(false);
   const reviewMsgRef = useRef();
   const numReview = eventDisplay.reviews.length;
-console.log(eventDisplay.reviews);
   const formattedEventDate = eventDisplay ? new Date(eventDisplay.date).toISOString().split('T')[0] : '';
   // const formattedReviewDate = reviewData.date ? new Date(reviewData.date).toISOString().split('T')[0] : '';
 
