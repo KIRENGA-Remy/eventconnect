@@ -17,8 +17,6 @@ function Menu() {
   const eventData = useSelector((state) => state.event.eventList);
   const eventDisplay = eventData.find(el => el._id === params.filterby);
   const reviewData = useSelector((state) => state.review);
-  console.log("log review data", reviewData);
-  console.log("log review display", reviewDisplay);
   const userData = useSelector(state => state.user);
   const [eventRating, setEventRating] = useState(0);
   const [review, setReview] = useState({ eventId : '', username: '', date: '',  reviewText: '', userprofile: '' });
