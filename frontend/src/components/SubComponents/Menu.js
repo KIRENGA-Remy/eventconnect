@@ -53,7 +53,7 @@ function Menu() {
       }
     } catch (error) {
       console.error(error);
-      toast.error('Review creation failed. Network issues, Please try again.');
+      toast.error('Review creation failed. Network issues, Try again.');
     } finally {
       setLoading(false);
     }
