@@ -52,7 +52,6 @@ function Menu() {
         dispatch(setDatareview(dataRes));
       }
     } catch (error) {
-      console.error(error);
       toast.error('Review creation failed. Network issues, Try again.');
     } finally {
       setLoading(false);
