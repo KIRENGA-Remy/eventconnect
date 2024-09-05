@@ -28,7 +28,6 @@ const EventForm = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const userData = useSelector(state => state.user);
-  console.log(userData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

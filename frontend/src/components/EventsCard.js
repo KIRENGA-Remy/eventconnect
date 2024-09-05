@@ -2,34 +2,9 @@ import React from 'react'
 import { FaClock , FaRegCalendar} from 'react-icons/fa'
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick'
-// import  image  from '../assets/arenas.jpg'
-// import genz  from '../assets/genz.jpeg'
-// import  gen  from '../assets/genz.jpg'
-
 
 function EventsCard({name, id, image, category, country, startTime}) {
-  // const settings = {
-  //   dots: true,
-  //   infinite: true,
-  //   speed: 500,
-  //   slidesToShow: 4,
-  //   slidesToScroll: 1,
-  //   autoplay: true,
-  //   autoplaySpeed: 4000
-  // };
   return (
-    // <div className='bg-white shadow-md p-2 rounded'>
-    //   <div className='absolute gap-8 mx-auto w-[240px] h-[180px]'>
-    //     <img src={image} className='h-full w-full object-cover' />
-    //   </div>
-    //   <h3 className='font-semibold text-slate-600 text-center capitalize text-lg'>{name}</h3>
-    //   <div className='flex flex-row justify-between'>
-    //   <p><FaRegCalendar />{date}</p>
-    //  <p><FaClock />{startTime}</p>
-    //   </div>
-    //   <h3>{country}</h3>
-    // </div>
-    // <Slider {...settings} className=''>
       <Link to={`allevents/menu/${id}`}>
     <span className='shadow-md p-4 rounded-md w-full h-full'>
     <div className='relative'>
@@ -49,7 +24,6 @@ function EventsCard({name, id, image, category, country, startTime}) {
     <p className='bg-blue-600 hover:bg-blue-700 w-full p-2 text-white flex justify-center'>Buy Ticket</p>
     </span>
     </Link>
-    // </Slider>
   )
 }
 
