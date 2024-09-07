@@ -78,7 +78,6 @@ const SignUp = () => {
       toast.success(dataRes.message);
       navigate("/authentication");
     } catch (error) {
-      console.error("Error during form submission:", error);
       toast.error("Network error, please check your internet connection");
     } finally {
       setLoading(false);
