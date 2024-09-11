@@ -116,7 +116,7 @@ const SignUp = () => {
       <div className="flex flex-col w-1/2 pt-3 self-center relative" id="offPro">
         <div className="p-1 bg-[#20B486] hover:bg-[#608d7f] text-white text-center relative w-full max-h-10 flex justify-center rounded-lg gap-2 mb-4 cursor-pointer" onClick={googleSignup}>
           <AiOutlineGoogle className="text-2xl absolute left-2 p-1" />
-          <div>Sign up with Google</div>
+          <div>Google Signup</div>
         </div>
       </div>
       <div className="flex text-black text-xl text-center self-center justify-center items-center w-2/12 relative" id="or">
