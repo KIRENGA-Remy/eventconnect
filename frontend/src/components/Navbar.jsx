@@ -52,7 +52,7 @@ const Navbar = () => {
             }
                         <li><Link to='/services' className='hover:underline font-semibold p-4'>Products & Services</Link></li>
                         <li><Link to='/about' className='hover:underline font-semibold p-4'>About</Link></li>
-                        <li><Link to='/support' className='hover:underline font-semibold p-4'>Support</Link></li>
+                        <li><Link to='/support' className='hover:underline font-semibold p-4'>Supports</Link></li>
                     </ul>
                 </div>
             {userData.email ?                        
@@ -108,7 +108,7 @@ const Navbar = () => {
             }
                         <li><Link to='/services' className='p-2 hover:underline font-semibold'>Products & Services</Link></li>
                         <li><Link to='/about' className='p-2 hover:underline font-semibold'>About</Link></li>
-                        <li><Link to='/support' className='p-2 hover:underline font-semibold'>Support</Link></li>
+                        <li><Link to='/support' className='p-2 hover:underline font-semibold'>Supports</Link></li>
                         </div>
             { userData.email ? 
                 <div className='flex flex-col mt-4 space-y-2 justify-end'>
