@@ -8,6 +8,9 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         'auto-fill': 'repeat(auto-fill, minmax(40%, 1fr))',
+      },
+      fontFamily: {
+        opensans: ['Open Sans', 'sans-serif'],
       }
     },
   },
