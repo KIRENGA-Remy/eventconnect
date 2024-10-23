@@ -55,6 +55,7 @@ import NewDashboard from "./components/NewDashboard";
 import AllBookings from "./components/AllBookings";
 import AllEvents from "./components/AllEvents";
 import Menu from "./components/SubComponents/Menu";
+import TermsConditions from "./components/TermsConditions";
 
 function App() {
   const dispatch = useDispatch()
@@ -118,6 +119,7 @@ function App() {
         <Route path="/planners" exact element={<ServicePlanners />} />
         <Route path="/support" exact element={<Support />} />
         <Route path="/contact" exact element={<ContactUs />} />
+        <Route path="/terms&conditions" exact element={<TermsConditions />} />
         <Route
           path="/termsandconditions"
           exact

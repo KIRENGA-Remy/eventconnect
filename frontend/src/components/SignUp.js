@@ -153,7 +153,7 @@ const SignUp = () => {
           <input type="checkbox" id="terms" className="w-5" onChange={() => setTerms(!terms)} />
           <label>
             Agree To Our{" "}
-            <Link className="text-[#20B486] hover:text-[#43edb7] font-semibold" to="./terms">Terms of Services</Link>{" "}
+            <Link className="text-[#20B486] hover:text-[#43edb7] font-semibold" to="/terms&conditions">Terms of Services</Link>{" "}
             and{" "}
             <Link className="text-[#20B486] hover:text-[#43edb7] font-semibold" to="./privacy">Privacy Policy</Link>
           </label>
