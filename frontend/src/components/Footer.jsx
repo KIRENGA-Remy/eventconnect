@@ -56,7 +56,7 @@ const Footer = () => {
                     <FaInstagram  className='rounded-full p-2 text-5xl border border-blue-900 bg-white-100 hover:bg-green-500 text-green-500 hover:text-white'  />
                     </a>
                     <a 
-                    href="https://www.youtube.com/@BAI-SHOWS" 
+                    href="https://www.youtube.com/@BAISHOWS" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     class="px-4 py-6 max-sm:p-2 ">

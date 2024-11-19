@@ -55,10 +55,10 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "node init && vite",
     "preview": "vite preview",
-    "build": "react-scripts build",
-    "start": "react-scripts start",
+    "build": "node init && react-scripts build",
+    "start": "node init && react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
